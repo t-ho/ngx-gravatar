@@ -23,6 +23,10 @@ export class NgxGravatarDirective implements OnChanges, OnInit {
 		private elementRef: ElementRef,
 		private renderer: Renderer2,
 	) {
+		// Listen for error when fetching custom src
+		this.renderer.listen(this.elementRef.nativeElement, 'error', (event) => {
+			this._initializeAvatar(true); // Force using gravatar
+		});
 	}
 
 	ngOnInit() {
@@ -39,13 +43,13 @@ export class NgxGravatarDirective implements OnChanges, OnInit {
 	 * Custom source has higher priority if preferGravatar is not set on.
 	 * Finally, set styles for the avatar.
 	 */
-	private _initializeAvatar() {
+	private _initializeAvatar(forcedGravatar?: boolean) {
 		// Complain invalid fallback
 		if(_.indexOf(FALLBACKS, this.fallback) == -1) {
 			console.error(`[ngx-gravatar] - Invalid fallback. Fallback's possible values: ${FALLBACKS}`);
 		}
 		let url = '';
-		if(this.preferGravatar) {
+		if(this.preferGravatar || forcedGravatar) {
 			url = this._generateGravatarUrl();
 		} else { // this.preferGravatar == false
 			if(this.custom) {
