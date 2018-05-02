@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { GravatarModule } from './lib/gravatar/gravatar.module';
+import { GravatarModule } from 'ngx-gravatar';
 
 
 @NgModule({

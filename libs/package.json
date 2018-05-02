@@ -1,0 +1,25 @@
+{
+	"name": "ngx-gravatar",
+	"version": "1.0.0",
+	"repository": "https://github.com/t-ho/ngx-gravatar.git",
+	"author": "t-ho <toan.hmt@gmail.com>",
+	"license": "MIT",
+	"private": true,
+	"peerDependencies": {
+		"@angular/core": ">=4.0.0",
+		"@angular/common": ">=4.0.0"
+	},
+	"dependencies": {
+		"ts-md5": "^1.2.4",
+    "@types/lodash": "^4.14.108",
+    "lodash": "^4.17.10"
+	},
+	"ngPackage": {
+		"$schema": "./node_modules/ng-packagr/ng-package.schema.json",
+		"lib": {
+			"entryFile": "public_api.ts"
+		},
+		"whitelistedNonPeerDependencies": ["."],
+		"dest": "../dist/libs"
+	}
+}

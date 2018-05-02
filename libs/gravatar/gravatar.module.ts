@@ -6,10 +6,10 @@ import { NgxGravatarDirective } from './ngx-gravatar.directive';
 import { } from './'
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
-  declarations: [
+	imports: [
+		CommonModule
+	],
+	declarations: [
 		NgxGravatarDirective
 	],
 	exports: [
