@@ -3,14 +3,16 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { GravatarModule } from './lib/gravatar/gravatar.module';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
-    BrowserModule
+		BrowserModule,
+		GravatarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
