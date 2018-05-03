@@ -1,6 +1,6 @@
 {
 	"name": "ngx-gravatar",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/t-ho/ngx-gravatar.git"
@@ -36,6 +36,8 @@
 		"ngx",
 		"avatar",
 		"gravatar",
+		"gravatar AoT",
+		"gravatar AoT compatible",
 		"global avatar",
 		"ngx-gravatar",
 		"Angular gravatar",

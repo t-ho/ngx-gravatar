@@ -1,14 +1,10 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import { NgxGravatarService } from './ngx-gravatar.service';
 import { GravatarDefaultConfig } from './gravatar-default-config';
 import { NgxGravatarDirective } from './ngx-gravatar.directive';
 
 @NgModule({
-	imports: [
-		CommonModule
-	],
 	declarations: [
 		NgxGravatarDirective
 	],
