@@ -1,8 +1,6 @@
 import { Directive, ElementRef, Input, OnChanges, OnInit, Renderer2 } from '@angular/core';
-import { Md5 } from 'ts-md5/dist/md5';
 import * as _ from 'lodash';
-
-const FALLBACKS: string[] = ['blank', 'identicon', 'mm', 'monsterid', 'retro', 'robohash', 'wavatar'];
+import { NgxGravatarService } from './ngx-gravatar.service';
 
 @Directive({
 	selector: '[ngx-gravatar]'
@@ -10,19 +8,23 @@ const FALLBACKS: string[] = ['blank', 'identicon', 'mm', 'monsterid', 'retro', '
 export class NgxGravatarDirective implements OnChanges, OnInit {
 	@Input('src') custom: string;
 	@Input('email') email: string;
-	@Input('size') size: number = 40;
-	@Input('fallback') fallback: string = 'retro'; // enum: ['blank', 'identicon', 'mm', 'monsterid', 'retro', 'robohash', 'wavatar']
-	@Input('round') round: boolean = true;
-	@Input('cornerRadius') cornerRadius: number = 0;
+	@Input('size') size: number;
+	@Input('fallback') fallback: string; // enum: ['blank', 'identicon', 'mm', 'monsterid', 'retro', 'robohash', 'wavatar']
+	@Input('round') round: boolean;
+	@Input('cornerRadius') cornerRadius: number;
 	@Input('borderColor') borderColor: string;
 	@Input('borderWidth') borderWidth: number;
 	@Input('style') style: any = {};
-	@Input('preferGravatar') preferGravatar: boolean = false;
+	@Input('preferGravatar') preferGravatar: boolean;
+
+	defaultConfig: any;
 
 	constructor(
 		private elementRef: ElementRef,
 		private renderer: Renderer2,
+		private gravatarService: NgxGravatarService,
 	) {
+		this.defaultConfig = this.gravatarService.getDefaultConfig();
 		// Listen for error when fetching custom src
 		this.renderer.listen(this.elementRef.nativeElement, 'error', (event) => {
 			this._initializeAvatar(true); // Force using gravatar
@@ -38,42 +40,35 @@ export class NgxGravatarDirective implements OnChanges, OnInit {
 	}
 
 	/**
+	 * Set default values for user inputs if they are not provided
+	 */
+	private _setDefaultValues() {
+		this.size = _.isUndefined(this.size) ? this.defaultConfig.size : this.size;
+		this.round = _.isUndefined(this.round) ? this.defaultConfig.round : this.round;
+		this.fallback = _.isUndefined(this.fallback) ? this.defaultConfig.fallback : this.gravatarService.validateFallback(this.fallback) ? this.fallback : this.defaultConfig.fallback;
+		this.cornerRadius = _.isUndefined(this.cornerRadius) ? this.defaultConfig.cornerRadius : this.cornerRadius;
+		this.preferGravatar = _.isUndefined(this.preferGravatar) ? this.defaultConfig.preferGravatar : this.preferGravatar;
+	}
+
+	/**
 	 * Initialize avatar.
-	 * Complain if provided gravatar fallback is invalid.
 	 * Custom source has higher priority if preferGravatar is not set on.
 	 * Finally, set styles for the avatar.
 	 */
 	private _initializeAvatar(forcedGravatar?: boolean) {
-		// Complain invalid fallback
-		if(_.indexOf(FALLBACKS, this.fallback) == -1) {
-			console.error(`[ngx-gravatar] - Invalid fallback. Fallback's possible values: ${FALLBACKS}`);
-		}
+		this._setDefaultValues();
 		let url = '';
-		if(this.preferGravatar || forcedGravatar) {
-			url = this._generateGravatarUrl();
+		if (this.preferGravatar || forcedGravatar) {
+			url = this.gravatarService.generateGravatarUrl(this.email, this.size, this.fallback);
 		} else { // this.preferGravatar == false
-			if(this.custom) {
+			if (this.custom) {
 				url = this.custom;
 			} else { // fallback to gravatar
-				url = this._generateGravatarUrl();
+				url = this.gravatarService.generateGravatarUrl(this.email, this.size, this.fallback);
 			}
 		}
 		this.renderer.setProperty(this.elementRef.nativeElement, 'src', url);
 		this._setStyle(this._avatarStyle());
-	}
-
-	/**
-	 * Generate gravatar url
-	 */
-	private _generateGravatarUrl() {
-		// Complain email is not a string
-		if(!_.isString(this.email)) {
-			this.email = '';
-			console.error('[ngx-gravatar] - Email is not a string');
-		}
-		this.email = this.email.trim().toLowerCase();
-		const emailHash = Md5.hashStr(this.email);
-		return `//www.gravatar.com/avatar/${emailHash}?s=${this.size}&d=${this.fallback}`;
 	}
 
 	/**
@@ -83,10 +78,10 @@ export class NgxGravatarDirective implements OnChanges, OnInit {
 		let style = {
 			width: this.size + 'px',
 			height: this.size + 'px',
-			borderRadius: this.round ? '50%' : this.cornerRadius + 'px',
-			borderStyle: this.borderColor || this.borderWidth ? 'solid' : 'none',
-			borderColor: this.borderColor ? this.borderColor : '',
-			borderWidth: this.borderWidth ? this.borderWidth + 'px' : '1px',
+			borderRadius: this.round ? this.defaultConfig.borderRadius : this.cornerRadius + 'px',
+			borderStyle: this.defaultConfig.hasBorder || this.borderColor || this.borderWidth ? this.defaultConfig.borderStyle : 'none',
+			borderColor: this.borderColor ? this.borderColor : this.defaultConfig.borderColor,
+			borderWidth: this.borderWidth ? this.borderWidth + 'px' : this.defaultConfig.borderWidth + 'px',
 		}
 		return _.merge(style, this.style);
 	}

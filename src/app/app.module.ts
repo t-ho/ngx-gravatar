@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { GravatarModule } from 'ngx-gravatar';
+import { GravatarModule, FALLBACK_TYPES } from 'ngx-gravatar';
 
 
 @NgModule({
@@ -12,7 +12,7 @@ import { GravatarModule } from 'ngx-gravatar';
   ],
   imports: [
 		BrowserModule,
-		GravatarModule
+		GravatarModule.forRoot({fallback: FALLBACK_TYPES.robohash})
   ],
   providers: [],
   bootstrap: [AppComponent]
