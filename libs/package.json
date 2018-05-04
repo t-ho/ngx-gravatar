@@ -1,13 +1,13 @@
 {
 	"name": "ngx-gravatar",
-	"version": "2.0.0",
+	"description": "A customizable gravatar for Angular 4 and 5+ applications - AoT compatible.",
+	"version": "2.0.1",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/t-ho/ngx-gravatar.git"
 	},
 	"author": "t-ho <toan.hmt@gmail.com>",
 	"license": "MIT",
-	"description": "A customizable gravatar for Angular 4+ applications",
 	"private": false,
 	"peerDependencies": {
 		"@angular/core": ">=4.0.0",
