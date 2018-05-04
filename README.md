@@ -2,7 +2,7 @@
 
 # ngx-gravatar
 
-The gravatar directive for angular 4+. It is AoT compatible.
+The gravatar directive for angular 4 & 5+. It is AoT compatible.
 
 ![Angular Gravatar Directive](src/demo.png)
 
@@ -39,7 +39,7 @@ import { GravatarModule } from  'ngx-gravatar';
     AppComponent,
   ],
   imports: [
-		BrowserModule,
+    BrowserModule,
     // Import GravatarModule
     GravatarModule,
   ],
@@ -86,7 +86,7 @@ import { GravatarModule, GravatarDefaultConfig, FALLBACK_TYPES } from 'ngx-grava
 
 const gravatarConfig: GravatarDefaultConfig = {
   fallback: FALLBACK_TYPES.monsterid,
-	hasBorder: true,
+  hasBorder: true,
   borderColor: '#00ACC1',
 }
 

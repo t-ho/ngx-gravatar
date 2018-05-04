@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+	title = 'app';
+
+	styleObject = {
+    borderWidth: '2px',
+    borderColor: 'green',
+    borderStyle: 'dashed',
+    width: '150px',
+    borderRadius: '20%'
+  }
 }

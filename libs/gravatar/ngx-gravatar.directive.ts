@@ -43,7 +43,7 @@ export class NgxGravatarDirective implements OnChanges, OnInit {
 	 * Set default values for user inputs if they are not provided
 	 */
 	private _setDefaultValues() {
-		this.size = _.isUndefined(this.size) ? this.defaultConfig.size : this.size;
+		this.size = this._computeSize();
 		this.round = _.isUndefined(this.round) ? this.defaultConfig.round : this.round;
 		this.fallback = _.isUndefined(this.fallback) ? this.defaultConfig.fallback : this.gravatarService.validateFallback(this.fallback) ? this.fallback : this.defaultConfig.fallback;
 		this.cornerRadius = _.isUndefined(this.cornerRadius) ? this.defaultConfig.cornerRadius : this.cornerRadius;
@@ -72,7 +72,23 @@ export class NgxGravatarDirective implements OnChanges, OnInit {
 	}
 
 	/**
+	 * Compute the size of the avatar
+	 * @return size
+	 */
+	private _computeSize(): number {
+		let size = _.isUndefined(this.size) ? this.defaultConfig.size : this.size;
+		if (this.style && _.isString(this.style.width)) {
+			let width = this.style.width.trim();
+			if (width.match(/^\d+px$/)) { // width with px unit
+				size = width.replace('px', '');
+			}
+		}
+		return size;
+	}
+
+	/**
 	 * Compute style object
+	 * @return style object
 	 */
 	private _avatarStyle() {
 		let style = {
