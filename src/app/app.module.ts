@@ -3,10 +3,11 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
-import { GravatarModule, GravatarDefaultConfig, FALLBACK_TYPES } from 'ngx-gravatar';
+import { GravatarModule, GravatarDefaultConfig, FALLBACK_TYPES, RATING_TYPES } from 'ngx-gravatar';
 
 const gravatarConfig: GravatarDefaultConfig = {
-  // fallback: FALLBACK_TYPES.retro,
+  // fallback: FALLBACK_TYPES.wavatar,
+  rating: RATING_TYPES.pg,
   // hasBorder: true,
   // borderColor: "rgba(255, 0, 0, 0.4)",
 };

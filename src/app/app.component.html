@@ -15,8 +15,9 @@
 <div>
   <h2>Avatar with different gravatar fallbacks (default size - 40px)</h2>
   <h4>retro (default) - blank - identicon - mm - monsterid - retro - robohash - wavatar</h4>
-  <img ngx-gravatar [email]="'no-gravatar@gravatar.com'">
   <!-- Default fallback is 'retro' -->
+  <img ngx-gravatar [email]="'no-gravatar@gravatar.com'">
+
   <img ngx-gravatar [email]="'no-gravatar@gravatar.com'" fallback="blank">
   <img ngx-gravatar [email]="'no-gravatar@gravatar.com'" fallback="identicon">
   <img ngx-gravatar [email]="'no-gravatar@gravatar.com'" fallback="mm">

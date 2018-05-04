@@ -10,6 +10,7 @@ export class NgxGravatarDirective implements OnChanges, OnInit {
   @Input() email: string;
   @Input() size: number;
   @Input() fallback: string; // enum: ['blank', 'identicon', 'mm', 'monsterid', 'retro', 'robohash', 'wavatar']
+  @Input() rating: string; // enum: ['g', 'pg', 'r', 'x']
   @Input() round: boolean;
   @Input() cornerRadius: number;
   @Input() borderColor: string;
@@ -46,9 +47,8 @@ export class NgxGravatarDirective implements OnChanges, OnInit {
   private setDefaultValues() {
     this.size = this.computeSize();
     this.round = _.isUndefined(this.round) ? this.defaultConfig.round : this.round;
-    this.fallback = _.isUndefined(this.fallback) ? this.defaultConfig.fallback
-      : this.gravatarService.validateFallback(this.fallback) ? this.fallback
-        : this.defaultConfig.fallback;
+    this.rating = this.gravatarService.determineRating(this.rating, this.defaultConfig.rating);
+    this.fallback = this.gravatarService.determineFallback(this.fallback, this.defaultConfig.fallback);
     this.cornerRadius = _.isUndefined(this.cornerRadius) ? this.defaultConfig.cornerRadius : this.cornerRadius;
     this.preferGravatar = _.isUndefined(this.preferGravatar) ? this.defaultConfig.preferGravatar : this.preferGravatar;
   }
@@ -62,12 +62,12 @@ export class NgxGravatarDirective implements OnChanges, OnInit {
     this.setDefaultValues();
     let url = '';
     if (this.preferGravatar || forcedGravatar) {
-      url = this.gravatarService.generateGravatarUrl(this.email, this.size, this.fallback);
+      url = this.gravatarService.generateGravatarUrl(this.email, this.size, this.rating, this.fallback);
     } else { // this.preferGravatar == false
       if (this.src) {
         url = this.src;
       } else { // fallback to gravatar
-        url = this.gravatarService.generateGravatarUrl(this.email, this.size, this.fallback);
+        url = this.gravatarService.generateGravatarUrl(this.email, this.size, this.rating, this.fallback);
       }
     }
     this.renderer.setProperty(this.elementRef.nativeElement, 'src', url);

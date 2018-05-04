@@ -9,6 +9,8 @@ The gravatar directive for angular 4 & 5+. It is AoT compatible.
 
 ![Angular Gravatar Directive](https://github.com/t-ho/ngx-gravatar/blob/master/src/demo.png?raw=true)
 
+Visit [here](https://en.gravatar.com/) for more information about Gravatar.
+
 ## Demo
 
 Live demo [here](https://ngx-gravatar-demo.stackblitz.io).
@@ -75,7 +77,8 @@ After importing the GravatarModule, you can use the ngx-gravatar directive in an
 | `borderWidth`    | *number*  | optional |              | Specify the width of the border                                                                |
 | `style`          | *object*  | optional |              | Style object that will be applied on the `<img>` tag                                           |
 | `backgroundColor`| *string*  | optional | `transparent`| Specify the background color                                                                   |
-| `fallback`       | *string*  | optional | `retro`      | The fallback string of Gravatar. Possible values: `blank`, `indenticon`, `mm`, `monsterid`, `retro`, `robohash`, `wavatar`.   ||
+| `rating`         | *string*  | optional | `g`          | The rating string of [Gravatar](https://en.gravatar.com/site/implement/images). Possible values: `g`, `pg`, `r`, `x`.                                                        |
+| `fallback`       | *string*  | optional | `retro`      | The fallback string of [Gravatar](https://en.gravatar.com/site/implement/images). Possible values: `blank`, `indenticon`, `mm`, `monsterid`, `retro`, `robohash`, `wavatar`.   ||
 
 ## Override Default Configuration
 Default configuration options can be set globally by using the .forRoot() method. Note that the input parameters that are passed into an ngx-gravatar element will override any custom global config options that have been set. Please see below for an example of how to override default configurations.
@@ -124,6 +127,7 @@ export class AppModule { }
 | `borderWidth`    | *number*  | optional | `1`          | Specify the width of the border                                                                |
 | `borderStyle`    | *string*  | optional | `solid`      | Style object that will be applied on the `<img>` tag                                           |
 | `backgroundColor`| *string*  | optional | `transparent`| Specify the background color                                                                   |
+| `rating`         | *string*  | optional | `g`          | The rating string of Gravatar. Possible values: `g`, `pg`, `r`, `x`.                           |
 | `fallback`       | *string*  | optional | `retro`      | The fallback string of Gravatar. Possible values: `blank`, `indenticon`, `mm`, `monsterid`, `retro`, `robohash`, `wavatar`. ||
 
 ## License

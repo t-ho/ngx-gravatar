@@ -10,4 +10,5 @@ export interface GravatarDefaultConfig {
   borderWidth?: number;
   round?: boolean;
   backgroundColor?: string;
+  rating?: string;
 }
