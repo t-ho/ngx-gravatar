@@ -9,4 +9,5 @@ export interface GravatarDefaultConfig {
   borderStyle?: string;
   borderWidth?: number;
   round?: boolean;
+  backgroundColor?: string;
 }

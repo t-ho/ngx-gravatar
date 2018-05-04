@@ -16,6 +16,7 @@ export class NgxGravatarDirective implements OnChanges, OnInit {
   @Input() borderWidth: number;
   @Input() style: any = {};
   @Input() preferGravatar: boolean;
+  @Input() backgroundColor: boolean;
 
   defaultConfig: any;
 
@@ -100,6 +101,7 @@ export class NgxGravatarDirective implements OnChanges, OnInit {
       borderStyle: this.defaultConfig.hasBorder || this.borderColor || this.borderWidth ? this.defaultConfig.borderStyle : 'none',
       borderColor: this.borderColor ? this.borderColor : this.defaultConfig.borderColor,
       borderWidth: this.borderWidth ? this.borderWidth + 'px' : this.defaultConfig.borderWidth + 'px',
+      backgroundColor: this.backgroundColor ? this.backgroundColor : this.defaultConfig.backgroundColor,
     };
     return _.merge(style, this.style);
   }

@@ -21,4 +21,5 @@ export const DEFAULT_CONFIG: GravatarDefaultConfig = {
   borderStyle: 'solid',
   borderWidth: 1,
   round: true,
+  backgroundColor: 'transparent',
 };

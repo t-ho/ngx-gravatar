@@ -7,7 +7,7 @@
 
 The gravatar directive for angular 4 & 5+. It is AoT compatible.
 
-![Angular Gravatar Directive](src/demo.png)
+![Angular Gravatar Directive](https://github.com/t-ho/ngx-gravatar/blob/master/src/demo.png?raw=true)
 
 ## Demo
 
@@ -64,17 +64,18 @@ After importing the GravatarModule, you can use the ngx-gravatar directive in an
 ## Input Parameters
 
 |   Attribute   |      Type      | Required  | Default |                                              Description                   											|
-| ------------- | ----------------- | ---------- | ------- | -------------------------------------------------------------------------------------------- |
-| `email`          | *string*  | requried |         | Email associated with Gravatar                         																							|
-| `src`            | *string*  | optional |         | Custom image to use                                    																							|
-| `preferGravatar` | *boolean* | optional | `false` | If `true`, Gravatar will have higher priority. Otherwise, `src` image will be loaded first.         |
-| `size`           | *number*  | optional | `40`    | Size of the avatar                                     																							|
-| `round`          | *boolean* | optional | `true`  | Circle avatar                                          																							|
-| `cornerRadius`   | *number*  | optional | `0`     | Round the corner of square avatar. Only applied when `round` is set to *false*                      |
-| `borderColor`    | *string*  | optional |         | Specify the color of the border                        																							|
-| `borderWidth`    | *number*  | optional |         | Specify the width of the border                  																							      |
-| `style`          | *object*  | optional |         | Style object that will be applied on the `<img>` tag   																							|
-| `fallback`       | *string*  | optional | `retro` | The fallback string of Gravatar. Possible values: `blank`, `indenticon`, `mm`, `monsterid`, `retro`, `robohash`, `wavatar`.   ||
+| ------------- | ----------------- | ---------- | ---------- | ----------------------------------------------------------------------------------------- |
+| `email`          | *string*  | requried |              | Email associated with Gravatar                    																							|
+| `src`            | *string*  | optional |              | Custom image to use                               																							|
+| `preferGravatar` | *boolean* | optional | `false`      | If `true`, Gravatar will have higher priority. Otherwise, `src` image will be loaded first.    |
+| `size`           | *number*  | optional | `40`         | Size of the avatar                                                                             |
+| `round`          | *boolean* | optional | `true`       | Circle avatar                                                                                  |
+| `cornerRadius`   | *number*  | optional | `0`          | Round the corner of square avatar. Only applied when `round` is set to *false*                 |
+| `borderColor`    | *string*  | optional |              | Specify the color of the border                                                                |
+| `borderWidth`    | *number*  | optional |              | Specify the width of the border                                                                |
+| `style`          | *object*  | optional |              | Style object that will be applied on the `<img>` tag                                           |
+| `backgroundColor`| *string*  | optional | `transparent`| Specify the background color                                                                   |
+| `fallback`       | *string*  | optional | `retro`      | The fallback string of Gravatar. Possible values: `blank`, `indenticon`, `mm`, `monsterid`, `retro`, `robohash`, `wavatar`.   ||
 
 ## Override Default Configuration
 Default configuration options can be set globally by using the .forRoot() method. Note that the input parameters that are passed into an ngx-gravatar element will override any custom global config options that have been set. Please see below for an example of how to override default configurations.
@@ -112,17 +113,18 @@ export class AppModule { }
 ### Options
 
 |   Option   |      Type      | Required  | Default |                                              Description                                            |
-| ------------- | ----------------- | ---------- | ------- | -------------------------------------------------------------------------------------------- |
-| `hasBorder`      | *boolean* | optional | `false`  | Specify whether to have border or not                                                              |
-| `preferGravatar` | *boolean* | optional | `false`  | If `true`, Gravatar will have higher priority. Otherwise, `src` image will be loaded first.        |
-| `size`           | *number*  | optional | `40`     | Size of the avatar                                                                                 |
-| `round`          | *boolean* | optional | `true`   | Circle avatar                                                                                      |
-| `cornerRadius`   | *number*  | optional | `0`      | Round the corner of square avatar. Only applied when `round` is set to *false*                     |
-| `borderRadius`   | *string*  | optional | `50%`    | Only applied when `round` is set to *true*.                                                        |
-| `borderColor`    | *string*  | optional | `#000000`| Specify the color of the border                                                                    |
-| `borderWidth`    | *number*  | optional | `1`      | Specify the width of the border                                                                    |
-| `borderStyle`    | *string*  | optional | `solid`  | Style object that will be applied on the `<img>` tag                                               |
-| `fallback`       | *string*  | optional | `retro`  | The fallback string of Gravatar. Possible values: `blank`, `indenticon`, `mm`, `monsterid`, `retro`, `robohash`, `wavatar`. ||
+| ------------- | ----------------- | ---------- | --------- | ------------------------------------------------------------------------------------------ |
+| `hasBorder`      | *boolean* | optional | `false`      | Specify whether to have border or not                                                          |
+| `preferGravatar` | *boolean* | optional | `false`      | If `true`, Gravatar will have higher priority. Otherwise, `src` image will be loaded first.    |
+| `size`           | *number*  | optional | `40`         | Size of the avatar                                                                             |
+| `round`          | *boolean* | optional | `true`       | Circle avatar                                                                                  |
+| `cornerRadius`   | *number*  | optional | `0`          | Round the corner of square avatar. Only applied when `round` is set to *false*                 |
+| `borderRadius`   | *string*  | optional | `50%`        | Only applied when `round` is set to *true*.                                                    |
+| `borderColor`    | *string*  | optional | `#000000`    | Specify the color of the border                                                                |
+| `borderWidth`    | *number*  | optional | `1`          | Specify the width of the border                                                                |
+| `borderStyle`    | *string*  | optional | `solid`      | Style object that will be applied on the `<img>` tag                                           |
+| `backgroundColor`| *string*  | optional | `transparent`| Specify the background color                                                                   |
+| `fallback`       | *string*  | optional | `retro`      | The fallback string of Gravatar. Possible values: `blank`, `indenticon`, `mm`, `monsterid`, `retro`, `robohash`, `wavatar`. ||
 
 ## License
 
