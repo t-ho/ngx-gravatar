@@ -2,7 +2,7 @@ import { Inject, Injectable, InjectionToken, Optional } from '@angular/core';
 import { Md5 } from 'ts-md5/dist/md5';
 import * as _ from 'lodash';
 import { GravatarDefaultConfig } from './gravatar-default-config';
-import { DEFAULT_CONFIG, FALLBACK_TYPES, RATING_TYPES } from './constants';
+import { DEFAULT_CONFIG, FALLBACK_TYPES, RATING_TYPES } from './ngx-gravatar.constants';
 
 @Injectable()
 export class NgxGravatarService {
@@ -28,17 +28,21 @@ export class NgxGravatarService {
 
   /**
    * Generate gravatar url
-   * @param {string} email
-   * @param {number} size
-   * @param {string} rating 
-   * @param {string} fallback
+   * @param email is a string. If email is not a string, email will be set to empty string "" by default
+   * @param size number
+   * @param rating string
+   * @param fallback string
+   * @return gravatar url
    */
-  generateGravatarUrl(email: string, size: number, rating: string, fallback: string) {
+  generateGravatarUrl(email: string, size?: number, rating?: string, fallback?: string) {
     // Complain email is not a string
     if (!_.isString(email)) {
       console.error(`[ngx-gravatar] - Email (${email}) is not a string. Empty string is used as a default email.`);
       email = '';
     }
+    size = size ? size : this.defaultConfig.size;
+    rating = this.determineRating(rating, this.defaultConfig.rating);
+    fallback = this.determineFallback(fallback, this.defaultConfig.fallback);
     email = email.trim().toLowerCase();
     const emailHash = Md5.hashStr(email);
     return `//www.gravatar.com/avatar/${emailHash}?s=${size}&r=${rating}&d=${fallback}`;
@@ -46,11 +50,11 @@ export class NgxGravatarService {
 
   /**
    * Determine gravatar fallback string
-   * @param {string} fallback string
-   * @param {string} defaultFallback string
-   * @return {string}
+   * @param fallback string
+   * @param defaultFallback string
+   * @return
    */
-  determineFallback(fallback: string, defaultFallback: string = DEFAULT_CONFIG.fallback, internal: boolean = true) {
+  private determineFallback(fallback: string, defaultFallback: string = DEFAULT_CONFIG.fallback) {
     if (_.isUndefined(fallback)) {
       return defaultFallback;
     }
@@ -67,22 +71,24 @@ export class NgxGravatarService {
 
   /**
    * Determine gravatar rating string
-   * @param {string} rating string
-   * @param {string} defaultRating string
-   * @return {bolean}
+   * @param rating string
+   * @param defaultRating string
+   * @return
    */
-  determineRating(rating: string, defaultRating: string = DEFAULT_CONFIG.rating) {
+  private determineRating(rating: string, defaultRating: string = DEFAULT_CONFIG.rating) {
+    defaultRating = defaultRating.toLowerCase();
     if (_.isUndefined(rating)) {
       return defaultRating;
     }
 
-    if (_.findKey(RATING_TYPES, (v) => rating === v) === undefined) {
-      // Complain invalid rating 
-      console.error(`[ngx-gravatar] - "${rating}" is invalid gravatar rating type.` +
+    const isString = _.isString(rating);
+
+    if (!isString || (isString && _.findKey(RATING_TYPES, (v) => rating.toLowerCase() === v) === undefined)) {
+      console.error(`[ngx-gravatar] - "${rating}" is invalid gravatar rating type. ` +
         `Default rating "${defaultRating}" is used.`);
       return defaultRating;
     }
 
-    return rating;
+    return rating.toLowerCase();
   }
 }

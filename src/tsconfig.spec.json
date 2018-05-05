@@ -13,6 +13,7 @@
     "test.ts"
   ],
   "include": [
+    "../libs/**/*.spec.ts",
     "**/*.spec.ts",
     "**/*.d.ts"
   ]

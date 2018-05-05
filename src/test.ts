@@ -15,6 +15,8 @@ getTestBed().initTestEnvironment(
   platformBrowserDynamicTesting()
 );
 // Then we find all the tests.
+const ngxGravatarContext = require.context('../', true, /ngx-gravatar\.[A-Za-z]+\.spec\.ts$/);
 const context = require.context('./', true, /\.spec\.ts$/);
 // And load the modules.
+ngxGravatarContext.keys().map(ngxGravatarContext);
 context.keys().map(context);

@@ -16,7 +16,7 @@ export const RATING_TYPES = {
   pg: 'pg',
   r: 'r',
   x: 'x'
-}
+};
 
 export const DEFAULT_CONFIG: GravatarDefaultConfig = {
   fallback: FALLBACK_TYPES.retro,

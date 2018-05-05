@@ -7,6 +7,12 @@
 
 The gravatar directive for angular 4 & 5+. It is AoT compatible.
 
+This directive supports two avatar sources:
+* **Custom image**
+* **Gravatar**
+
+By default, the **custom image** has higher priority. If it is invalid, the **Gravatar** will be used. The priority can be changed by setting `preferGravatar` input or override the default configuration (see below).
+
 ![Angular Gravatar Directive](https://github.com/t-ho/ngx-gravatar/blob/master/src/demo.png?raw=true)
 
 Visit [here](https://en.gravatar.com/) for more information about Gravatar.
@@ -67,7 +73,7 @@ After importing the GravatarModule, you can use the ngx-gravatar directive in an
 
 |   Attribute   |      Type      | Required  | Default |                                              Description                   											|
 | ------------- | ----------------- | ---------- | ---------- | ----------------------------------------------------------------------------------------- |
-| `email`          | *string*  | requried |              | Email associated with Gravatar                    																							|
+| `email`          | *string*  | requried | (*empty string*)| Email associated with Gravatar                      																				|
 | `src`            | *string*  | optional |              | Custom image to use                               																							|
 | `preferGravatar` | *boolean* | optional | `false`      | If `true`, Gravatar will have higher priority. Otherwise, `src` image will be loaded first.    |
 | `size`           | *number*  | optional | `40`         | Size of the avatar                                                                             |
@@ -77,10 +83,11 @@ After importing the GravatarModule, you can use the ngx-gravatar directive in an
 | `borderWidth`    | *number*  | optional |              | Specify the width of the border                                                                |
 | `style`          | *object*  | optional |              | Style object that will be applied on the `<img>` tag                                           |
 | `backgroundColor`| *string*  | optional | `transparent`| Specify the background color                                                                   |
-| `rating`         | *string*  | optional | `g`          | The rating string of [Gravatar](https://en.gravatar.com/site/implement/images). Possible values: `g`, `pg`, `r`, `x`.                                                        |
-| `fallback`       | *string*  | optional | `retro`      | The fallback string of [Gravatar](https://en.gravatar.com/site/implement/images). Possible values: `blank`, `indenticon`, `mm`, `monsterid`, `retro`, `robohash`, `wavatar`.   ||
+| `rating`         | *string*  | optional | `g`          | The rating string of [Gravatar](https://en.gravatar.com/site/implement/images). Possible values: `g`, `pg`, `r`, `x`. `rating` type is case-insensitive.                       |
+| `fallback`       | *string*  | optional | `retro`      | The fallback string of [Gravatar](https://en.gravatar.com/site/implement/images). Possible values: `blank`, `indenticon`, `mm`, `monsterid`, `retro`, `robohash`, `wavatar`. `fallback` is case sensitive.  ||
 
 ## Override Default Configuration
+
 Default configuration options can be set globally by using the .forRoot() method. Note that the input parameters that are passed into an ngx-gravatar element will override any custom global config options that have been set. Please see below for an example of how to override default configurations.
 
 ```typescript
@@ -89,10 +96,11 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
-import { GravatarModule, GravatarDefaultConfig, FALLBACK_TYPES } from 'ngx-gravatar';
+import { GravatarModule, GravatarDefaultConfig, FALLBACK_TYPES, RATING_TYPES } from 'ngx-gravatar';
 
 const gravatarConfig: GravatarDefaultConfig = {
   fallback: FALLBACK_TYPES.monsterid,
+  rating: RATING_TYPES.x,
   hasBorder: true,
   borderColor: '#00ACC1',
 }
@@ -127,8 +135,23 @@ export class AppModule { }
 | `borderWidth`    | *number*  | optional | `1`          | Specify the width of the border                                                                |
 | `borderStyle`    | *string*  | optional | `solid`      | Style object that will be applied on the `<img>` tag                                           |
 | `backgroundColor`| *string*  | optional | `transparent`| Specify the background color                                                                   |
-| `rating`         | *string*  | optional | `g`          | The rating string of Gravatar. Possible values: `g`, `pg`, `r`, `x`.                           |
-| `fallback`       | *string*  | optional | `retro`      | The fallback string of Gravatar. Possible values: `blank`, `indenticon`, `mm`, `monsterid`, `retro`, `robohash`, `wavatar`. ||
+| `rating`         | *string*  | optional | `g`          | The rating string of [Gravatar](https://en.gravatar.com/site/implement/images). Possible values: `g`, `pg`, `r`, `x`. Note: `rating` type is case insensitive.                       |
+| `fallback`       | *string*  | optional | `retro`      | The fallback string of [Gravatar](https://en.gravatar.com/site/implement/images). Possible values: `blank`, `indenticon`, `mm`, `monsterid`, `retro`, `robohash`, `wavatar`. Note: `fallback` is case sensitive.  ||
+
+## Testing
+
+To lint
+
+```shell
+ng lint
+```
+
+To run all tests
+
+```shell
+ng test
+```
+
 
 ## License
 

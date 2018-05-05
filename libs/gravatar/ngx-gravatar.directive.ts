@@ -47,8 +47,6 @@ export class NgxGravatarDirective implements OnChanges, OnInit {
   private setDefaultValues() {
     this.size = this.computeSize();
     this.round = _.isUndefined(this.round) ? this.defaultConfig.round : this.round;
-    this.rating = this.gravatarService.determineRating(this.rating, this.defaultConfig.rating);
-    this.fallback = this.gravatarService.determineFallback(this.fallback, this.defaultConfig.fallback);
     this.cornerRadius = _.isUndefined(this.cornerRadius) ? this.defaultConfig.cornerRadius : this.cornerRadius;
     this.preferGravatar = _.isUndefined(this.preferGravatar) ? this.defaultConfig.preferGravatar : this.preferGravatar;
   }
