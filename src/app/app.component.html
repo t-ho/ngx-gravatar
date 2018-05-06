@@ -1,30 +1,30 @@
 <div>
   <h1>NGX-GRAVATAR</h1>
-  <img ngx-gravatar [email]="'toan.hmt@gmail.com'" size="150" borderColor="#00ACC1" borderWidth="2">
-  <img ngx-gravatar [email]="'toan.hmt@gmail.com'" [style]="styleObject">
+  <img ngxGravatar [email]="'toan.hmt@gmail.com'" size="150" borderColor="#00ACC1" borderWidth="2">
+  <img ngxGravatar [email]="'toan.hmt@gmail.com'" [style]="styleObject">
 </div>
 
 <div>
   <h2>Avatar from different sources (size - 80px)</h2>
   <h4>gravatar - custom source</h4>
-  <img ngx-gravatar [email]="'toan.hmt@gmail.com'" size="80">
-  <img ngx-gravatar size="80" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-  <img ngx-gravatar size="80" src="assets/avatar.jpg">
+  <img ngxGravatar [email]="'toan.hmt@gmail.com'" size="80">
+  <img ngxGravatar size="80" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+  <img ngxGravatar size="80" src="assets/avatar.jpg">
 </div>
 
 <div>
   <h2>Avatar with different gravatar fallbacks (default size - 40px)</h2>
   <h4>retro (default) - blank - identicon - mm - monsterid - retro - robohash - wavatar</h4>
   <!-- Default fallback is 'retro' -->
-  <img ngx-gravatar [email]="'no-gravatar@gravatar.com'">
+  <img ngxGravatar [email]="'no-gravatar@gravatar.com'">
 
-  <img ngx-gravatar [email]="'no-gravatar@gravatar.com'" fallback="blank">
-  <img ngx-gravatar [email]="'no-gravatar@gravatar.com'" fallback="identicon">
-  <img ngx-gravatar [email]="'no-gravatar@gravatar.com'" fallback="mm">
-  <img ngx-gravatar [email]="'no-gravatar@gravatar.com'" fallback="monsterid">
-  <img ngx-gravatar [email]="'no-gravatar@gravatar.com'" fallback="retro">
-  <img ngx-gravatar [email]="'no-gravatar@gravatar.com'" fallback="robohash">
-  <img ngx-gravatar [email]="'no-gravatar@gravatar.com'" fallback="wavatar">
+  <img ngxGravatar [email]="'no-gravatar@gravatar.com'" fallback="blank">
+  <img ngxGravatar [email]="'no-gravatar@gravatar.com'" fallback="identicon">
+  <img ngxGravatar [email]="'no-gravatar@gravatar.com'" fallback="mm">
+  <img ngxGravatar [email]="'no-gravatar@gravatar.com'" fallback="monsterid">
+  <img ngxGravatar [email]="'no-gravatar@gravatar.com'" fallback="retro">
+  <img ngxGravatar [email]="'no-gravatar@gravatar.com'" fallback="robohash">
+  <img ngxGravatar [email]="'no-gravatar@gravatar.com'" fallback="wavatar">
 </div>
 
 <div>
@@ -34,9 +34,9 @@
     <code>[preferGravatar]="true"</code> -
     <code>[preferGravatar]="true"</code>
   </h4>
-  <img ngx-gravatar [email]="'toan.hmt@gmail.com'" src="assets/avatar.jpg">
-  <img ngx-gravatar [email]="'toan.hmt@gmail.com'" [preferGravatar]="true" src="assets/avatar.jpg">
-  <img ngx-gravatar [email]="'no-gravatar@gravatar.com'" [preferGravatar]="true" src="assets/avatar.jpg">
+  <img ngxGravatar [email]="'toan.hmt@gmail.com'" src="assets/avatar.jpg">
+  <img ngxGravatar [email]="'toan.hmt@gmail.com'" [preferGravatar]="true" src="assets/avatar.jpg">
+  <img ngxGravatar [email]="'no-gravatar@gravatar.com'" [preferGravatar]="true" src="assets/avatar.jpg">
 </div>
 
 <div>
@@ -45,8 +45,8 @@
     <code>borderColor="teal"</code> -
     <code>borderColor="#d73d32"</code>
   </h4>
-  <img ngx-gravatar borderColor="teal" [email]="'toan.hmt@gmail.com'" [preferGravatar]="true" src="assets/avatar.jpg">
-  <img ngx-gravatar borderColor="#d73d32" [email]="'toan.hmt@gmail.com'" src="assets/avatar.jpg">
+  <img ngxGravatar borderColor="teal" [email]="'toan.hmt@gmail.com'" [preferGravatar]="true" src="assets/avatar.jpg">
+  <img ngxGravatar borderColor="#d73d32" [email]="'toan.hmt@gmail.com'" src="assets/avatar.jpg">
 </div>
 
 <div>
@@ -55,8 +55,8 @@
     <code>borderWidth="3"</code> -
     <code>borderWidth="5"</code>
   </h4>
-  <img ngx-gravatar borderWidth="3" [email]="'toan.hmt@gmail.com'">
-  <img ngx-gravatar borderWidth="5" borderColor="teal" [email]="'toan.hmt@gmail.com'">
+  <img ngxGravatar borderWidth="3" [email]="'toan.hmt@gmail.com'">
+  <img ngxGravatar borderWidth="5" borderColor="teal" [email]="'toan.hmt@gmail.com'">
 </div>
 
 <div>
@@ -65,8 +65,8 @@
     <code>src="essets/does-not-exist-1.jpg"</code> -
     <code>src="essets/does-not-exist-2.jpg"</code>
   </h4>
-  <img ngx-gravatar [email]="'toan.hmt@gmail.com'" src="assets/does-not-exist-1.jpg">
-  <img ngx-gravatar [email]="'no-gravatar@gravatar.com'" src="assets/does-not-exist-2.jpg">
+  <img ngxGravatar [email]="'toan.hmt@gmail.com'" src="assets/does-not-exist-1.jpg">
+  <img ngxGravatar [email]="'no-gravatar@gravatar.com'" src="assets/does-not-exist-2.jpg">
 </div>
 
 <div>
@@ -74,10 +74,10 @@
   <h4>
     <code>[round]="false"</code>
   </h4>
-  <img ngx-gravatar [round]="false" [email]="'no-gravatar@gravatar.com'" [preferGravatar]="true" src="assets/avatar.jpg">
-  <img ngx-gravatar [round]="false" [email]="'no-gravatar@gravatar.com'" src="assets/avatar.jpg">
-  <img ngx-gravatar [round]="false" borderColor="teal" [email]="'toan.hmt@gmail.com'" [preferGravatar]="true" src="assets/avatar.jpg">
-  <img ngx-gravatar [round]="false" borderColor="#d73d32" [email]="'toan.hmt@gmail.com'" src="assets/avatar.jpg">
+  <img ngxGravatar [round]="false" [email]="'no-gravatar@gravatar.com'" [preferGravatar]="true" src="assets/avatar.jpg">
+  <img ngxGravatar [round]="false" [email]="'no-gravatar@gravatar.com'" src="assets/avatar.jpg">
+  <img ngxGravatar [round]="false" borderColor="teal" [email]="'toan.hmt@gmail.com'" [preferGravatar]="true" src="assets/avatar.jpg">
+  <img ngxGravatar [round]="false" borderColor="#d73d32" [email]="'toan.hmt@gmail.com'" src="assets/avatar.jpg">
 </div>
 
 <div>

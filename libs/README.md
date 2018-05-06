@@ -61,13 +61,13 @@ export class AppModule { }
 
 ```
 ## Use in component
-After importing the GravatarModule, you can use the ngx-gravatar directive in any components as below:
+After importing the `GravatarModule`, you can use the `ngxGravatar` directive in `img` tags as below:
 
 ```html
-<img ngx-gravatar [email]="'example@mail.com'">
-<img ngx-gravatar [email]="'example@mail.com'" size="30">
-<img ngx-gravatar [email]="'example@mail.com'" size="30" src="assets/avatar.jpg">
-<img ngx-gravatar [email]="'example@mail.com'" size="30" src="assets/avatar.jpg" [style]="styleObject">
+<img ngxGravatar [email]="'example@mail.com'">
+<img ngxGravatar [email]="'example@mail.com'" size="30">
+<img ngxGravatar [email]="'example@mail.com'" size="30" src="assets/avatar.jpg">
+<img ngxGravatar [email]="'example@mail.com'" size="30" src="assets/avatar.jpg" [style]="styleObject">
 ```  
 ## Input Parameters
 

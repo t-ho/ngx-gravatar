@@ -3,7 +3,7 @@ import * as _ from 'lodash';
 import { NgxGravatarService } from './ngx-gravatar.service';
 
 @Directive({
-  selector: '[ngx-gravatar]'
+  selector: '[ngx-gravatar], [ngxGravatar]'
 })
 export class NgxGravatarDirective implements OnChanges, OnInit {
   @Input() src: string;

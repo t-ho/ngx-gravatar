@@ -121,7 +121,8 @@
       true,
       "attribute",
       "ngx",
-      "kebab-case"
+      "kebab-case",
+      "camelCase"
     ],
     "component-selector": [
       true,
