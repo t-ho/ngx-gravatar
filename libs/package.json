@@ -1,50 +1,56 @@
 {
-	"name": "ngx-gravatar",
-	"description": "A customizable gravatar for Angular 4 and 5+ applications - AoT compatible.",
-	"version": "2.0.1",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/t-ho/ngx-gravatar.git"
-	},
-	"author": "t-ho <toan.hmt@gmail.com>",
-	"license": "MIT",
-	"private": false,
-	"peerDependencies": {
-		"@angular/core": ">=4.0.0",
-		"@angular/common": ">=4.0.0"
-	},
-	"dependencies": {
-		"ts-md5": "^1.2.4",
-		"@types/lodash": "^4.14.108",
-		"lodash": "^4.17.10"
-	},
-	"ngPackage": {
-		"$schema": "./node_modules/ng-packagr/ng-package.schema.json",
-		"lib": {
-			"entryFile": "public_api.ts"
-		},
-		"whitelistedNonPeerDependencies": [ "." ],
-		"dest": "../dist/libs"
-	},
-	"keywords": [
-		"Angular",
-		"Angular 4",
-		"Angular4",
-		"Angular 5",
-		"Angular5",
-		"ng",
-		"ngx",
-		"avatar",
-		"gravatar",
-		"gravatar AoT",
-		"gravatar AoT compatible",
-		"global avatar",
-		"ngx-gravatar",
-		"Angular gravatar",
-		"Angular 4 gravatar",
-		"Angular 5 gravatar",
-		"Angular avatar",
-		"Angular 4 avatar",
-		"Angular 5 avatar"
-	]
+  "name": "ngx-gravatar",
+  "description": "A customizable Gravatar for Angular 4, 5 and 6+ applications - AoT compatible. It supports custom image and Gravatar sources",
+  "version": "2.0.2",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/t-ho/ngx-gravatar.git"
+  },
+  "author": "t-ho <toan.hmt@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "peerDependencies": {
+    "@angular/core": ">=4.0.0",
+    "@angular/common": ">=4.0.0"
+  },
+  "dependencies": {
+    "ts-md5": "^1.2.4",
+    "lodash": "^4.17.10"
+  },
+  "ngPackage": {
+    "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
+    "lib": {
+      "entryFile": "public_api.ts"
+    },
+    "whitelistedNonPeerDependencies": [ "." ],
+    "dest": "../dist/libs"
+  },
+  "keywords": [
+    "Angular",
+    "Angular 4",
+    "Angular4",
+    "Angular 5",
+    "Angular5",
+    "Angular 6",
+    "Angular 6",
+    "Angular6",
+    "ng",
+    "ngx",
+    "avatar",
+    "gravatar",
+    "gravatar AoT",
+    "gravatar AoT compatible",
+    "gravatar directive",
+    "global avatar",
+    "ngx-gravatar",
+    "Angular 4 avatar",
+    "Angular 4 gravatar",
+    "Angular 5 avatar",
+    "Angular 5 gravatar",
+    "Angular 6 avatar",
+    "Angular 6 gravatar",
+    "Angular avatar",
+    "Angular gravatar",
+    "AoT"
+  ]
 }

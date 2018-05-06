@@ -5,7 +5,7 @@
 
 # ngx-gravatar
 
-The gravatar directive for angular 4 & 5+. It is AoT compatible.
+The gravatar directive for angular 4, 5 and 6+. It is AoT compatible.
 
 This directive supports two avatar sources:
 * **Custom image**
@@ -99,10 +99,11 @@ import { AppComponent } from './app.component';
 import { GravatarModule, GravatarDefaultConfig, FALLBACK_TYPES, RATING_TYPES } from 'ngx-gravatar';
 
 const gravatarConfig: GravatarDefaultConfig = {
-  fallback: FALLBACK_TYPES.monsterid,
+  fallback: FALLBACK_TYPES.robohash,
   rating: RATING_TYPES.x,
-  hasBorder: true,
-  borderColor: '#00ACC1',
+  backgroundColor: 'rgba(0, 0, 0, 0.1)',
+  borderColor: 'rgba(0, 0, 0, 0.1)',
+  hasBorder: true // Set this flag to true to have a border by default
 }
 
 @NgModule({
