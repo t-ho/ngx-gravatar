@@ -10,7 +10,7 @@ export class NgxGravatarService {
   private defaultConfig: GravatarDefaultConfig;
 
   constructor(@Optional() @Inject('gravatarDefault.config') private gravatarConfig: GravatarDefaultConfig) {
-    this.defaultConfig = DEFAULT_CONFIG;
+    this.defaultConfig = _.cloneDeep(DEFAULT_CONFIG);
 
     if (this.gravatarConfig) {
       this.gravatarConfig.rating = this.determineRating(this.gravatarConfig.rating);
