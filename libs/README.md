@@ -1,12 +1,13 @@
 [![npm version](https://badge.fury.io/js/ngx-gravatar.svg)](https://badge.fury.io/js/ngx-gravatar)
 [![Build Status](https://travis-ci.org/t-ho/ngx-gravatar.svg?branch=master)](https://travis-ci.org/t-ho/ngx-gravatar)
 [![npm](https://img.shields.io/npm/dt/ngx-gravatar.svg)](https://www.npmjs.com/package/ngx-gravatar)
+[![npm](https://img.shields.io/npm/dm/ngx-gravatar.svg)](https://www.npmjs.com/package/ngx-gravatar)
 [![npm](https://img.shields.io/npm/dw/ngx-gravatar.svg)](https://www.npmjs.com/package/ngx-gravatar)
 [![npm](https://img.shields.io/npm/l/ngx-gravatar.svg)](https://www.npmjs.com/package/ngx-gravatar)
 
 # ngx-gravatar
 
-The gravatar directive for angular 4, 5 and 6+. It is AoT compatible.
+The gravatar directive for angular 4, 5(tested) and 6+(tested). It is AoT compatible.
 
 This directive supports two avatar sources:
 * **Custom image**
@@ -22,7 +23,9 @@ Visit [here](https://en.gravatar.com/) for more information about Gravatar.
 
 Live demo [here](https://ngx-gravatar-demo.stackblitz.io).
 
-Play with ngx-gravatar [here](https://stackblitz.com/edit/ngx-gravatar-demo) on stackblitz.
+Play with **ngx-gravatar** and **Angular 5** [here](https://stackblitz.com/edit/ngx-gravatar-demo) on stackblitz.
+
+Play with **ngx-gravatar** and **Angular 6** [here](https://stackblitz.com/edit/ngx-gravatar-demo-angular-6) on stackblitz.
 
 ## Installation
 
@@ -82,7 +85,7 @@ After importing the `GravatarModule`, you can use the `ngxGravatar` directive in
 | `cornerRadius`   | *number*  | optional | `0`          | Round the corner of square avatar. Only applied when `round` is set to *false*                 |
 | `borderColor`    | *string*  | optional |              | Specify the color of the border                                                                |
 | `borderWidth`    | *number*  | optional |              | Specify the width of the border                                                                |
-| `style`          | *object*  | optional |              | Style object that will be applied on the `<img>` tag                                           |
+| `style`          | *object*  | optional |              | Style object that will be applied on the `<img>` tag. NOTE: It will override others attributes.|
 | `backgroundColor`| *string*  | optional | `transparent`| Specify the background color                                                                   |
 | `rating`         | *string*  | optional | `g`          | The rating string of [Gravatar](https://en.gravatar.com/site/implement/images). Possible values: `g`, `pg`, `r`, `x`. `rating` type is case-insensitive.                       |
 | `fallback`       | *string*  | optional | `retro`      | The fallback string of [Gravatar](https://en.gravatar.com/site/implement/images). Possible values: `blank`, `indenticon`, `mm`, `monsterid`, `retro`, `robohash`, `wavatar`. `fallback` is case sensitive.  ||
