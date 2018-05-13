@@ -19,6 +19,7 @@ export class NgxGravatarDirective implements OnChanges, OnInit {
   @Input() preferGravatar: boolean;
   @Input() backgroundColor: boolean;
 
+  initialized: boolean;
   defaultConfig: any;
 
   constructor(
@@ -26,6 +27,7 @@ export class NgxGravatarDirective implements OnChanges, OnInit {
     private renderer: Renderer2,
     private gravatarService: NgxGravatarService,
   ) {
+    this.initialized = false;
     this.defaultConfig = this.gravatarService.getDefaultConfig();
     // Listen for error when fetching custom src
     this.renderer.listen(this.elementRef.nativeElement, 'error', (event) => {
@@ -35,10 +37,13 @@ export class NgxGravatarDirective implements OnChanges, OnInit {
 
   ngOnInit() {
     this.initializeAvatar();
+    this.initialized = true;
   }
 
   ngOnChanges() {
-    this.initializeAvatar();
+    if (this.initialized) {
+      this.initializeAvatar();
+    }
   }
 
   /**
