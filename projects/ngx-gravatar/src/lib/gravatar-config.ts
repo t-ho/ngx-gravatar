@@ -1,5 +1,7 @@
-export interface GravatarDefaultConfig {
-  fallback?: string;
+import { FallbackType, RatingType } from './ngx-gravatar.enums';
+
+export interface GravatarConfig {
+  fallback?: FallbackType;
   size?: number;
   cornerRadius?: number;
   preferGravatar?: boolean;
@@ -10,5 +12,5 @@ export interface GravatarDefaultConfig {
   borderWidth?: number;
   round?: boolean;
   backgroundColor?: string;
-  rating?: string;
+  rating?: RatingType;
 }

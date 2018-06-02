@@ -5,7 +5,8 @@ import { By } from '@angular/platform-browser';
 import * as _ from 'lodash';
 import { NgxGravatarDirective } from './ngx-gravatar.directive';
 import { NgxGravatarService } from './ngx-gravatar.service';
-import { DEFAULT_CONFIG, FALLBACK_TYPES, RATING_TYPES } from './ngx-gravatar.constants';
+import { DEFAULT_CONFIG } from './ngx-gravatar.constants';
+import { FALLBACK, RATING } from './ngx-gravatar.enums';
 
 @Component({
   template: `<img ngxGravatar [email]="email"

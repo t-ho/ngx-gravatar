@@ -1,17 +1,18 @@
 import { TestBed, inject } from '@angular/core/testing';
-import { GravatarDefaultConfig } from './gravatar-default-config';
+import { GravatarConfig } from './gravatar-config';
 import * as _ from 'lodash';
 
 import { GravatarModule } from './gravatar.module';
 import { NgxGravatarService } from './ngx-gravatar.service';
 import { not } from '@angular/compiler/src/output/output_ast';
-import { DEFAULT_CONFIG, FALLBACK_TYPES, RATING_TYPES } from './ngx-gravatar.constants';
+import { DEFAULT_CONFIG } from './ngx-gravatar.constants';
+import { FALLBACK, RATING } from './ngx-gravatar.enums';
 
 const notStrings: any[] = [null, true, false, 2];
 const invalidFallbacks: any[] = ['', '2', 'retor', 'monsterId', 're tro', ' retro', null, true, false, 2]; // undefined
 const validFallbacks: string[] = ['blank', 'identicon', 'mm', 'monsterid', 'retro', 'robohash', 'wavatar'];
-const invalidRatings: any[] = ['', 'a', 'p g', ' r', null, true, false, 2]; // undefined handled separately
-const validRatings: string[] = ['g', 'G', 'pg', 'pG', 'Pg', 'PG', 'r', 'R', 'x', 'X'];
+const invalidRatings: any[] = ['', 'a', 'G', 'pG', 'Pg', 'PG', 'p g', 'R', ' r', 'X', null, true, false, 2]; // undefined handled separately
+const validRatings: string[] = ['g', 'pg', 'r', 'x'];
 
 const invalidCustomConfigs: any[] = generateInvalidCustomConfig();
 const validCustomConfigs: any[] = generateValidCustomConfig();
@@ -182,7 +183,7 @@ describe('NgxGravatarService with DEFAULT_CONFIG', () => {
 });
 
 describe('NgxGravatarService with custom configuration', () => {
-  function setup(gravatarConfig: GravatarDefaultConfig) {
+  function setup(gravatarConfig: GravatarConfig) {
     TestBed.configureTestingModule({
       imports: [GravatarModule.forRoot(gravatarConfig)],
       providers: [NgxGravatarService]

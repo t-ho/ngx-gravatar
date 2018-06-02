@@ -1,7 +1,7 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 
 import { NgxGravatarService } from './ngx-gravatar.service';
-import { GravatarDefaultConfig } from './gravatar-default-config';
+import { GravatarConfig } from './gravatar-config';
 import { NgxGravatarDirective } from './ngx-gravatar.directive';
 
 @NgModule({
@@ -16,13 +16,13 @@ import { NgxGravatarDirective } from './ngx-gravatar.directive';
   ]
 })
 export class GravatarModule {
-  static forRoot(gravatarDefaultConfig: GravatarDefaultConfig): ModuleWithProviders {
+  static forRoot(gravatarConfig: GravatarConfig): ModuleWithProviders {
     return {
       ngModule: GravatarModule,
       providers: [
         {
           provide: 'gravatarDefault.config',
-          useValue: gravatarDefaultConfig
+          useValue: gravatarConfig
         }
       ]
     };

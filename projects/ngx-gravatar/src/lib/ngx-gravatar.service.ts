@@ -1,20 +1,21 @@
 import { Inject, Injectable, InjectionToken, Optional } from '@angular/core';
 import { Md5 } from 'ts-md5/dist/md5';
 import * as _ from 'lodash';
-import { GravatarDefaultConfig } from './gravatar-default-config';
-import { DEFAULT_CONFIG, FALLBACK_TYPES, RATING_TYPES } from './ngx-gravatar.constants';
+import { GravatarConfig } from './gravatar-config';
+import { DEFAULT_CONFIG } from './ngx-gravatar.constants';
+import { FALLBACK, FallbackType, RATING, RatingType } from './ngx-gravatar.enums';
 
 @Injectable()
 export class NgxGravatarService {
 
-  private defaultConfig: GravatarDefaultConfig;
+  private defaultConfig: GravatarConfig;
 
-  constructor(@Optional() @Inject('gravatarDefault.config') private gravatarConfig: GravatarDefaultConfig) {
+  constructor(@Optional() @Inject('gravatarDefault.config') private gravatarConfig: GravatarConfig) {
     this.defaultConfig = _.cloneDeep(DEFAULT_CONFIG);
 
     if (this.gravatarConfig) {
-      this.gravatarConfig.rating = this.determineRating(this.gravatarConfig.rating);
-      this.gravatarConfig.fallback = this.determineFallback(this.gravatarConfig.fallback);
+      this.gravatarConfig.rating = <RatingType>this.determineRating(this.gravatarConfig.rating);
+      this.gravatarConfig.fallback = <FallbackType>this.determineFallback(this.gravatarConfig.fallback);
       this.defaultConfig = _.merge(this.defaultConfig, this.gravatarConfig);
     }
   }
@@ -59,7 +60,7 @@ export class NgxGravatarService {
       return defaultFallback;
     }
 
-    if (_.findKey(FALLBACK_TYPES, (v) => fallback === v) === undefined) {
+    if (_.findKey(FALLBACK, (v) => fallback === v) === undefined) {
       // Complain invalid fallback
       console.error(`[ngx-gravatar] - "${fallback}" is invalid gravatar fallback type. ` +
         `Default fallback "${defaultFallback}" is used.`);
@@ -76,19 +77,18 @@ export class NgxGravatarService {
    * @return
    */
   private determineRating(rating: string, defaultRating: string = DEFAULT_CONFIG.rating) {
-    defaultRating = defaultRating.toLowerCase();
     if (_.isUndefined(rating)) {
       return defaultRating;
     }
 
     const isString = _.isString(rating);
 
-    if (!isString || (isString && _.findKey(RATING_TYPES, (v) => rating.toLowerCase() === v) === undefined)) {
+    if (!isString || (isString && _.findKey(RATING, (v) => rating === v) === undefined)) {
       console.error(`[ngx-gravatar] - "${rating}" is invalid gravatar rating type. ` +
         `Default rating "${defaultRating}" is used.`);
       return defaultRating;
     }
 
-    return rating.toLowerCase();
+    return rating;
   }
 }

@@ -87,7 +87,7 @@ After importing the `GravatarModule`, you can use the `ngxGravatar` directive in
 | `borderWidth`    | *number*  | optional |              | Specify the width of the border                                                                |
 | `style`          | *object*  | optional |              | Style object that will be applied on the `<img>` tag. NOTE: It will override others attributes.|
 | `backgroundColor`| *string*  | optional | `transparent`| Specify the background color                                                                   |
-| `rating`         | *string*  | optional | `g`          | The rating string of [Gravatar](https://en.gravatar.com/site/implement/images). Possible values: `g`, `pg`, `r`, `x`. `rating` type is case-insensitive.                       |
+| `rating`         | *string*  | optional | `g`          | The rating string of [Gravatar](https://en.gravatar.com/site/implement/images). Possible values: `g`, `pg`, `r`, `x`. `rating` type is case-sensitive.                       |
 | `fallback`       | *string*  | optional | `retro`      | The fallback string of [Gravatar](https://en.gravatar.com/site/implement/images). Possible values: `blank`, `indenticon`, `mm`, `monsterid`, `retro`, `robohash`, `wavatar`. `fallback` is case sensitive.  ||
 
 ## Override Default Configuration
@@ -100,11 +100,11 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
-import { GravatarModule, GravatarDefaultConfig, FALLBACK_TYPES, RATING_TYPES } from 'ngx-gravatar';
+import { GravatarModule, GravatarConfig, FALLBACK, RATING } from 'ngx-gravatar';
 
-const gravatarConfig: GravatarDefaultConfig = {
-  fallback: FALLBACK_TYPES.robohash,
-  rating: RATING_TYPES.x,
+const gravatarConfig: GravatarConfig = {
+  fallback: FALLBACK.robohash,
+  rating: RATING.x,
   backgroundColor: 'rgba(0, 0, 0, 0.1)',
   borderColor: 'rgba(0, 0, 0, 0.1)',
   hasBorder: true // Set this flag to true to have a border by default
@@ -140,7 +140,7 @@ export class AppModule { }
 | `borderWidth`    | *number*  | optional | `1`          | Specify the width of the border                                                                |
 | `borderStyle`    | *string*  | optional | `solid`      | Style object that will be applied on the `<img>` tag                                           |
 | `backgroundColor`| *string*  | optional | `transparent`| Specify the background color                                                                   |
-| `rating`         | *string*  | optional | `g`          | The rating string of [Gravatar](https://en.gravatar.com/site/implement/images). Possible values: `g`, `pg`, `r`, `x`. Note: `rating` type is case insensitive.                       |
+| `rating`         | *string*  | optional | `g`          | The rating string of [Gravatar](https://en.gravatar.com/site/implement/images). Possible values: `g`, `pg`, `r`, `x`. Note: `rating` type is case sensitive.                       |
 | `fallback`       | *string*  | optional | `retro`      | The fallback string of [Gravatar](https://en.gravatar.com/site/implement/images). Possible values: `blank`, `indenticon`, `mm`, `monsterid`, `retro`, `robohash`, `wavatar`. Note: `fallback` is case sensitive.  ||
 
 ## Testing
@@ -156,6 +156,33 @@ To run all tests
 ```shell
 ng test
 ```
+
+## Changelog
+
+**v3.0.0**
+* Upgrade to Angular 6
+* BreakingChange: `GravatarDefaultConfig` => `GravatarConfig`
+* BreakingChange: `FALLBACK_TYPES` => `FALLBACK`
+* BreakingChange: `RATING_TYPES` => `RATING`
+* BreakingChange: Rating types are now case sensitive
+
+**v2.1.3**
+* BugFix: Avatar is fetched twice when initializing
+
+**v2.1.1**
+* Support camelCase selector `ngxGravatar`
+
+**v2.1.0**
+* Be able to set `backgroundColor` locally and globally
+* Be able to set Gravatar `rating` (`g`, `pg`, `r`, `x`)
+* BugFix: `ngx-gravatar` tried to load the invalid Gravatar over and over again, spamming the console when invalid Gravata fallback type is passed to `forRoot()` method.
+* Remove `@type/lodash` package from dependencies
+
+**v2.0.1**
+* Lint and following Angular style guide
+
+**v2.0.0**
+* Gravatar directive for Angular 4 and above
 
 
 ## License
