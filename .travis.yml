@@ -19,5 +19,6 @@ before_script:
 
 script: 
   - ng lint
-  - ng test --watch false -cc
+  - ng build ngx-gravatar 
+  - ng test
   - ng build --prod
