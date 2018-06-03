@@ -1,7 +1,7 @@
 // Visit https://en.gravatar.com/site/implement/images for more information
 export enum FALLBACK {
   blank = 'blank',
-  indenticon = 'identicon',
+  identicon = 'identicon',
   mm = 'mm',
   monsterid = 'monsterid',
   retro = 'retro',

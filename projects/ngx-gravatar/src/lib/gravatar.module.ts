@@ -2,6 +2,7 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 
 import { NgxGravatarService } from './ngx-gravatar.service';
 import { GravatarConfig } from './gravatar-config';
+import { GRAVATAR_CONFIG_TOKEN } from './gravatar-config.token';
 import { NgxGravatarDirective } from './ngx-gravatar.directive';
 
 @NgModule({
@@ -21,7 +22,7 @@ export class GravatarModule {
       ngModule: GravatarModule,
       providers: [
         {
-          provide: 'gravatarDefault.config',
+          provide: GRAVATAR_CONFIG_TOKEN,
           useValue: gravatarConfig
         }
       ]

@@ -1,8 +1,7 @@
 [![npm version](https://badge.fury.io/js/ngx-gravatar.svg)](https://badge.fury.io/js/ngx-gravatar)
 [![Build Status](https://travis-ci.org/t-ho/ngx-gravatar.svg?branch=master)](https://travis-ci.org/t-ho/ngx-gravatar)
 [![npm](https://img.shields.io/npm/dt/ngx-gravatar.svg)](https://www.npmjs.com/package/ngx-gravatar)
-[![npm](https://img.shields.io/npm/dm/ngx-gravatar.svg)](https://www.npmjs.com/package/ngx-gravatar)
-[![npm](https://img.shields.io/npm/dw/ngx-gravatar.svg)](https://www.npmjs.com/package/ngx-gravatar)
+[![](https://data.jsdelivr.com/v1/package/npm/ngx-gravatar/badge?style=rounded)](https://www.jsdelivr.com/package/npm/ngx-gravatar)
 [![npm](https://img.shields.io/npm/l/ngx-gravatar.svg)](https://www.npmjs.com/package/ngx-gravatar)
 
 # ngx-gravatar
@@ -21,11 +20,11 @@ Visit [here](https://en.gravatar.com/) for more information about Gravatar.
 
 ## Demo
 
-Live demo [here](https://ngx-gravatar-demo.stackblitz.io).
+Live demo [here](https://ngx-gravatar.stackblitz.io).
 
-Play with **ngx-gravatar** and **Angular 5** [here](https://stackblitz.com/edit/ngx-gravatar-demo) on stackblitz.
+Play with **ngx-gravatar** and **Angular 5** [here](https://stackblitz.com/edit/ngx-gravatar-angular-5) on stackblitz.
 
-Play with **ngx-gravatar** and **Angular 6** [here](https://stackblitz.com/edit/ngx-gravatar-demo-angular-6) on stackblitz.
+Play with **ngx-gravatar** and **Angular 6** [here](https://stackblitz.com/edit/ngx-gravatar) on stackblitz.
 
 ## Installation
 
