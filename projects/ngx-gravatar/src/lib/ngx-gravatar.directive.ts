@@ -1,6 +1,7 @@
 import { Directive, ElementRef, Input, OnChanges, OnInit, Renderer2 } from '@angular/core';
 import * as _ from 'lodash';
 import { NgxGravatarService } from './ngx-gravatar.service';
+import { GravatarConfig } from './gravatar-config';
 
 @Directive({
   selector: '[ngx-gravatar], [ngxGravatar]'
@@ -18,9 +19,11 @@ export class NgxGravatarDirective implements OnChanges, OnInit {
   @Input() style: any = {};
   @Input() preferGravatar: boolean;
   @Input() backgroundColor: boolean;
+  @Input() ratio: number;
 
   initialized: boolean;
-  defaultConfig: any;
+  defaultConfig: GravatarConfig;
+  requestedSize: number;
 
   constructor(
     private elementRef: ElementRef,
@@ -51,6 +54,8 @@ export class NgxGravatarDirective implements OnChanges, OnInit {
    */
   private setDefaultValues() {
     this.size = this.computeSize();
+    this.ratio = _.isUndefined(this.ratio) ? this.defaultConfig.ratio : this.ratio;
+    this.requestedSize = this.size * this.ratio;
     this.round = _.isUndefined(this.round) ? this.defaultConfig.round : this.round;
     this.cornerRadius = _.isUndefined(this.cornerRadius) ? this.defaultConfig.cornerRadius : this.cornerRadius;
     this.preferGravatar = _.isUndefined(this.preferGravatar) ? this.defaultConfig.preferGravatar : this.preferGravatar;
@@ -65,12 +70,12 @@ export class NgxGravatarDirective implements OnChanges, OnInit {
     this.setDefaultValues();
     let url = '';
     if (this.preferGravatar || forcedGravatar) {
-      url = this.gravatarService.generateGravatarUrl(this.email, this.size, this.rating, this.fallback);
+      url = this.gravatarService.generateGravatarUrl(this.email, this.requestedSize, this.rating, this.fallback);
     } else { // this.preferGravatar == false
       if (this.src) {
         url = this.src;
       } else { // fallback to gravatar
-        url = this.gravatarService.generateGravatarUrl(this.email, this.size, this.rating, this.fallback);
+        url = this.gravatarService.generateGravatarUrl(this.email, this.requestedSize, this.rating, this.fallback);
       }
     }
     this.renderer.setProperty(this.elementRef.nativeElement, 'src', url);

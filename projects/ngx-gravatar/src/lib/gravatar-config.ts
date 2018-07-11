@@ -13,4 +13,5 @@ export interface GravatarConfig {
   round?: boolean;
   backgroundColor?: string;
   rating?: RatingType;
+  ratio?: number;
 }

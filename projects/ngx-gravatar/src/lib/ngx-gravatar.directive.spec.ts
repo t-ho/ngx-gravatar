@@ -13,6 +13,7 @@ import { FALLBACK, RATING } from './ngx-gravatar.enums';
                               [src]="src"
                               [preferGravatar]="preferGravatar"
                               [size]="size"
+                              [ratio]="ratio"
                               [round]="round"
                               [cornerRadius]="cornerRadius"
                               [borderColor]="borderColor"
@@ -28,6 +29,7 @@ class TestNgxGravatarComponent {
   src: string;
   preferGravatar: boolean;
   size: number;
+  ratio: number;
   round: boolean;
   cornerRadius: number;
   borderColor: string;
@@ -51,27 +53,18 @@ describe('NgxGravatarDirective', () => {
     let renderer: jasmine.SpyObj<Renderer2>;
     renderer = jasmine.createSpyObj('renderer', ['setStyle', 'setProperty', 'listen']);
 
-    let gravatarServiceStub: Partial<NgxGravatarService>;
-    gravatarServiceStub = {
-      getDefaultConfig() {
-        return _.assign({}, DEFAULT_CONFIG);
-      },
-      generateGravatarUrl() {
-        return '//www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=40&r=g&d=retro';
-      }
-    };
-
     TestBed.configureTestingModule({
       declarations: [
         TestNgxGravatarComponent,
         NgxGravatarDirective
       ],
       providers: [
-        { provide: NgxGravatarService, useValue: gravatarServiceStub },
+        NgxGravatarService,
         { provide: ElementRef, useValue: elementRef },
         { provide: Renderer2, useValue: renderer },
       ]
     });
+    spyOn(console, 'error');
     fixture = TestBed.createComponent(TestNgxGravatarComponent);
     component = fixture.componentInstance;
     imgDe = fixture.debugElement.query(By.css('img'));
@@ -89,34 +82,35 @@ describe('NgxGravatarDirective', () => {
       || imgEl.style.borderColor === '#000').toBeTruthy();
     expect(imgEl.style.borderWidth).toBe('1px');
     expect(imgEl.style.backgroundColor).toBe('transparent');
-    expect(imgEl.getAttribute('src')).toBe('//www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=40&r=g&d=retro');
+    expect(imgEl.getAttribute('src')).toBe('//www.gravatar.com/avatar/d41d8cd98f00b204e9800998ecf8427e?s=80&r=g&d=retro');
   });
 
   it('Setting email="toan.hmt@gmail.com", src should be gravatar url', () => {
     component.email = 'toan.hmt@gmail.com';
     fixture.detectChanges();
-    expect(imgEl.getAttribute('src')).toBe('//www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=40&r=g&d=retro');
+    expect(imgEl.getAttribute('src')).toBe('//www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=80&r=g&d=retro');
   });
 
-  it('Setting src="assets/avatar.png", src should be "assets/avatar.png"', () => {
-    component.src = 'assets/avatar.png';
+  it('Setting src="https://github.com/t-ho/ngx-gravatar/blob/master/src/assets/avatar.jpg?raw=true", '
+    + 'src should be "https://github.com/t-ho/ngx-gravatar/blob/master/src/assets/avatar.jpg?raw=true"', () => {
+    component.src = 'https://github.com/t-ho/ngx-gravatar/blob/master/src/assets/avatar.jpg?raw=true';
     fixture.detectChanges();
-    expect(imgEl.getAttribute('src')).toBe('assets/avatar.png');
+    expect(imgEl.getAttribute('src')).toBe('https://github.com/t-ho/ngx-gravatar/blob/master/src/assets/avatar.jpg?raw=true');
   });
 
   it('Setting email and src, the src should be the custom image', () => {
     component.email = 'toan.hmt@gmail.com';
-    component.src = 'assets/avatar.png';
+    component.src = 'https://github.com/t-ho/ngx-gravatar/blob/master/src/assets/avatar.jpg?raw=true';
     fixture.detectChanges();
-    expect(imgEl.getAttribute('src')).toBe('assets/avatar.png');
+    expect(imgEl.getAttribute('src')).toBe('https://github.com/t-ho/ngx-gravatar/blob/master/src/assets/avatar.jpg?raw=true');
   });
 
-  it('Setting email, src and preferGravatar to true, the src should be the custom image', () => {
+  it('Setting email, src and preferGravatar to true, the src should be gravatar image', () => {
     component.email = 'toan.hmt@gmail.com';
-    component.src = 'assets/avatar.png';
+    component.src = 'https://github.com/t-ho/ngx-gravatar/blob/master/src/assets/avatar.jpg?raw=true';
     component.preferGravatar = true;
     fixture.detectChanges();
-    expect(imgEl.getAttribute('src')).toBe('//www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=40&r=g&d=retro');
+    expect(imgEl.getAttribute('src')).toBe('//www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=80&r=g&d=retro');
   });
 
   it('Setting size="50", gravatar width and height should be "50px"', () => {
@@ -124,6 +118,23 @@ describe('NgxGravatarDirective', () => {
     fixture.detectChanges();
     expect(imgEl.style.width).toBe('50px');
     expect(imgEl.style.height).toBe('50px');
+  });
+
+  it('Setting email="toan.hmt@gmail.com" and ratio="1.5", '
+    + 'the src should be "//www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=60&r=g&d=retro"', () => {
+    component.email = 'toan.hmt@gmail.com';
+    component.ratio = 1.5;
+    fixture.detectChanges();
+    expect(imgEl.getAttribute('src')).toBe('//www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=60&r=g&d=retro');
+  });
+
+  it('Setting email="toan.hmt@gmail.com", size="50" and ratio="3", '
+    + 'the src should be "//www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=150&r=g&d=retro"', () => {
+    component.email = 'toan.hmt@gmail.com';
+    component.size = 50;
+    component.ratio = 3;
+    fixture.detectChanges();
+    expect(imgEl.getAttribute('src')).toBe('//www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=150&r=g&d=retro');
   });
 
   it('Setting [round]="false", gravatar borderRadius should be "0"', () => {

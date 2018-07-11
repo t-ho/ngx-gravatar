@@ -4,8 +4,6 @@
 [![David](https://img.shields.io/david/t-ho/ngx-gravatar.svg)](https://github.com/t-ho/ngx-gravatar)
 [![npm](https://img.shields.io/npm/dt/ngx-gravatar.svg)](https://www.npmjs.com/package/ngx-gravatar)
 [![npm](https://img.shields.io/badge/dynamic/json.svg?label=downloads&url=https%3A%2F%2Fapi.npmjs.org%2Fdownloads%2Fpoint%2Flast-week%2Fngx-gravatar&query=%24.downloads&colorB=bightgreen&suffix=%2Fweek)](https://www.npmjs.com/package/ngx-gravatar)
-[![npm](https://img.shields.io/badge/dynamic/json.svg?label=last%20day&url=https%3A%2F%2Fapi.npmjs.org%2Fdownloads%2Frange%2Flast-week%2Fngx-gravatar&query=%24.downloads%5B5%5D.downloads&colorB=brightgreen&suffix=%20downloads)](https://www.npmjs.com/package/ngx-gravatar)
-[![](https://data.jsdelivr.com/v1/package/npm/ngx-gravatar/badge?style=rounded)](https://www.jsdelivr.com/package/npm/ngx-gravatar)
 [![npm](https://img.shields.io/npm/l/ngx-gravatar.svg)](https://www.npmjs.com/package/ngx-gravatar)
 
 # ngx-gravatar
@@ -83,7 +81,8 @@ After importing the `GravatarModule`, you can use the `ngxGravatar` directive in
 | `email`          | *string*  | requried | (*empty string*)| Email associated with Gravatar                      																				|
 | `src`            | *string*  | optional |              | Custom image to use                               																							|
 | `preferGravatar` | *boolean* | optional | `false`      | If `true`, Gravatar will have higher priority. Otherwise, `src` image will be loaded first.    |
-| `size`           | *number*  | optional | `40`         | Size of the avatar                                                                             |
+| `size`           | *number*  | optional | `40`         | Displayed size of the avatar                                                                             |
+| `ratio`          | *number*  | optional | `2`          | The ratio of requested image size to displayed size                                            |
 | `round`          | *boolean* | optional | `true`       | Circle avatar                                                                                  |
 | `cornerRadius`   | *number*  | optional | `0`          | Round the corner of square avatar. Only applied when `round` is set to *false*                 |
 | `borderColor`    | *string*  | optional |              | Specify the color of the border                                                                |
@@ -135,7 +134,8 @@ export class AppModule { }
 | ------------- | ----------------- | ---------- | --------- | ------------------------------------------------------------------------------------------ |
 | `hasBorder`      | *boolean* | optional | `false`      | Specify whether to have border or not                                                          |
 | `preferGravatar` | *boolean* | optional | `false`      | If `true`, Gravatar will have higher priority. Otherwise, `src` image will be loaded first.    |
-| `size`           | *number*  | optional | `40`         | Size of the avatar                                                                             |
+| `size`           | *number*  | optional | `40`         | Displayed size of the avatar                                                                             |
+| `ratio`          | *number*  | optional | `2`          | The ratio of requested image size to displayed size                                            |
 | `round`          | *boolean* | optional | `true`       | Circle avatar                                                                                  |
 | `cornerRadius`   | *number*  | optional | `0`          | Round the corner of square avatar. Only applied when `round` is set to *false*                 |
 | `borderRadius`   | *string*  | optional | `50%`        | Only applied when `round` is set to *true*.                                                    |
