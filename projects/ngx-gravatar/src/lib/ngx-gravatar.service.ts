@@ -1,6 +1,8 @@
 import { Inject, Injectable, InjectionToken, Optional } from '@angular/core';
 import { Md5 } from 'ts-md5/dist/md5';
-import * as _ from 'lodash';
+import isString from 'lodash-es/isString';
+import isUndefined from 'lodash-es/isUndefined';
+import findKey from 'lodash-es/findKey';
 import { GravatarConfig } from './gravatar-config';
 import { GRAVATAR_CONFIG_TOKEN } from './gravatar-config.token';
 import { DEFAULT_CONFIG } from './ngx-gravatar.constants';
@@ -12,12 +14,12 @@ export class NgxGravatarService {
   private defaultConfig: GravatarConfig;
 
   constructor(@Optional() @Inject(GRAVATAR_CONFIG_TOKEN) private gravatarConfig: GravatarConfig) {
-    this.defaultConfig = _.cloneDeep(DEFAULT_CONFIG);
+    this.defaultConfig = { ...DEFAULT_CONFIG };
 
     if (this.gravatarConfig) {
       this.gravatarConfig.rating = <RatingType>this.determineRating(this.gravatarConfig.rating);
       this.gravatarConfig.fallback = <FallbackType>this.determineFallback(this.gravatarConfig.fallback);
-      this.defaultConfig = _.merge(this.defaultConfig, this.gravatarConfig);
+      this.defaultConfig = { ...this.defaultConfig, ...this.gravatarConfig };
     }
   }
 
@@ -38,7 +40,7 @@ export class NgxGravatarService {
    */
   generateGravatarUrl(email: string, size?: number, rating?: string, fallback?: string) {
     // Complain email is not a string
-    if (!_.isString(email)) {
+    if (!isString(email)) {
       console.error(`[ngx-gravatar] - Email (${email}) is not a string. Empty string is used as a default email.`);
       email = '';
     }
@@ -57,11 +59,11 @@ export class NgxGravatarService {
    * @return
    */
   private determineFallback(fallback: string, defaultFallback: string = DEFAULT_CONFIG.fallback) {
-    if (_.isUndefined(fallback)) {
+    if (isUndefined(fallback)) {
       return defaultFallback;
     }
 
-    if (_.findKey(FALLBACK, (v) => fallback === v) === undefined) {
+    if (findKey(FALLBACK, (v) => fallback === v) === undefined) {
       // Complain invalid fallback
       console.error(`[ngx-gravatar] - "${fallback}" is invalid gravatar fallback type. ` +
         `Default fallback "${defaultFallback}" is used.`);
@@ -78,13 +80,13 @@ export class NgxGravatarService {
    * @return
    */
   private determineRating(rating: string, defaultRating: string = DEFAULT_CONFIG.rating) {
-    if (_.isUndefined(rating)) {
+    if (isUndefined(rating)) {
       return defaultRating;
     }
 
-    const isString = _.isString(rating);
+    const isStr = isString(rating);
 
-    if (!isString || (isString && _.findKey(RATING, (v) => rating === v) === undefined)) {
+    if (!isStr || (isStr && findKey(RATING, (v) => rating === v) === undefined)) {
       console.error(`[ngx-gravatar] - "${rating}" is invalid gravatar rating type. ` +
         `Default rating "${defaultRating}" is used.`);
       return defaultRating;

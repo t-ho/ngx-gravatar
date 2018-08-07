@@ -37,9 +37,16 @@ Install `ngx-gravatar` via NPM, using the command below.
 ```shell
 npm install --save ngx-gravatar
 ```
+
+### Or Yarn
+
+```shell
+yarn add ngx-gravatar
+```
+
 ## Getting started
 
-Import the `GravatarModule` in your root application module `AppModule`:
+Import the `GravatarModule` in your root application module `AppModule` or any other module you need to use gravatar directive:
 
 ```typescript
 

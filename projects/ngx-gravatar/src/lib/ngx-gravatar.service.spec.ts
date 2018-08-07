@@ -1,6 +1,6 @@
 import { TestBed, inject } from '@angular/core/testing';
 import { GravatarConfig } from './gravatar-config';
-import * as _ from 'lodash';
+import forEach from 'lodash-es/forEach';
 
 import { GravatarModule } from './gravatar.module';
 import { NgxGravatarService } from './ngx-gravatar.service';
@@ -23,14 +23,14 @@ function generateValidCustomConfig(): any[] {
     in: DEFAULT_CONFIG,
     out: DEFAULT_CONFIG,
   });
-  _.forEach(validFallbacks, (fallback => {
+  forEach(validFallbacks, (fallback => {
     configs.push({
       in: { fallback: fallback },
       out: { fallback: fallback },
       consoleErrorMessage: generateFallbackErrorMessage(fallback, DEFAULT_CONFIG.fallback)
     });
   }));
-  _.forEach(validRatings, (rating => {
+  forEach(validRatings, (rating => {
     configs.push({
       in: { rating: rating },
       out: { rating: rating.toLowerCase() },
@@ -42,14 +42,14 @@ function generateValidCustomConfig(): any[] {
 
 function generateInvalidCustomConfig(): any[] {
   const configs: any[] = [];
-  _.forEach(invalidFallbacks, fallback => {
+  forEach(invalidFallbacks, fallback => {
     configs.push({
       in: { fallback: fallback },
       out: { fallback: DEFAULT_CONFIG.fallback },
       consoleErrorMessage: generateFallbackErrorMessage(fallback, DEFAULT_CONFIG.fallback)
     });
   });
-  _.forEach(invalidRatings, (rating => {
+  forEach(invalidRatings, (rating => {
     configs.push({
       in: { rating: rating },
       out: { rating: DEFAULT_CONFIG.rating },
@@ -99,7 +99,7 @@ describe('NgxGravatarService with DEFAULT_CONFIG', () => {
         + `&d=${gravatarService.getDefaultConfig().fallback}`);
   });
 
-  _.forEach(notStrings, (notString) => {
+  forEach(notStrings, (notString) => {
     it(`#generateGravatarUrl(${notString}) should return url with default hash, size, rating, fallback and PRINT error message`, () => {
       expect(gravatarService.generateGravatarUrl(notString))
         .toEqual(`//www.gravatar.com/avatar/d41d8cd98f00b204e9800998ecf8427e`
@@ -118,7 +118,7 @@ describe('NgxGravatarService with DEFAULT_CONFIG', () => {
     expect(console.error).not.toHaveBeenCalledWith(generateEmailErrorMessage('toan.hmt@gmail.com'));
   });
 
-  _.forEach(validRatings, (rating) => {
+  forEach(validRatings, (rating) => {
     const stmt = `#generateGravatarUrl('toan.hmt@gmail.com', 150, '${rating}') `
       + `should return url with lowercase rating, default fallback and NOT PRINT error message`;
     it(stmt, () => {
@@ -139,7 +139,7 @@ describe('NgxGravatarService with DEFAULT_CONFIG', () => {
     expect(console.error).not.toHaveBeenCalledWith(generateRatingErrorMessage(undefined, gravatarService.getDefaultConfig().rating));
   });
 
-  _.forEach(invalidRatings, (rating) => {
+  forEach(invalidRatings, (rating) => {
     const statment = `#generateGravatarUrl('toan.hmt@gmail.com', 150, '${rating}') `
       + `should return url with default rating, fallback and PRINT error message`;
     it(statment, () => {
@@ -151,7 +151,7 @@ describe('NgxGravatarService with DEFAULT_CONFIG', () => {
     });
   });
 
-  _.forEach(validFallbacks, (fallback) => {
+  forEach(validFallbacks, (fallback) => {
     const statment = `#generateGravatarUrl('toan.hmt@gmail.com', 50, 'pg', '${fallback}') `
       + `should return specified parameters and NOT PRINT error message`;
     it(statment, () => {
@@ -169,7 +169,7 @@ describe('NgxGravatarService with DEFAULT_CONFIG', () => {
     expect(console.error).not.toHaveBeenCalledWith(generateFallbackErrorMessage(undefined, gravatarService.getDefaultConfig().fallback));
   });
 
-  _.forEach(invalidFallbacks, (fallback) => {
+  forEach(invalidFallbacks, (fallback) => {
     const statment = `#generateGravatarUrl('toan.hmt@gmail.com', 50, 'pg', '${fallback}') `
       + `should return url with default fallback and PRINT error message`;
     it(statment, () => {
@@ -192,7 +192,7 @@ describe('NgxGravatarService with custom configuration', () => {
     return TestBed.get(NgxGravatarService);
   }
 
-  _.forEach(validCustomConfigs, config => {
+  forEach(validCustomConfigs, config => {
     const stmt = `With forRoot(${JSON.stringify(config.in)}), `
       + `#getDefaultConfig should return an object contains ${JSON.stringify(config.out)} `
       + `and NOT print error message`;
@@ -204,7 +204,7 @@ describe('NgxGravatarService with custom configuration', () => {
     });
   });
 
-  _.forEach(invalidCustomConfigs, config => {
+  forEach(invalidCustomConfigs, config => {
     const stmt = `With forRoot(${JSON.stringify(config.in)}), `
       + `#getDefaultConfig should return an object contains ${JSON.stringify(config.out)} `
       + `and print error message`;

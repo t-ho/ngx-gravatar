@@ -2,7 +2,6 @@ import { ElementRef, Renderer2, Component, DebugElement } from '@angular/core';
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import * as _ from 'lodash';
 import { NgxGravatarDirective } from './ngx-gravatar.directive';
 import { NgxGravatarService } from './ngx-gravatar.service';
 import { DEFAULT_CONFIG } from './ngx-gravatar.constants';
