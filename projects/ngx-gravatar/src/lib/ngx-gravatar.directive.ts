@@ -1,7 +1,4 @@
 import { Directive, ElementRef, Input, OnChanges, OnInit, Renderer2 } from '@angular/core';
-import isUndefined from 'lodash-es/isUndefined';
-import isString from 'lodash-es/isString';
-import forEach from 'lodash-es/forEach';
 import { NgxGravatarService } from './ngx-gravatar.service';
 import { GravatarConfig } from './gravatar-config';
 
@@ -56,11 +53,11 @@ export class NgxGravatarDirective implements OnChanges, OnInit {
    */
   private setDefaultValues() {
     this.size = this.computeSize();
-    this.ratio = isUndefined(this.ratio) ? this.defaultConfig.ratio : this.ratio;
+    this.ratio = this.ratio === undefined ? this.defaultConfig.ratio : this.ratio;
     this.requestedSize = this.size * this.ratio;
-    this.round = isUndefined(this.round) ? this.defaultConfig.round : this.round;
-    this.cornerRadius = isUndefined(this.cornerRadius) ? this.defaultConfig.cornerRadius : this.cornerRadius;
-    this.preferGravatar = isUndefined(this.preferGravatar) ? this.defaultConfig.preferGravatar : this.preferGravatar;
+    this.round = this.round === undefined ? this.defaultConfig.round : this.round;
+    this.cornerRadius = this.cornerRadius === undefined ? this.defaultConfig.cornerRadius : this.cornerRadius;
+    this.preferGravatar = this.preferGravatar === undefined ? this.defaultConfig.preferGravatar : this.preferGravatar;
   }
 
   /**
@@ -89,11 +86,15 @@ export class NgxGravatarDirective implements OnChanges, OnInit {
    * @return size
    */
   private computeSize(): number {
-    let size = isUndefined(this.size) ? this.defaultConfig.size : this.size;
-    if (this.style && isString(this.style.width)) {
-      const width = this.style.width.trim();
-      if (width.match(/^\d+px$/)) { // width with px unit
-        size = width.replace('px', '');
+    let size = this.size === undefined ? this.defaultConfig.size : this.size;
+    if (this.style && this.style.width) {
+      try {
+        const width = this.style.width.trim();
+        if (width.match(/^\d+px$/)) { // width with px unit
+          size = width.replace('px', '');
+        }
+      } catch (e) {
+        return size;
       }
     }
     return size;
@@ -121,8 +122,8 @@ export class NgxGravatarDirective implements OnChanges, OnInit {
    * @param styles style object
    */
   private setStyle(styles: any) {
-    forEach(styles, (v, k) => {
-      this.renderer.setStyle(this.elementRef.nativeElement, k, v);
+    Object.keys(styles).forEach(key => {
+      this.renderer.setStyle(this.elementRef.nativeElement, key, styles[key]);
     });
   }
 }

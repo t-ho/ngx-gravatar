@@ -1,8 +1,5 @@
 import { Inject, Injectable, InjectionToken, Optional } from '@angular/core';
 import { Md5 } from 'ts-md5/dist/md5';
-import isString from 'lodash-es/isString';
-import isUndefined from 'lodash-es/isUndefined';
-import findKey from 'lodash-es/findKey';
 import { GravatarConfig } from './gravatar-config';
 import { GRAVATAR_CONFIG_TOKEN } from './gravatar-config.token';
 import { DEFAULT_CONFIG } from './ngx-gravatar.constants';
@@ -39,15 +36,16 @@ export class NgxGravatarService {
    * @return gravatar url
    */
   generateGravatarUrl(email: string, size?: number, rating?: string, fallback?: string) {
-    // Complain email is not a string
-    if (!isString(email)) {
+    try {
+      email = email.trim().toLowerCase();
+    } catch (e) {
+      // Complain email is not a string
       console.error(`[ngx-gravatar] - Email (${email}) is not a string. Empty string is used as a default email.`);
       email = '';
     }
     size = size ? size : this.defaultConfig.size;
     rating = this.determineRating(rating, this.defaultConfig.rating);
     fallback = this.determineFallback(fallback, this.defaultConfig.fallback);
-    email = email.trim().toLowerCase();
     const emailHash = Md5.hashStr(email);
     return `//www.gravatar.com/avatar/${emailHash}?s=${size}&r=${rating}&d=${fallback}`;
   }
@@ -59,11 +57,11 @@ export class NgxGravatarService {
    * @return
    */
   private determineFallback(fallback: string, defaultFallback: string = DEFAULT_CONFIG.fallback) {
-    if (isUndefined(fallback)) {
+    if (fallback === undefined) {
       return defaultFallback;
     }
 
-    if (findKey(FALLBACK, (v) => fallback === v) === undefined) {
+    if (FALLBACK[fallback] === undefined) {
       // Complain invalid fallback
       console.error(`[ngx-gravatar] - "${fallback}" is invalid gravatar fallback type. ` +
         `Default fallback "${defaultFallback}" is used.`);
@@ -80,13 +78,11 @@ export class NgxGravatarService {
    * @return
    */
   private determineRating(rating: string, defaultRating: string = DEFAULT_CONFIG.rating) {
-    if (isUndefined(rating)) {
+    if (rating === undefined) {
       return defaultRating;
     }
 
-    const isStr = isString(rating);
-
-    if (!isStr || (isStr && findKey(RATING, (v) => rating === v) === undefined)) {
+    if (RATING[rating] === undefined) {
       console.error(`[ngx-gravatar] - "${rating}" is invalid gravatar rating type. ` +
         `Default rating "${defaultRating}" is used.`);
       return defaultRating;

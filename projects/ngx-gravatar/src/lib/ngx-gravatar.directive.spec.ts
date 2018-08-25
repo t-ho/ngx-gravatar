@@ -213,4 +213,23 @@ describe('NgxGravatarDirective', () => {
     expect(imgEl.style.width).toBe('50px');
     expect(imgEl.style.height).toBe('50px');
   });
+
+  it('style property should override other properties if provided - 2', () => {
+    component.style = {
+      backgroundColor: 'brown',
+      borderColor: 'red',
+      width: 50,
+      height: '50px'
+    };
+    component.backgroundColor = 'white';
+    fixture.detectChanges();
+    component.borderColor = 'teal';
+    component.size = 190;
+    component.src = 'not-existed.jpg';
+    fixture.detectChanges();
+    expect(imgEl.style.backgroundColor).toBe('brown');
+    expect(imgEl.style.borderColor).toBe('red');
+    expect(imgEl.style.width).toBe('');
+    expect(imgEl.style.height).toBe('50px');
+  });
 });
