@@ -8,7 +8,7 @@
 
 # ngx-gravatar
 
-The gravatar directive for angular 4, 5(tested) and 6+(tested). It is AoT compatible.
+The gravatar directive for angular 5 and 6+. It is AoT compatible.
 
 This directive supports two avatar sources:
 * **Custom image**
@@ -168,6 +168,15 @@ ng test
 ```
 
 ## Changelog
+
+**v3.0.5**
+* Remove lodash-es lib - [bundlephobia](https://bundlephobia.com/result?p=ngx-gravatar@3.0.5) 
+
+**v3.0.4**
+* Cherry-pick lodash methods to reduce the bundle size [bundlephobia](https://bundlephobia.com/result?p=ngx-gravatar@3.0.4) 
+
+**v3.0.3**
+* Support hi-res screens [#1](https://github.com/t-ho/ngx-gravatar/issues/1)
 
 **v3.0.0**
 * Upgrade to Angular 6
