@@ -74,8 +74,9 @@ export class NgxGravatarService {
         const fallbackUrl = this.gravatarConfig.fallbackUrl.trim().toLowerCase();
       } catch (e) {
         // Complain email is not a string
-        console.error(`[ngx-gravatar] - Fallback URL (${this.gravatarConfig.fallbackUrl}) is not a string. Default fallback "${defaultFallback}"is used instead.`);
-        this.gravatarConfig.fallbackUrl = "";
+        console.error(`[ngx-gravatar] - Fallback URL (${this.gravatarConfig.fallbackUrl}) ` +
+        `is not a string. Default fallback "${defaultFallback}"is used instead.`);
+        this.gravatarConfig.fallbackUrl = '';
       }
       return this.gravatarConfig.fallbackUrl;
     }
