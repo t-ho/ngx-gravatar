@@ -1,7 +1,8 @@
-import { FallbackType, RatingType } from './ngx-gravatar.enums';
+import { FallbackType, RatingType } from "./ngx-gravatar.enums";
 
 export interface GravatarConfig {
   fallback?: FallbackType;
+  fallbackUrl?: string;
   size?: number;
   cornerRadius?: number;
   preferGravatar?: boolean;
