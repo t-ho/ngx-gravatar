@@ -4,7 +4,6 @@ import { GravatarConfig } from './gravatar-config';
 import { GRAVATAR_CONFIG_TOKEN } from './gravatar-config.token';
 import { DEFAULT_CONFIG } from './ngx-gravatar.constants';
 import { FALLBACK, FallbackType, RATING, RatingType } from './ngx-gravatar.enums';
-import { FALLBACK } from 'ngx-gravatar';
 
 @Injectable()
 export class NgxGravatarService {
