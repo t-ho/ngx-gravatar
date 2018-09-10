@@ -63,7 +63,8 @@ export class NgxGravatarService {
 
     if (FALLBACK[fallback] === undefined) {
       // Complain invalid fallback
-      console.error(`[ngx-gravatar] - "${fallback}" is invalid gravatar fallback type. ` + `Default fallback "${defaultFallback}" is used.`);
+      console.error(`[ngx-gravatar] - "${fallback}" is invalid gravatar fallback type. ` +
+        `Default fallback "${defaultFallback}" is used.`);
       return defaultFallback;
     }
 
