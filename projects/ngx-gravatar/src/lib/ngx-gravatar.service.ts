@@ -45,7 +45,7 @@ export class NgxGravatarService {
     }
     size = size ? size : this.defaultConfig.size;
     rating = this.determineRating(rating, this.defaultConfig.rating);
-    fallback = this.determineFallback(fallback, this.defaultConfig.fallback, fallbackUrl);
+    fallback = this.determineFallback(fallback, fallbackUrl, this.defaultConfig.fallback);
     const emailHash = Md5.hashStr(email);
     return `//www.gravatar.com/avatar/${emailHash}?s=${size}&r=${rating}&d=${fallback}`;
   }
@@ -63,19 +63,18 @@ export class NgxGravatarService {
 
     if (FALLBACK[fallback] === undefined) {
       // Complain invalid fallback
-      console.error(`[ngx-gravatar] - "${fallback}" is invalid gravatar fallback type. ` +
-        `Default fallback "${defaultFallback}" is used.`);
+      console.error(`[ngx-gravatar] - "${fallback}" is invalid gravatar fallback type. ` + `Default fallback "${defaultFallback}" is used.`);
       return defaultFallback;
     }
 
-    if (fallback === FALLBACK.url && fallbackUrl) {
+    if (fallback === FALLBACK.url) {
       try {
-        fallbackUrl = fallbackUrl.trim().toLowerCase();
+        const fallbackTest = fallbackUrl.trim().toLowerCase();
       } catch (e) {
         // Complain fallbackUrl is not a string
         console.error(`[ngx-gravatar] - Fallback URL (${fallbackUrl}) ` +
-          `is not a string. Default fallback "${defaultFallback}"is used instead.`);
-        fallbackUrl = '';
+          `is not a string. Default fallback "${defaultFallback}" is used.`);
+        return defaultFallback;
       }
       return fallbackUrl;
     }

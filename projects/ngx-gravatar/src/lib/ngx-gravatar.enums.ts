@@ -7,7 +7,7 @@ export enum FALLBACK {
   retro = 'retro',
   robohash = 'robohash',
   wavatar = 'wavatar',
-  url = ' url'
+  url = 'url'
 }
 
 export enum RATING {
