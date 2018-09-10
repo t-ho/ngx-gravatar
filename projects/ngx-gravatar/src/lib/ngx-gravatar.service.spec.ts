@@ -10,6 +10,7 @@ import { FALLBACK, RATING } from './ngx-gravatar.enums';
 const notStrings: any[] = [null, true, false, 2, undefined];
 const invalidFallbacks: any[] = ['', '2', 'retor', 'monsterId', 're tro', ' retro', null, true, false, 2]; // undefined
 const validFallbacks: string[] = ['blank', 'identicon', 'mm', 'monsterid', 'retro', 'robohash', 'wavatar'];
+const defaultFallbackUrl: string = '/src/assets/avatar.jpeg';
 const invalidRatings: any[] = ['', 'a', 'G', 'pG', 'Pg', 'PG', 'p g', 'R', ' r', 'X', null, true, false, 2]; // undefined handled separately
 const validRatings: string[] = ['g', 'pg', 'r', 'x'];
 
@@ -165,6 +166,13 @@ describe('NgxGravatarService with DEFAULT_CONFIG', () => {
     expect(gravatarService.generateGravatarUrl('toan.hmt@gmail.com', 380, 'pg', undefined))
       .toEqual(`//www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=380&r=pg`
         + `&d=${gravatarService.getDefaultConfig().fallback}`);
+    expect(console.error).not.toHaveBeenCalledWith(generateFallbackErrorMessage(undefined, gravatarService.getDefaultConfig().fallback));
+  });
+
+  it(`#generateGravatarUrl('toan.hmt@gmail.com', 380, ''pg', 'url', '/src/assets/avatar.jpeg') `
+      + `should return url with custom fallback and NOT PRINT error message`, () => {
+    expect(gravatarService.generateGravatarUrl('toan.hmt@gmail.com', 380, 'pg', 'url', '/src/assets/avatar.jpeg'))
+      .toEqual(`//www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=380&r=pg&d=${defaultFallbackUrl}`);
     expect(console.error).not.toHaveBeenCalledWith(generateFallbackErrorMessage(undefined, gravatarService.getDefaultConfig().fallback));
   });
 

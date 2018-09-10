@@ -70,12 +70,12 @@ export class NgxGravatarDirective implements OnChanges, OnInit {
     this.setDefaultValues();
     let url = '';
     if (this.preferGravatar || forcedGravatar) {
-      url = this.gravatarService.generateGravatarUrl(this.email, this.requestedSize, this.rating, this.fallback);
+      url = this.gravatarService.generateGravatarUrl(this.email, this.requestedSize, this.rating, this.fallback, this.fallbackUrl);
     } else { // this.preferGravatar == false
       if (this.src) {
         url = this.src;
       } else { // fallback to gravatar
-        url = this.gravatarService.generateGravatarUrl(this.email, this.requestedSize, this.rating, this.fallback);
+        url = this.gravatarService.generateGravatarUrl(this.email, this.requestedSize, this.rating, this.fallback, this.fallbackUrl);
       }
     }
     this.renderer.setProperty(this.elementRef.nativeElement, 'src', url);

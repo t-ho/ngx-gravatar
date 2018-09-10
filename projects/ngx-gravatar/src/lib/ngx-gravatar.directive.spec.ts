@@ -21,6 +21,7 @@ import { FALLBACK, RATING } from './ngx-gravatar.enums';
                               [backgroundColor]="backgroundColor"
                               [rating]="rating"
                               [fallback]="fallback"
+                              [fallbackUrl]="fallbackUrl"
                               >`
 })
 class TestNgxGravatarComponent {
@@ -37,6 +38,7 @@ class TestNgxGravatarComponent {
   backgroundColor: string;
   rating: string;
   fallback: string;
+  fallbackUrl: string;
 }
 
 describe('NgxGravatarDirective', () => {

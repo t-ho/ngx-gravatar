@@ -15,7 +15,7 @@ export class NgxGravatarService {
 
     if (this.gravatarConfig) {
       this.gravatarConfig.rating = <RatingType>this.determineRating(this.gravatarConfig.rating);
-      this.gravatarConfig.fallback = <FallbackType>this.determineFallback(this.gravatarConfig.fallback);
+      this.gravatarConfig.fallback = <FallbackType>this.determineFallback(this.gravatarConfig.fallback, this.gravatarConfig.fallbackUrl);
       this.defaultConfig = { ...this.defaultConfig, ...this.gravatarConfig };
     }
   }
@@ -35,7 +35,7 @@ export class NgxGravatarService {
    * @param fallback string
    * @return gravatar url
    */
-  generateGravatarUrl(email: string, size?: number, rating?: string, fallback?: string) {
+  generateGravatarUrl(email: string, size?: number, rating?: string, fallback?: string, fallbackUrl?: string) {
     try {
       email = email.trim().toLowerCase();
     } catch (e) {
@@ -45,7 +45,7 @@ export class NgxGravatarService {
     }
     size = size ? size : this.defaultConfig.size;
     rating = this.determineRating(rating, this.defaultConfig.rating);
-    fallback = this.determineFallback(fallback, this.defaultConfig.fallback);
+    fallback = this.determineFallback(fallback, this.defaultConfig.fallback, fallbackUrl);
     const emailHash = Md5.hashStr(email);
     return `//www.gravatar.com/avatar/${emailHash}?s=${size}&r=${rating}&d=${fallback}`;
   }
@@ -56,7 +56,7 @@ export class NgxGravatarService {
    * @param defaultFallback string
    * @return
    */
-  private determineFallback(fallback: string, defaultFallback: string = DEFAULT_CONFIG.fallback) {
+  private determineFallback(fallback: string, fallbackUrl: string, defaultFallback: string = DEFAULT_CONFIG.fallback) {
     if (fallback === undefined) {
       return defaultFallback;
     }
@@ -68,16 +68,16 @@ export class NgxGravatarService {
       return defaultFallback;
     }
 
-    if (fallback === FALLBACK.url && this.gravatarConfig.fallbackUrl) {
+    if (fallback === FALLBACK.url && fallbackUrl) {
       try {
-        const fallbackUrl = this.gravatarConfig.fallbackUrl.trim().toLowerCase();
+        fallbackUrl = fallbackUrl.trim().toLowerCase();
       } catch (e) {
-        // Complain email is not a string
-        console.error(`[ngx-gravatar] - Fallback URL (${this.gravatarConfig.fallbackUrl}) ` +
-        `is not a string. Default fallback "${defaultFallback}"is used instead.`);
-        this.gravatarConfig.fallbackUrl = '';
+        // Complain fallbackUrl is not a string
+        console.error(`[ngx-gravatar] - Fallback URL (${fallbackUrl}) ` +
+          `is not a string. Default fallback "${defaultFallback}"is used instead.`);
+        fallbackUrl = '';
       }
-      return this.gravatarConfig.fallbackUrl;
+      return fallbackUrl;
     }
 
     return fallback;
