@@ -11,9 +11,6 @@ import { NgxGravatarDirective } from './ngx-gravatar.directive';
   ],
   exports: [
     NgxGravatarDirective
-  ],
-  providers: [
-    NgxGravatarService
   ]
 })
 export class GravatarModule {
