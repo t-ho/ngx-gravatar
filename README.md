@@ -7,7 +7,7 @@
 
 # ngx-gravatar
 
-The gravatar directive for angular 5 and 6+. It is AoT compatible.
+The gravatar directive for angular 5, 6 and 7+. It is AoT compatible.
 
 This directive supports two avatar sources:
 * **Custom image**
