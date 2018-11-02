@@ -1,7 +1,6 @@
 [![npm version](https://badge.fury.io/js/ngx-gravatar.svg)](https://badge.fury.io/js/ngx-gravatar)
 [![Build Status](https://travis-ci.org/t-ho/ngx-gravatar.svg?branch=master)](https://travis-ci.org/t-ho/ngx-gravatar)
 [![codecov](https://codecov.io/gh/t-ho/ngx-gravatar/branch/master/graph/badge.svg)](https://codecov.io/gh/t-ho/ngx-gravatar)
-[![David](https://img.shields.io/david/t-ho/ngx-gravatar.svg)](https://github.com/t-ho/ngx-gravatar)
 [![npm](https://img.shields.io/npm/dt/ngx-gravatar.svg)](https://www.npmjs.com/package/ngx-gravatar)
 [![npm](https://img.shields.io/badge/dynamic/json.svg?label=downloads&url=https%3A%2F%2Fapi.npmjs.org%2Fdownloads%2Fpoint%2Flast-week%2Fngx-gravatar&query=%24.downloads&colorB=bightgreen&suffix=%2Fweek)](https://www.npmjs.com/package/ngx-gravatar)
 [![npm](https://img.shields.io/npm/l/ngx-gravatar.svg)](https://www.npmjs.com/package/ngx-gravatar)
@@ -24,9 +23,7 @@ Visit [here](https://en.gravatar.com/) for more information about Gravatar.
 
 Live demo [here](https://ngx-gravatar.stackblitz.io).
 
-Play with **ngx-gravatar** and **Angular 5** [here](https://stackblitz.com/edit/ngx-gravatar-angular-5) on stackblitz.
-
-Play with **ngx-gravatar** and **Angular 6** [here](https://stackblitz.com/edit/ngx-gravatar) on stackblitz.
+Play with **ngx-gravatar** [here](https://stackblitz.com/edit/ngx-gravatar) on stackblitz.
 
 ## Installation
 
@@ -42,6 +39,11 @@ npm install --save ngx-gravatar
 
 ```shell
 yarn add ngx-gravatar
+```
+
+#### * For Angular 4 and 5, please use ngx-gravatar version 3.x.x
+```shell
+npm install --save ngx-gravatar@3.0.5
 ```
 
 ## Getting started
@@ -168,6 +170,9 @@ ng test
 ```
 
 ## Changelog
+
+**v4.0.0**
+* Update dependencies and README
 
 **v3.0.5**
 * Remove lodash-es lib - [bundlephobia](https://bundlephobia.com/result?p=ngx-gravatar@3.0.5) 
