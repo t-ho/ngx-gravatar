@@ -46,10 +46,10 @@ describe('NgxGravatarDirective', () => {
   let imgEl: HTMLElement;
 
   beforeEach(() => {
-    let elementRef: jasmine.SpyObj<ElementRef>;
+    let elementRef: jasmine.SpyObj<any>;
     elementRef = jasmine.createSpyObj('elementRef', ['nativeElement']);
 
-    let renderer: jasmine.SpyObj<Renderer2>;
+    let renderer: jasmine.SpyObj<any>;
     renderer = jasmine.createSpyObj('renderer', ['setStyle', 'setProperty', 'listen']);
 
     TestBed.configureTestingModule({

@@ -9,7 +9,7 @@ import { FALLBACK, RATING } from './ngx-gravatar.enums';
 
 const notStrings: any[] = [null, true, false, 2, undefined];
 const invalidFallbacks: any[] = ['', '2', 'retor', 'monsterId', 're tro', ' retro', null, true, false, 2]; // undefined
-const validFallbacks: string[] = ['blank', 'identicon', 'mm', 'monsterid', 'retro', 'robohash', 'wavatar'];
+const validFallbacks: string[] = ['blank', 'identicon', 'mm', 'mp', 'monsterid', 'retro', 'robohash', 'wavatar'];
 const invalidRatings: any[] = ['', 'a', 'G', 'pG', 'Pg', 'PG', 'p g', 'R', ' r', 'X', null, true, false, 2]; // undefined handled separately
 const validRatings: string[] = ['g', 'pg', 'r', 'x'];
 

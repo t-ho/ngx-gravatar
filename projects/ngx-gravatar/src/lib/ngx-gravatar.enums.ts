@@ -2,7 +2,8 @@
 export enum FALLBACK {
   blank = 'blank',
   identicon = 'identicon',
-  mm = 'mm',
+  mm = 'mm', // changed to 'mp', visit Gravatar official site for more details
+  mp = 'mp',
   monsterid = 'monsterid',
   retro = 'retro',
   robohash = 'robohash',

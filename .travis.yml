@@ -21,6 +21,6 @@ before_script:
 script: 
   - ng lint
   - ng build ngx-gravatar
-  - ng test ngx-gravatar --code-coverage --sourceMap=true
+  - ng test ngx-gravatar --code-coverage
   - codecov
   - ng build --prod
