@@ -1,6 +1,7 @@
 [![npm version](https://badge.fury.io/js/ngx-gravatar.svg)](https://badge.fury.io/js/ngx-gravatar)
 [![Build Status](https://travis-ci.org/t-ho/ngx-gravatar.svg?branch=master)](https://travis-ci.org/t-ho/ngx-gravatar)
 [![codecov](https://codecov.io/gh/t-ho/ngx-gravatar/branch/master/graph/badge.svg)](https://codecov.io/gh/t-ho/ngx-gravatar)
+[![David](https://img.shields.io/david/t-ho/ngx-gravatar.svg)](https://github.com/t-ho/ngx-gravatar)
 [![npm](https://img.shields.io/npm/dt/ngx-gravatar.svg)](https://www.npmjs.com/package/ngx-gravatar)
 [![npm](https://img.shields.io/badge/dynamic/json.svg?label=downloads&url=https%3A%2F%2Fapi.npmjs.org%2Fdownloads%2Fpoint%2Flast-week%2Fngx-gravatar&query=%24.downloads&colorB=bightgreen&suffix=%2Fweek)](https://www.npmjs.com/package/ngx-gravatar)
 [![npm](https://img.shields.io/npm/l/ngx-gravatar.svg)](https://www.npmjs.com/package/ngx-gravatar)
@@ -99,7 +100,7 @@ After importing the `GravatarModule`, you can use the `ngxGravatar` directive in
 | `style`          | *object*  | optional |              | Style object that will be applied on the `<img>` tag. NOTE: It will override others attributes.|
 | `backgroundColor`| *string*  | optional | `transparent`| Specify the background color                                                                   |
 | `rating`         | *string*  | optional | `g`          | The rating string of [Gravatar](https://en.gravatar.com/site/implement/images). Possible values: `g`, `pg`, `r`, `x`. `rating` type is case-sensitive.                       |
-| `fallback`       | *string*  | optional | `retro`      | The fallback string of [Gravatar](https://en.gravatar.com/site/implement/images). Possible values: `blank`, `indenticon`, `mm`, `monsterid`, `retro`, `robohash`, `wavatar`. `fallback` is case sensitive.  ||
+| `fallback`       | *string*  | optional | `retro`      | The fallback string of [Gravatar](https://en.gravatar.com/site/implement/images). Possible values: `blank`, `indenticon`, `mp` (or `mm`), `monsterid`, `retro`, `robohash`, `wavatar`. `fallback` is case sensitive.  ||
 
 ## Override Default Configuration
 
@@ -150,10 +151,10 @@ export class AppModule { }
 | `borderRadius`   | *string*  | optional | `50%`        | Only applied when `round` is set to *true*.                                                    |
 | `borderColor`    | *string*  | optional | `#000000`    | Specify the color of the border                                                                |
 | `borderWidth`    | *number*  | optional | `1`          | Specify the width of the border                                                                |
-| `borderStyle`    | *string*  | optional | `solid`      | Style object that will be applied on the `<img>` tag                                           |
+| `borderStyle`    | *string*  | optional | `solid`      | Specify the style of the border                                                                |
 | `backgroundColor`| *string*  | optional | `transparent`| Specify the background color                                                                   |
 | `rating`         | *string*  | optional | `g`          | The rating string of [Gravatar](https://en.gravatar.com/site/implement/images). Possible values: `g`, `pg`, `r`, `x`. Note: `rating` type is case sensitive.                       |
-| `fallback`       | *string*  | optional | `retro`      | The fallback string of [Gravatar](https://en.gravatar.com/site/implement/images). Possible values: `blank`, `indenticon`, `mm`, `monsterid`, `retro`, `robohash`, `wavatar`. Note: `fallback` is case sensitive.  ||
+| `fallback`       | *string*  | optional | `retro`      | The fallback string of [Gravatar](https://en.gravatar.com/site/implement/images). Possible values: `blank`, `indenticon`, `mp` (or `mm`), `monsterid`, `retro`, `robohash`, `wavatar`. Note: `fallback` is case sensitive.  ||
 
 ## Testing
 
@@ -168,46 +169,6 @@ To run all tests
 ```shell
 ng test
 ```
-
-## Changelog
-
-**v4.0.0**
-* Update dependencies and README
-
-**v3.0.5**
-* Remove lodash-es lib - [bundlephobia](https://bundlephobia.com/result?p=ngx-gravatar@3.0.5) 
-
-**v3.0.4**
-* Cherry-pick lodash methods to reduce the bundle size [bundlephobia](https://bundlephobia.com/result?p=ngx-gravatar@3.0.4) 
-
-**v3.0.3**
-* Support hi-res screens [#1](https://github.com/t-ho/ngx-gravatar/issues/1)
-
-**v3.0.0**
-* Upgrade to Angular 6
-* BreakingChange: `GravatarDefaultConfig` => `GravatarConfig`
-* BreakingChange: `FALLBACK_TYPES` => `FALLBACK`
-* BreakingChange: `RATING_TYPES` => `RATING`
-* BreakingChange: Rating types are now case sensitive
-
-**v2.1.3**
-* BugFix: Avatar is fetched twice when initializing
-
-**v2.1.1**
-* Support camelCase selector `ngxGravatar`
-
-**v2.1.0**
-* Be able to set `backgroundColor` locally and globally
-* Be able to set Gravatar `rating` (`g`, `pg`, `r`, `x`)
-* BugFix: `ngx-gravatar` tried to load the invalid Gravatar over and over again, spamming the console when invalid Gravata fallback type is passed to `forRoot()` method.
-* Remove `@type/lodash` package from dependencies
-
-**v2.0.1**
-* Lint and following Angular style guide
-
-**v2.0.0**
-* Gravatar directive for Angular 4 and above
-
 
 ## License
 

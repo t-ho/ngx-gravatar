@@ -1,15 +1,16 @@
 {
   "name": "ngx-gravatar-app",
   "description": "A customizable Gravatar for Angular 4, 5, 6 and 7+ applications - AoT compatible. It supports custom image and Gravatar sources",
-  "version": "7.0.0",
+  "version": "7.1.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+		"beforepublish": "ng build ngx-gravatar && cp README.md CHANGELOG.md LICENSE dist/ngx-gravatar/",
     "build": "ng build ngx-gravatar && ng build",
     "test": "ng test ngx-gravatar --code-coverage",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+		"e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {

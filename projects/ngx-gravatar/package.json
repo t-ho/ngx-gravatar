@@ -1,7 +1,7 @@
 {
   "name": "ngx-gravatar",
   "description": "A customizable Gravatar for Angular 4, 5, 6 and 7+ applications - AoT compatible. It supports custom image and Gravatar sources",
-  "version": "7.0.0",
+  "version": "7.1.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/t-ho/ngx-gravatar.git"
