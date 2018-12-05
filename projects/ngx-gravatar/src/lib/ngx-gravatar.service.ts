@@ -31,36 +31,30 @@ export class NgxGravatarService {
 
   /**
    * Generate gravatar url
-   * @param emailOrHash is a string. If value is not a string, an empty string "" is used by default.
-   * If it is already a hash value it is used as it is otherwise a hash value will be generated.
+   * @param email is a string. If email is not a string, email will be set to empty string "" by default
+   * @param md5Hash is a string. If value is given it will take precedence over email.
    * @param size number
    * @param rating string
    * @param fallback string
    * @return gravatar url
    */
-  generateGravatarUrl(emailOrHash: string, size?: number, rating?: string, fallback?: string) {
-    let isHashed = false;
-    try {
-      emailOrHash = emailOrHash.trim();
-      if (this.isMD5(emailOrHash)) {
-        isHashed = true;
-      } else {
-        emailOrHash = emailOrHash.toLowerCase();
+  generateGravatarUrl(email: string, md5Hash?: string, size?: number, rating?: string, fallback?: string) {
+    let emailHash: string | Int32Array;
+    if (md5Hash) {
+      emailHash = md5Hash;
+    } else {
+      try {
+        email = email.trim().toLowerCase();
+      } catch (e) {
+        console.error(`[ngx-gravatar] - Email (${email}) is not a string. Empty string is used as a default email.`);
+        email = '';
       }
-    } catch (e) {
-      // Complain email is not a string
-      console.error(`[ngx-gravatar] - Email (${emailOrHash}) is not a string. Empty string is used as a default email.`);
-      emailOrHash = '';
+      emailHash = Md5.hashStr(email);
     }
     size = size ? size : this.defaultConfig.size;
     rating = this.determineRating(rating, this.defaultConfig.rating);
     fallback = this.determineFallback(fallback, this.defaultConfig.fallback);
-    const emailHash = isHashed ? emailOrHash : Md5.hashStr(emailOrHash);
     return `//www.gravatar.com/avatar/${emailHash}?s=${size}&r=${rating}&d=${fallback}`;
-  }
-
-  private isMD5(value: string) {
-    return (/[a-fA-F0-9]{32}/).test(value);
   }
 
   /**

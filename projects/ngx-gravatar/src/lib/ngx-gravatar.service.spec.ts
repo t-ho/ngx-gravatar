@@ -98,8 +98,8 @@ describe('NgxGravatarService with DEFAULT_CONFIG', () => {
         + `&d=${gravatarService.getDefaultConfig().fallback}`);
   });
 
-  it(`#generateGravatarUrl('0a2aaae0ac1310d1f8e8e68df45fe7b8') should return url with default size, rating, fallback`, () => {
-    expect(gravatarService.generateGravatarUrl('0a2aaae0ac1310d1f8e8e68df45fe7b8'))
+  it(`#generateGravatarUrl(null, '0a2aaae0ac1310d1f8e8e68df45fe7b8') should return url with default size, rating, fallback`, () => {
+    expect(gravatarService.generateGravatarUrl(null, '0a2aaae0ac1310d1f8e8e68df45fe7b8'))
       .toEqual(`//www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8`
         + `?s=${gravatarService.getDefaultConfig().size}`
         + `&r=${gravatarService.getDefaultConfig().rating}`
@@ -117,8 +117,8 @@ describe('NgxGravatarService with DEFAULT_CONFIG', () => {
     });
   });
 
-  it(`#generateGravatarUrl('toan.hmt@gmail.com', 150) should return url with default rating, fallback and NOT PRINT error message`, () => {
-    expect(gravatarService.generateGravatarUrl('toan.hmt@gmail.com', 150))
+  it(`#generateGravatarUrl('toan.hmt@gmail.com', null, 150) should return url with default rating, fallback and NOT PRINT error message`, () => {
+    expect(gravatarService.generateGravatarUrl('toan.hmt@gmail.com', null, 150))
       .toEqual(`//www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=150`
         + `&r=${gravatarService.getDefaultConfig().rating}`
         + `&d=${gravatarService.getDefaultConfig().fallback}`);
@@ -126,10 +126,10 @@ describe('NgxGravatarService with DEFAULT_CONFIG', () => {
   });
 
   validRatings.forEach(rating => {
-    const stmt = `#generateGravatarUrl('toan.hmt@gmail.com', 150, '${rating}') `
+    const stmt = `#generateGravatarUrl('toan.hmt@gmail.com', null, 150, '${rating}') `
       + `should return url with lowercase rating, default fallback and NOT PRINT error message`;
     it(stmt, () => {
-      expect(gravatarService.generateGravatarUrl('toan.hmt@gmail.com', 150, rating))
+      expect(gravatarService.generateGravatarUrl('toan.hmt@gmail.com', null, 150, rating))
         .toEqual(`//www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=150`
           + `&r=${rating.toLowerCase()}`
           + `&d=${gravatarService.getDefaultConfig().fallback}`);
@@ -137,9 +137,9 @@ describe('NgxGravatarService with DEFAULT_CONFIG', () => {
     });
   });
 
-  it(`#generateGravatarUrl('toan.hmt@gmail.com', 380, undefined) `
+  it(`#generateGravatarUrl('toan.hmt@gmail.com', null, 380, undefined) `
       + `should return url with default rating, fallback and NOT PRINT error message`, () => {
-    expect(gravatarService.generateGravatarUrl('toan.hmt@gmail.com', 380, undefined))
+    expect(gravatarService.generateGravatarUrl('toan.hmt@gmail.com', null, 380, undefined))
       .toEqual(`//www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=380`
         + `&r=${gravatarService.getDefaultConfig().rating}`
         + `&d=${gravatarService.getDefaultConfig().fallback}`);
@@ -147,10 +147,10 @@ describe('NgxGravatarService with DEFAULT_CONFIG', () => {
   });
 
   invalidRatings.forEach(rating => {
-    const statment = `#generateGravatarUrl('toan.hmt@gmail.com', 150, '${rating}') `
+    const statment = `#generateGravatarUrl('toan.hmt@gmail.com', null, 150, '${rating}') `
       + `should return url with default rating, fallback and PRINT error message`;
     it(statment, () => {
-      expect(gravatarService.generateGravatarUrl('toan.hmt@gmail.com', 150, rating))
+      expect(gravatarService.generateGravatarUrl('toan.hmt@gmail.com', null, 150, rating))
         .toEqual(`//www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=150`
           + `&r=${gravatarService.getDefaultConfig().rating}`
           + `&d=${gravatarService.getDefaultConfig().fallback}`);
@@ -159,28 +159,28 @@ describe('NgxGravatarService with DEFAULT_CONFIG', () => {
   });
 
   validFallbacks.forEach(fallback => {
-    const statment = `#generateGravatarUrl('toan.hmt@gmail.com', 50, 'pg', '${fallback}') `
+    const statment = `#generateGravatarUrl('toan.hmt@gmail.com', null, 50, 'pg', '${fallback}') `
       + `should return specified parameters and NOT PRINT error message`;
     it(statment, () => {
-      expect(gravatarService.generateGravatarUrl('toan.hmt@gmail.com', 50, 'pg', fallback))
+      expect(gravatarService.generateGravatarUrl('toan.hmt@gmail.com', null, 50, 'pg', fallback))
         .toEqual(`//www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=50&r=pg&d=${fallback}`);
       expect(console.error).not.toHaveBeenCalledWith(generateFallbackErrorMessage(fallback, gravatarService.getDefaultConfig().fallback));
     });
   });
 
-  it(`#generateGravatarUrl('toan.hmt@gmail.com', 380, 'pg', undefined) `
+  it(`#generateGravatarUrl('toan.hmt@gmail.com', null, 380, 'pg', undefined) `
       + `should return url with default fallback and NOT PRINT error message`, () => {
-    expect(gravatarService.generateGravatarUrl('toan.hmt@gmail.com', 380, 'pg', undefined))
+    expect(gravatarService.generateGravatarUrl('toan.hmt@gmail.com', null, 380, 'pg', undefined))
       .toEqual(`//www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=380&r=pg`
         + `&d=${gravatarService.getDefaultConfig().fallback}`);
     expect(console.error).not.toHaveBeenCalledWith(generateFallbackErrorMessage(undefined, gravatarService.getDefaultConfig().fallback));
   });
 
   invalidFallbacks.forEach(fallback => {
-    const statment = `#generateGravatarUrl('toan.hmt@gmail.com', 50, 'pg', '${fallback}') `
+    const statment = `#generateGravatarUrl('toan.hmt@gmail.com', null, 50, 'pg', '${fallback}') `
       + `should return url with default fallback and PRINT error message`;
     it(statment, () => {
-      expect(gravatarService.generateGravatarUrl('toan.hmt@gmail.com', 50, 'pg', fallback))
+      expect(gravatarService.generateGravatarUrl('toan.hmt@gmail.com', null, 50, 'pg', fallback))
         .toEqual(`//www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=50&r=pg`
           + `&d=${gravatarService.getDefaultConfig().fallback}`);
       expect(console.error).toHaveBeenCalledWith(generateFallbackErrorMessage(fallback, gravatarService.getDefaultConfig().fallback));

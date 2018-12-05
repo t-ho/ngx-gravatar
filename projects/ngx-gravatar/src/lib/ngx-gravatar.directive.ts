@@ -8,6 +8,7 @@ import { GravatarConfig } from './gravatar-config';
 export class NgxGravatarDirective implements OnChanges, OnInit {
   @Input() src: string;
   @Input() email: string;
+  @Input() md5Hash: string;
   @Input() size: number;
   @Input() fallback: string; // enum: ['blank', 'identicon', 'mm', 'monsterid', 'retro', 'robohash', 'wavatar']
   @Input() rating: string; // enum: ['g', 'pg', 'r', 'x']
@@ -69,12 +70,12 @@ export class NgxGravatarDirective implements OnChanges, OnInit {
     this.setDefaultValues();
     let url = '';
     if (this.preferGravatar || forcedGravatar) {
-      url = this.gravatarService.generateGravatarUrl(this.email, this.requestedSize, this.rating, this.fallback);
+      url = this.gravatarService.generateGravatarUrl(this.email, this.md5Hash, this.requestedSize, this.rating, this.fallback);
     } else { // this.preferGravatar == false
       if (this.src) {
         url = this.src;
       } else { // fallback to gravatar
-        url = this.gravatarService.generateGravatarUrl(this.email, this.requestedSize, this.rating, this.fallback);
+        url = this.gravatarService.generateGravatarUrl(this.email, this.md5Hash, this.requestedSize, this.rating, this.fallback);
       }
     }
     this.renderer.setProperty(this.elementRef.nativeElement, 'src', url);
