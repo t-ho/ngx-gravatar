@@ -98,6 +98,14 @@ describe('NgxGravatarService with DEFAULT_CONFIG', () => {
         + `&d=${gravatarService.getDefaultConfig().fallback}`);
   });
 
+  it(`#generateGravatarUrl('0a2aaae0ac1310d1f8e8e68df45fe7b8') should return url with default size, rating, fallback`, () => {
+    expect(gravatarService.generateGravatarUrl('0a2aaae0ac1310d1f8e8e68df45fe7b8'))
+      .toEqual(`//www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8`
+        + `?s=${gravatarService.getDefaultConfig().size}`
+        + `&r=${gravatarService.getDefaultConfig().rating}`
+        + `&d=${gravatarService.getDefaultConfig().fallback}`);
+  });
+
   notStrings.forEach(notString => {
     it(`#generateGravatarUrl(${notString}) should return url with default hash, size, rating, fallback and PRINT error message`, () => {
       expect(gravatarService.generateGravatarUrl(notString))

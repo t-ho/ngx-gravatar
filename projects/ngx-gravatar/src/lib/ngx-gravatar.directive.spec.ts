@@ -90,6 +90,12 @@ describe('NgxGravatarDirective', () => {
     expect(imgEl.getAttribute('src')).toBe('//www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=80&r=g&d=retro');
   });
 
+  it('Setting email="0a2aaae0ac1310d1f8e8e68df45fe7b8", src should be gravatar url', () => {
+    component.email = '0a2aaae0ac1310d1f8e8e68df45fe7b8';
+    fixture.detectChanges();
+    expect(imgEl.getAttribute('src')).toBe('//www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=80&r=g&d=retro');
+  });
+
   it('Setting src="https://github.com/t-ho/ngx-gravatar/blob/master/src/assets/avatar.jpg?raw=true", '
     + 'src should be "https://github.com/t-ho/ngx-gravatar/blob/master/src/assets/avatar.jpg?raw=true"', () => {
     component.src = 'https://github.com/t-ho/ngx-gravatar/blob/master/src/assets/avatar.jpg?raw=true';

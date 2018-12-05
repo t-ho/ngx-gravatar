@@ -80,6 +80,7 @@ After importing the `GravatarModule`, you can use the `ngxGravatar` directive in
 
 ```html
 <img ngxGravatar [email]="'example@mail.com'">
+<img ngxGravatar [email]="'fbf2b9cfc0a472389f3620e471bdf0e9'">
 <img ngxGravatar [email]="'example@mail.com'" size="30">
 <img ngxGravatar [email]="'example@mail.com'" size="30" src="assets/avatar.jpg">
 <img ngxGravatar [email]="'example@mail.com'" size="30" src="assets/avatar.jpg" [style]="styleObject">
@@ -88,7 +89,7 @@ After importing the `GravatarModule`, you can use the `ngxGravatar` directive in
 
 |   Attribute   |      Type      | Required  | Default |                                              Description                   											|
 | ------------- | ----------------- | ---------- | ---------- | ----------------------------------------------------------------------------------------- |
-| `email`          | *string*  | requried | (*empty string*)| Email associated with Gravatar                      																				|
+| `email`          | *string*  | requried | (*empty string*)| Email or hash of email associated with Gravatar                                                |
 | `src`            | *string*  | optional |              | Custom image to use                               																							|
 | `preferGravatar` | *boolean* | optional | `false`      | If `true`, Gravatar will have higher priority. Otherwise, `src` image will be loaded first.    |
 | `size`           | *number*  | optional | `40`         | Displayed size of the avatar                                                                             |
