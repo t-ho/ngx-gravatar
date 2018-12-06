@@ -117,7 +117,8 @@ describe('NgxGravatarService with DEFAULT_CONFIG', () => {
     });
   });
 
-  it(`#generateGravatarUrl('toan.hmt@gmail.com', null, 150) should return url with default rating, fallback and NOT PRINT error message`, () => {
+  it(`#generateGravatarUrl('toan.hmt@gmail.com', null, 150)`
+    + `should return url with default rating, fallback and NOT PRINT error message`, () => {
     expect(gravatarService.generateGravatarUrl('toan.hmt@gmail.com', null, 150))
       .toEqual(`//www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=150`
         + `&r=${gravatarService.getDefaultConfig().rating}`
