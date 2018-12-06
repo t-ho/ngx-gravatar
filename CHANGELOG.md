@@ -1,4 +1,7 @@
 
+# v7.2.0
+* Support hashed email as input parameter #6
+
 # v7.1.0
 * Support `mp` (mystery-person)
 
