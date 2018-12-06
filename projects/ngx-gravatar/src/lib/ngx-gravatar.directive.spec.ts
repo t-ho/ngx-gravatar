@@ -9,6 +9,7 @@ import { FALLBACK, RATING } from './ngx-gravatar.enums';
 
 @Component({
   template: `<img ngxGravatar [email]="email"
+                              [md5Hash]="md5Hash"
                               [src]="src"
                               [preferGravatar]="preferGravatar"
                               [size]="size"
@@ -25,6 +26,7 @@ import { FALLBACK, RATING } from './ngx-gravatar.enums';
 })
 class TestNgxGravatarComponent {
   email: string;
+  md5Hash: string;
   src: string;
   preferGravatar: boolean;
   size: number;
@@ -86,6 +88,12 @@ describe('NgxGravatarDirective', () => {
 
   it('Setting email="toan.hmt@gmail.com", src should be gravatar url', () => {
     component.email = 'toan.hmt@gmail.com';
+    fixture.detectChanges();
+    expect(imgEl.getAttribute('src')).toBe('//www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=80&r=g&d=retro');
+  });
+
+  it('Setting md5Hash="0a2aaae0ac1310d1f8e8e68df45fe7b8", src should be gravatar url', () => {
+    component.md5Hash = '0a2aaae0ac1310d1f8e8e68df45fe7b8';
     fixture.detectChanges();
     expect(imgEl.getAttribute('src')).toBe('//www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=80&r=g&d=retro');
   });

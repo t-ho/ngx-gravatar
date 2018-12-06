@@ -32,23 +32,28 @@ export class NgxGravatarService {
   /**
    * Generate gravatar url
    * @param email is a string. If email is not a string, email will be set to empty string "" by default
+   * @param md5Hash is a string. If value is given it will take precedence over email.
    * @param size number
    * @param rating string
    * @param fallback string
    * @return gravatar url
    */
-  generateGravatarUrl(email: string, size?: number, rating?: string, fallback?: string) {
-    try {
-      email = email.trim().toLowerCase();
-    } catch (e) {
-      // Complain email is not a string
-      console.error(`[ngx-gravatar] - Email (${email}) is not a string. Empty string is used as a default email.`);
-      email = '';
+  generateGravatarUrl(email: string, md5Hash?: string, size?: number, rating?: string, fallback?: string) {
+    let emailHash: string | Int32Array;
+    if (md5Hash) {
+      emailHash = md5Hash;
+    } else {
+      try {
+        email = email.trim().toLowerCase();
+      } catch (e) {
+        console.error(`[ngx-gravatar] - Email (${email}) is not a string. Empty string is used as a default email.`);
+        email = '';
+      }
+      emailHash = Md5.hashStr(email);
     }
     size = size ? size : this.defaultConfig.size;
     rating = this.determineRating(rating, this.defaultConfig.rating);
     fallback = this.determineFallback(fallback, this.defaultConfig.fallback);
-    const emailHash = Md5.hashStr(email);
     return `//www.gravatar.com/avatar/${emailHash}?s=${size}&r=${rating}&d=${fallback}`;
   }
 
