@@ -1,3 +1,5 @@
+# v7.2.1
+* Update dependencies
 
 # v7.2.0
 * Support hashed email as input parameter #6

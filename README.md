@@ -1,9 +1,9 @@
 [![npm version](https://badge.fury.io/js/ngx-gravatar.svg)](https://badge.fury.io/js/ngx-gravatar)
 [![Build Status](https://travis-ci.org/t-ho/ngx-gravatar.svg?branch=master)](https://travis-ci.org/t-ho/ngx-gravatar)
 [![codecov](https://codecov.io/gh/t-ho/ngx-gravatar/branch/master/graph/badge.svg)](https://codecov.io/gh/t-ho/ngx-gravatar)
-[![David](https://img.shields.io/david/t-ho/ngx-gravatar.svg)](https://github.com/t-ho/ngx-gravatar)
 [![npm](https://img.shields.io/npm/dt/ngx-gravatar.svg)](https://www.npmjs.com/package/ngx-gravatar)
 [![npm](https://img.shields.io/badge/dynamic/json.svg?label=downloads&url=https%3A%2F%2Fapi.npmjs.org%2Fdownloads%2Fpoint%2Flast-week%2Fngx-gravatar&query=%24.downloads&colorB=bightgreen&suffix=%2Fweek)](https://www.npmjs.com/package/ngx-gravatar)
+[![](https://data.jsdelivr.com/v1/package/npm/ngx-gravatar/badge?style=rounded)](https://www.jsdelivr.com/package/npm/ngx-gravatar)
 [![npm bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/ngx-gravatar.svg)](https://bundlephobia.com/result?p=ngx-gravatar)
 [![npm](https://img.shields.io/npm/l/ngx-gravatar.svg)](https://www.npmjs.com/package/ngx-gravatar)
 
