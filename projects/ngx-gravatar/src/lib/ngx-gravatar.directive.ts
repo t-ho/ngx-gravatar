@@ -24,6 +24,7 @@ export class NgxGravatarDirective implements OnChanges, OnInit {
   initialized: boolean;
   defaultConfig: GravatarConfig;
   requestedSize: number;
+  isGravatarUsed: boolean;
 
   constructor(
     private elementRef: ElementRef,
@@ -34,13 +35,16 @@ export class NgxGravatarDirective implements OnChanges, OnInit {
     this.defaultConfig = this.gravatarService.getDefaultConfig();
     // Listen for error when fetching custom src
     this.renderer.listen(this.elementRef.nativeElement, 'error', (event) => {
-      this.initializeAvatar(true); // Force using gravatar
+      if (!this.isGravatarUsed) {
+        this.initializeAvatar(true); // Force using gravatar
+      }
     });
   }
 
   ngOnInit() {
     this.initializeAvatar();
     this.initialized = true;
+    this.isGravatarUsed = false;
   }
 
   ngOnChanges() {
@@ -71,11 +75,13 @@ export class NgxGravatarDirective implements OnChanges, OnInit {
     let url = '';
     if (this.preferGravatar || forcedGravatar) {
       url = this.gravatarService.generateGravatarUrl(this.email, this.md5Hash, this.requestedSize, this.rating, this.fallback);
+      this.isGravatarUsed = true;
     } else { // this.preferGravatar == false
       if (this.src) {
         url = this.src;
       } else { // fallback to gravatar
         url = this.gravatarService.generateGravatarUrl(this.email, this.md5Hash, this.requestedSize, this.rating, this.fallback);
+        this.isGravatarUsed = true;
       }
     }
     this.renderer.setProperty(this.elementRef.nativeElement, 'src', url);

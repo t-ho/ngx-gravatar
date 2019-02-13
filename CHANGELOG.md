@@ -1,8 +1,11 @@
+# v7.2.2
+* BugFix: Gravatar is requested infinitely [#7](https://github.com/t-ho/ngx-gravatar/issues/7)
+
 # v7.2.1
 * Update dependencies
 
 # v7.2.0
-* Support hashed email as input parameter #6
+* Support hashed email as input parameter [#6](https://github.com/t-ho/ngx-gravatar/pull/6)
 
 # v7.1.0
 * Support `mp` (mystery-person)
