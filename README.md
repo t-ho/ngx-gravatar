@@ -10,7 +10,7 @@
 
 # ngx-gravatar
 
-The gravatar directive for angular 5, 6 and 7+. It is AoT compatible.
+The gravatar directive for angular 5, 6, 7 and 8+. It is AoT compatible.
 
 This directive supports two avatar sources:
 * **Custom image**
@@ -44,6 +44,11 @@ npm install --save ngx-gravatar
 
 ```shell
 yarn add ngx-gravatar
+```
+
+#### * For Angular 6 and 7, please use ngx-gravatar version 7.x.x
+```shell
+npm install --save ngx-gravatar@7.2.2
 ```
 
 #### * For Angular 4 and 5, please use ngx-gravatar version 3.x.x

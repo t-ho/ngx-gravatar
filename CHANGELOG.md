@@ -1,3 +1,6 @@
+# v8.0.0
+* Support Angular 8
+
 # v7.2.2
 * BugFix: Gravatar is requested infinitely [#7](https://github.com/t-ho/ngx-gravatar/issues/7)
 
