@@ -56,7 +56,7 @@ export class NgxGravatarDirective implements OnChanges, OnInit {
   /**
    * Set default values for user inputs if they are not provided
    */
-  private setDefaultValues() {
+  private setDefaultValues(): void {
     this.size = this.computeSize();
     this.ratio = this.ratio === undefined ? this.defaultConfig.ratio : this.ratio;
     this.requestedSize = this.size * this.ratio;
@@ -70,7 +70,7 @@ export class NgxGravatarDirective implements OnChanges, OnInit {
    * Custom source has higher priority if preferGravatar is not set on.
    * Finally, set styles for the avatar.
    */
-  private initializeAvatar(forcedGravatar?: boolean) {
+  private initializeAvatar(forcedGravatar?: boolean):void {
     this.setDefaultValues();
     let url = '';
     if (this.preferGravatar || forcedGravatar) {

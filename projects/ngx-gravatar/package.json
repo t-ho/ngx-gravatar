@@ -11,8 +11,8 @@
   "license": "MIT",
   "private": false,
   "peerDependencies": {
-    "@angular/core": ">=6.0.0",
-    "@angular/common": ">=6.0.0"
+    "@angular/core": ">=8.0.0",
+    "@angular/common": ">=8.0.0"
   },
   "dependencies": {
     "ts-md5": "^1.2.4"

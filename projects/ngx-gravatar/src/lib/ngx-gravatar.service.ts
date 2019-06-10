@@ -16,8 +16,8 @@ export class NgxGravatarService {
     this.defaultConfig = { ...DEFAULT_CONFIG };
 
     if (this.gravatarConfig) {
-      this.gravatarConfig.rating = <RatingType>this.determineRating(this.gravatarConfig.rating);
-      this.gravatarConfig.fallback = <FallbackType>this.determineFallback(this.gravatarConfig.fallback);
+      this.gravatarConfig.rating = this.determineRating(this.gravatarConfig.rating) as RatingType;
+      this.gravatarConfig.fallback = this.determineFallback(this.gravatarConfig.fallback) as FallbackType;
       this.defaultConfig = { ...this.defaultConfig, ...this.gravatarConfig };
     }
   }
@@ -61,9 +61,9 @@ export class NgxGravatarService {
    * Determine gravatar fallback string
    * @param fallback string
    * @param defaultFallback string
-   * @return
+   * @return string
    */
-  private determineFallback(fallback: string, defaultFallback: string = DEFAULT_CONFIG.fallback) {
+  private determineFallback(fallback: string, defaultFallback: string = DEFAULT_CONFIG.fallback): string {
     if (fallback === undefined) {
       return defaultFallback;
     }
@@ -82,9 +82,9 @@ export class NgxGravatarService {
    * Determine gravatar rating string
    * @param rating string
    * @param defaultRating string
-   * @return
+   * @return string
    */
-  private determineRating(rating: string, defaultRating: string = DEFAULT_CONFIG.rating) {
+  private determineRating(rating: string, defaultRating: string = DEFAULT_CONFIG.rating): string {
     if (rating === undefined) {
       return defaultRating;
     }

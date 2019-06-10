@@ -24,14 +24,14 @@ function generateValidCustomConfig(): any[] {
   });
   validFallbacks.forEach(fallback => {
     configs.push({
-      in: { fallback: fallback },
-      out: { fallback: fallback },
+      in: { fallback },
+      out: { fallback },
       consoleErrorMessage: generateFallbackErrorMessage(fallback, DEFAULT_CONFIG.fallback)
     });
   });
   validRatings.forEach(rating => {
     configs.push({
-      in: { rating: rating },
+      in: { rating },
       out: { rating: rating.toLowerCase() },
       consoleErrorMessage: generateRatingErrorMessage(rating, DEFAULT_CONFIG.rating)
     });
@@ -43,14 +43,14 @@ function generateInvalidCustomConfig(): any[] {
   const configs: any[] = [];
   invalidFallbacks.forEach(fallback => {
     configs.push({
-      in: { fallback: fallback },
+      in: { fallback },
       out: { fallback: DEFAULT_CONFIG.fallback },
       consoleErrorMessage: generateFallbackErrorMessage(fallback, DEFAULT_CONFIG.fallback)
     });
   });
   invalidRatings.forEach(rating => {
     configs.push({
-      in: { rating: rating },
+      in: { rating },
       out: { rating: DEFAULT_CONFIG.rating },
       consoleErrorMessage: generateRatingErrorMessage(rating, DEFAULT_CONFIG.rating)
     });
