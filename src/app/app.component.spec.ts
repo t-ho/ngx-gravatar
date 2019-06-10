@@ -5,12 +5,8 @@ import { GravatarModule } from 'ngx-gravatar';
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        GravatarModule
-      ],
-      declarations: [
-        AppComponent
-      ],
+      imports: [GravatarModule],
+      declarations: [AppComponent]
     }).compileComponents();
   }));
   it('should create the app', async(() => {

@@ -6,10 +6,9 @@ import { DEFAULT_CONFIG } from './ngx-gravatar.constants';
 import { FALLBACK, FallbackType, RATING, RatingType } from './ngx-gravatar.enums';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class NgxGravatarService {
-
   private defaultConfig: GravatarConfig;
 
   constructor(@Optional() @Inject(GRAVATAR_CONFIG_TOKEN) private gravatarConfig: GravatarConfig) {
@@ -70,8 +69,9 @@ export class NgxGravatarService {
 
     if (FALLBACK[fallback] === undefined) {
       // Complain invalid fallback
-      console.error(`[ngx-gravatar] - "${fallback}" is invalid gravatar fallback type. ` +
-        `Default fallback "${defaultFallback}" is used.`);
+      console.error(
+        `[ngx-gravatar] - "${fallback}" is invalid gravatar fallback type. ` + `Default fallback "${defaultFallback}" is used.`
+      );
       return defaultFallback;
     }
 
@@ -90,8 +90,7 @@ export class NgxGravatarService {
     }
 
     if (RATING[rating] === undefined) {
-      console.error(`[ngx-gravatar] - "${rating}" is invalid gravatar rating type. ` +
-        `Default rating "${defaultRating}" is used.`);
+      console.error(`[ngx-gravatar] - "${rating}" is invalid gravatar rating type. ` + `Default rating "${defaultRating}" is used.`);
       return defaultRating;
     }
 

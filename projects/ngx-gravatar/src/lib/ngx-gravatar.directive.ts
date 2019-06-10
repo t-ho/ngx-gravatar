@@ -26,15 +26,11 @@ export class NgxGravatarDirective implements OnChanges, OnInit {
   requestedSize: number;
   isGravatarUsed: boolean;
 
-  constructor(
-    private elementRef: ElementRef,
-    private renderer: Renderer2,
-    private gravatarService: NgxGravatarService,
-  ) {
+  constructor(private elementRef: ElementRef, private renderer: Renderer2, private gravatarService: NgxGravatarService) {
     this.initialized = false;
     this.defaultConfig = this.gravatarService.getDefaultConfig();
     // Listen for error when fetching custom src
-    this.renderer.listen(this.elementRef.nativeElement, 'error', (event) => {
+    this.renderer.listen(this.elementRef.nativeElement, 'error', event => {
       if (!this.isGravatarUsed) {
         this.initializeAvatar(true); // Force using gravatar
       }
@@ -70,16 +66,18 @@ export class NgxGravatarDirective implements OnChanges, OnInit {
    * Custom source has higher priority if preferGravatar is not set on.
    * Finally, set styles for the avatar.
    */
-  private initializeAvatar(forcedGravatar?: boolean):void {
+  private initializeAvatar(forcedGravatar?: boolean): void {
     this.setDefaultValues();
     let url = '';
     if (this.preferGravatar || forcedGravatar) {
       url = this.gravatarService.generateGravatarUrl(this.email, this.md5Hash, this.requestedSize, this.rating, this.fallback);
       this.isGravatarUsed = true;
-    } else { // this.preferGravatar == false
+    } else {
+      // this.preferGravatar == false
       if (this.src) {
         url = this.src;
-      } else { // fallback to gravatar
+      } else {
+        // fallback to gravatar
         url = this.gravatarService.generateGravatarUrl(this.email, this.md5Hash, this.requestedSize, this.rating, this.fallback);
         this.isGravatarUsed = true;
       }
@@ -97,7 +95,8 @@ export class NgxGravatarDirective implements OnChanges, OnInit {
     if (this.style && this.style.width) {
       try {
         const width = this.style.width.trim();
-        if (width.match(/^\d+px$/)) { // width with px unit
+        if (width.match(/^\d+px$/)) {
+          // width with px unit
           size = width.replace('px', '');
         }
       } catch (e) {
@@ -119,7 +118,7 @@ export class NgxGravatarDirective implements OnChanges, OnInit {
       borderStyle: this.defaultConfig.hasBorder || this.borderColor || this.borderWidth ? this.defaultConfig.borderStyle : 'none',
       borderColor: this.borderColor ? this.borderColor : this.defaultConfig.borderColor,
       borderWidth: this.borderWidth ? this.borderWidth + 'px' : this.defaultConfig.borderWidth + 'px',
-      backgroundColor: this.backgroundColor ? this.backgroundColor : this.defaultConfig.backgroundColor,
+      backgroundColor: this.backgroundColor ? this.backgroundColor : this.defaultConfig.backgroundColor
     };
     return { ...style, ...this.style };
   }

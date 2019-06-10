@@ -5,6 +5,7 @@
 [![npm](https://img.shields.io/badge/dynamic/json.svg?label=downloads&url=https%3A%2F%2Fapi.npmjs.org%2Fdownloads%2Fpoint%2Flast-week%2Fngx-gravatar&query=%24.downloads&colorB=bightgreen&suffix=%2Fweek)](https://www.npmjs.com/package/ngx-gravatar)
 [![](https://data.jsdelivr.com/v1/package/npm/ngx-gravatar/badge?style=rounded)](https://www.jsdelivr.com/package/npm/ngx-gravatar)
 [![npm bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/ngx-gravatar.svg)](https://bundlephobia.com/result?p=ngx-gravatar)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![npm](https://img.shields.io/npm/l/ngx-gravatar.svg)](https://www.npmjs.com/package/ngx-gravatar)
 
 # ngx-gravatar
@@ -26,6 +27,8 @@ Visit [here](https://en.gravatar.com/) for more information about Gravatar.
 Live demo [here](https://ngx-gravatar.stackblitz.io).
 
 Play with **ngx-gravatar** [here](https://stackblitz.com/edit/ngx-gravatar) on stackblitz.
+
+### If you like `ngx-gravatar`, please give it a :star: on [github](https://github.com/t-ho/ngx-gravatar)
 
 ## Installation
 

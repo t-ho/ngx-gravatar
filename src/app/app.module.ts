@@ -7,21 +7,16 @@ import { GravatarModule, GravatarConfig, FALLBACK, RATING } from 'ngx-gravatar';
 
 const gravatarConfig: GravatarConfig = {
   // fallback: FALLBACK.robohash,
-  rating: RATING.pg,
+  rating: RATING.pg
   // hasBorder: true,
   // borderColor: "rgba(255, 0, 0, 0.1)",
   // backgroundColor: "rgba(255, 0, 0, 0.1)",
 };
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
-  imports: [
-    BrowserModule,
-    GravatarModule.forRoot(gravatarConfig)
-  ],
+  declarations: [AppComponent],
+  imports: [BrowserModule, GravatarModule.forRoot(gravatarConfig)],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
