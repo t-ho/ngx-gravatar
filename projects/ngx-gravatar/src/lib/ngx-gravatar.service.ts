@@ -53,7 +53,7 @@ export class NgxGravatarService {
     size = size ? size : this.defaultConfig.size;
     rating = this.determineRating(rating, this.defaultConfig.rating);
     fallback = this.determineFallback(fallback, this.defaultConfig.fallback);
-    return `//www.gravatar.com/avatar/${emailHash}?s=${size}&r=${rating}&d=${fallback}`;
+    return `https://www.gravatar.com/avatar/${emailHash}?s=${size}&r=${rating}&d=${fallback}`;
   }
 
   /**

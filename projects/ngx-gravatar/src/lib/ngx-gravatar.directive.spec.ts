@@ -80,19 +80,19 @@ describe('NgxGravatarDirective', () => {
     ).toBeTruthy();
     expect(imgEl.style.borderWidth).toBe('1px');
     expect(imgEl.style.backgroundColor).toBe('transparent');
-    expect(imgEl.getAttribute('src')).toBe('//www.gravatar.com/avatar/d41d8cd98f00b204e9800998ecf8427e?s=80&r=g&d=retro');
+    expect(imgEl.getAttribute('src')).toBe('https://www.gravatar.com/avatar/d41d8cd98f00b204e9800998ecf8427e?s=80&r=g&d=retro');
   });
 
   it('Setting email="toan.hmt@gmail.com", src should be gravatar url', () => {
     component.email = 'toan.hmt@gmail.com';
     fixture.detectChanges();
-    expect(imgEl.getAttribute('src')).toBe('//www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=80&r=g&d=retro');
+    expect(imgEl.getAttribute('src')).toBe('https://www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=80&r=g&d=retro');
   });
 
   it('Setting md5Hash="0a2aaae0ac1310d1f8e8e68df45fe7b8", src should be gravatar url', () => {
     component.md5Hash = '0a2aaae0ac1310d1f8e8e68df45fe7b8';
     fixture.detectChanges();
-    expect(imgEl.getAttribute('src')).toBe('//www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=80&r=g&d=retro');
+    expect(imgEl.getAttribute('src')).toBe('https://www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=80&r=g&d=retro');
   });
 
   it(
@@ -117,7 +117,7 @@ describe('NgxGravatarDirective', () => {
     component.src = 'https://github.com/t-ho/ngx-gravatar/blob/master/src/assets/avatar.jpg?raw=true';
     component.preferGravatar = true;
     fixture.detectChanges();
-    expect(imgEl.getAttribute('src')).toBe('//www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=80&r=g&d=retro');
+    expect(imgEl.getAttribute('src')).toBe('https://www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=80&r=g&d=retro');
   });
 
   it('Setting size="50", gravatar width and height should be "50px"', () => {
@@ -129,24 +129,24 @@ describe('NgxGravatarDirective', () => {
 
   it(
     'Setting email="toan.hmt@gmail.com" and ratio="1.5", ' +
-      'the src should be "//www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=60&r=g&d=retro"',
+      'the src should be "https://www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=60&r=g&d=retro"',
     () => {
       component.email = 'toan.hmt@gmail.com';
       component.ratio = 1.5;
       fixture.detectChanges();
-      expect(imgEl.getAttribute('src')).toBe('//www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=60&r=g&d=retro');
+      expect(imgEl.getAttribute('src')).toBe('https://www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=60&r=g&d=retro');
     }
   );
 
   it(
     'Setting email="toan.hmt@gmail.com", size="50" and ratio="3", ' +
-      'the src should be "//www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=150&r=g&d=retro"',
+      'the src should be "https://www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=150&r=g&d=retro"',
     () => {
       component.email = 'toan.hmt@gmail.com';
       component.size = 50;
       component.ratio = 3;
       fixture.detectChanges();
-      expect(imgEl.getAttribute('src')).toBe('//www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=150&r=g&d=retro');
+      expect(imgEl.getAttribute('src')).toBe('https://www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=150&r=g&d=retro');
     }
   );
 
