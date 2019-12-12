@@ -1,3 +1,7 @@
+# v8.1.0
+* BugFix: Electron issue [#9](https://github.com/t-ho/ngx-gravatar/issues/9)
+* Export NgxGravatarService
+
 # v8.0.0
 * Support Angular 8
 
