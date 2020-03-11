@@ -6,6 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  email = '';
+
+  fallbacks = ['blank', 'identicon', 'mp', 'monsterid', 'retro', 'robohash', 'wavatar'];
+
   styleObject = {
     borderWidth: '2px',
     borderColor: 'green',

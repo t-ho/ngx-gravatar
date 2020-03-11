@@ -2,16 +2,13 @@
   <h1>NGX-GRAVATAR</h1>
   <div class="badges">
     <a href="https://www.npmjs.com/package/ngx-gravatar" target="_blank">
-      <img alt="NPN Version" src="https://img.shields.io/npm/v/ngx-gravatar" height="18" />
+      <img src="https://badge.fury.io/js/ngx-gravatar.svg" alt="NPM Version" height="18" />
     </a>
     <a href="https://travis-ci.org/t-ho/ngx-gravatar" target="_blank">
       <img src="https://travis-ci.org/t-ho/ngx-gravatar.svg?branch=master" alt="Travis CI" height="18" />
     </a>
     <a href="https://codecov.io/gh/t-ho/ngx-gravatar">
       <img src="https://codecov.io/gh/t-ho/ngx-gravatar/branch/master/graph/badge.svg" alt="Code Coverage" height="18" />
-    </a>
-    <a href="https://www.npmjs.com/package/ngx-gravatar" target="_blank">
-      <img src="https://img.shields.io/david/t-ho/ngx-gravatar.svg" alt="David Dependencies" height="18" />
     </a>
     <a href="https://www.npmjs.com/package/ngx-gravatar" target="_blank">
       <img src="https://img.shields.io/npm/dt/ngx-gravatar.svg" alt="Total Download" height="18" />
@@ -24,22 +21,21 @@
       />
     </a>
     <a href="https://www.npmjs.com/package/ngx-gravatar" target="_blank">
-      <img
-        src="https://img.shields.io/badge/dynamic/json.svg?label=last%20day&url=https%3A%2F%2Fapi.npmjs.org%2Fdownloads%2Frange%2Flast-week%2Fngx-gravatar&query=%24.downloads%5B5%5D.downloads&colorB=brightgreen&suffix=%20downloads"
-        alt="Last Day Downloads"
-        height="18"
-      />
-    </a>
-    <a href="https://www.jsdelivr.com/package/npm/ngx-gravatar" target="_blank">
-      <img src="https://data.jsdelivr.com/v1/package/npm/ngx-gravatar/badge?style=rounded" alt="jsDelivr Hits Per Month" height="18" />
-    </a>
-    <a href="https://www.npmjs.com/package/ngx-gravatar" target="_blank">
       <img src="https://img.shields.io/npm/l/ngx-gravatar.svg" alt="MIT License" height="18" />
     </a>
   </div>
+  Email: <input [(ngModel)]="email" placeholder="Type your email here" />
+  <h4>blank - identicon - mp - monsterid - retro - robohash - wavatar</h4>
+  <img *ngFor="let f of fallbacks" ngxGravatar [email]="email" size="50" [fallback]="f" borderColor="rgba(0, 0, 0, 0.2)" />
+</div>
+
+<div><a target="_blank" rel="noopener" href="https://tdev.app/ngx-gravatar" class="button">See Documentation</a></div>
+
+<hr />
+
+<div>
   <img ngxGravatar [email]="'toan.hmt@gmail.com'" size="150" borderColor="#00ACC1" borderWidth="2" />
-  <img ngxGravatar [email]="'toan.hmt@gmail.com'" [style]="styleObject" />
-  <img ngxGravatar [md5Hash]="'0a2aaae0ac1310d1f8e8e68df45fe7b8'" size="150" borderColor="#00ACC1" borderWidth="2" />
+  <img ngxGravatar [md5Hash]="'0a2aaae0ac1310d1f8e8e68df45fe7b8'" [style]="styleObject" />
 </div>
 
 <div>
@@ -51,16 +47,15 @@
     size="80"
     src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="
   />
-  <img ngxGravatar size="80" src="assets/avatar.jpg" />
+  <img ngxGravatar size="80" src="https://github.com/t-ho/ngx-gravatar/blob/assets/src/assets/avatar.jpg?raw=true" />
   <img ngxGravatar [md5Hash]="'0a2aaae0ac1310d1f8e8e68df45fe7b8'" size="80" />
 </div>
 
 <div>
   <h2>Avatar with different gravatar fallbacks (default size - 40px)</h2>
   <h4>retro (default) - blank - identicon - mp - monsterid - retro - robohash - wavatar</h4>
-  <!-- Default fallback is 'retro' -->
   <img ngxGravatar [email]="'no-gravatar@gravatar.com'" />
-
+  <!-- Default fallback is 'retro' -->
   <img ngxGravatar [email]="'no-gravatar@gravatar.com'" fallback="blank" />
   <img ngxGravatar [email]="'no-gravatar@gravatar.com'" fallback="identicon" />
   <img ngxGravatar [email]="'no-gravatar@gravatar.com'" fallback="mp" />
@@ -72,56 +67,87 @@
 
 <div>
   <h2>Avatar (email and src provided)</h2>
-  <h4>
-    <code>[preferGravatar]="false"</code> (default) - <code>[preferGravatar]="true"</code> -
-    <code>[preferGravatar]="true"</code>
-  </h4>
-  <img ngxGravatar [email]="'toan.hmt@gmail.com'" src="assets/avatar.jpg" />
-  <img ngxGravatar [email]="'toan.hmt@gmail.com'" [preferGravatar]="true" src="assets/avatar.jpg" />
-  <img ngxGravatar [email]="'no-gravatar@gravatar.com'" [preferGravatar]="true" src="assets/avatar.jpg" />
+  <h4><code>[preferGravatar]="false"</code> (default) - <code>[preferGravatar]="true"</code> - <code>[preferGravatar]="true"</code></h4>
+  <img ngxGravatar [email]="'toan.hmt@gmail.com'" src="https://github.com/t-ho/ngx-gravatar/blob/assets/src/assets/avatar.jpg?raw=true" />
+  <img
+    ngxGravatar
+    [email]="'toan.hmt@gmail.com'"
+    [preferGravatar]="true"
+    src="https://github.com/t-ho/ngx-gravatar/blob/master/src/assets/avatar.jpg?raw=true"
+  />
+  <img
+    ngxGravatar
+    [email]="'no-gravatar@gravatar.com'"
+    [preferGravatar]="true"
+    src="https://github.com/t-ho/ngx-gravatar/blob/master/src/assets/avatar.jpg?raw=true"
+  />
 </div>
 
 <div>
   <h2>Avatar with border color</h2>
-  <h4>
-    <code>borderColor="teal"</code> -
-    <code>borderColor="#d73d32"</code>
-  </h4>
-  <img ngxGravatar borderColor="teal" [email]="'toan.hmt@gmail.com'" [preferGravatar]="true" src="assets/avatar.jpg" />
-  <img ngxGravatar borderColor="#d73d32" [email]="'toan.hmt@gmail.com'" src="assets/avatar.jpg" />
+  <h4><code>borderColor="teal"</code> - <code>borderColor="#d73d32"</code></h4>
+  <img
+    ngxGravatar
+    borderColor="teal"
+    [email]="'toan.hmt@gmail.com'"
+    [preferGravatar]="true"
+    src="https://github.com/t-ho/ngx-gravatar/blob/master/src/assets/avatar.jpg?raw=true"
+  />
+  <img
+    ngxGravatar
+    borderColor="#d73d32"
+    [email]="'toan.hmt@gmail.com'"
+    src="https://github.com/t-ho/ngx-gravatar/blob/master/src/assets/avatar.jpg?raw=true"
+  />
 </div>
 
 <div>
   <h2>Avatar with border width</h2>
-  <h4>
-    <code>borderWidth="3"</code> -
-    <code>borderWidth="5"</code>
-  </h4>
+  <h4><code>borderWidth="3"</code> - <code>borderWidth="5"</code></h4>
   <img ngxGravatar borderWidth="3" [email]="'toan.hmt@gmail.com'" />
   <img ngxGravatar borderWidth="5" borderColor="teal" [email]="'toan.hmt@gmail.com'" />
 </div>
 
 <div>
   <h2>Avatar with invalid src</h2>
-  <h4>
-    <code>src="essets/does-not-exist-1.jpg"</code> -
-    <code>src="essets/does-not-exist-2.jpg"</code>
-  </h4>
+  <h4><code>src="essets/does-not-exist-1.jpg"</code> - <code>src="essets/does-not-exist-2.jpg"</code></h4>
   <img ngxGravatar [email]="'toan.hmt@gmail.com'" src="assets/does-not-exist-1.jpg" />
   <img ngxGravatar [email]="'no-gravatar@gravatar.com'" src="assets/does-not-exist-2.jpg" />
 </div>
 
 <div>
   <h2>Square avatar</h2>
-  <h4>
-    <code>[round]="false"</code>
-  </h4>
-  <img ngxGravatar [round]="false" [email]="'no-gravatar@gravatar.com'" [preferGravatar]="true" src="assets/avatar.jpg" />
-  <img ngxGravatar [round]="false" [email]="'no-gravatar@gravatar.com'" src="assets/avatar.jpg" />
-  <img ngxGravatar [round]="false" borderColor="teal" [email]="'toan.hmt@gmail.com'" [preferGravatar]="true" src="assets/avatar.jpg" />
-  <img ngxGravatar [round]="false" borderColor="#d73d32" [email]="'toan.hmt@gmail.com'" src="assets/avatar.jpg" />
+  <h4><code>[round]="false"</code></h4>
+  <img
+    ngxGravatar
+    [round]="false"
+    [email]="'no-gravatar@gravatar.com'"
+    [preferGravatar]="true"
+    src="https://github.com/t-ho/ngx-gravatar/blob/assets/src/assets/avatar.jpg?raw=true"
+  />
+  <img
+    ngxGravatar
+    [round]="false"
+    [email]="'no-gravatar@gravatar.com'"
+    src="https://github.com/t-ho/ngx-gravatar/blob/assets/src/assets/avatar.jpg?raw=true"
+  />
+  <img
+    ngxGravatar
+    [round]="false"
+    borderColor="teal"
+    [email]="'toan.hmt@gmail.com'"
+    [preferGravatar]="true"
+    src="https://github.com/t-ho/ngx-gravatar/blob/assets/src/assets/avatar.jpg?raw=true"
+  />
+  <img
+    ngxGravatar
+    [round]="false"
+    borderColor="#d73d32"
+    [email]="'toan.hmt@gmail.com'"
+    src="https://github.com/t-ho/ngx-gravatar/blob/assets/src/assets/avatar.jpg?raw=true"
+  />
 </div>
 
 <div>
-  <h2>Visit <a target="_blank" rel="noopener" href="https://github.com/t-ho/ngx-gravatar">ngx-gravatar</a> on Github</h2>
+  <a target="_blank" rel="noopener" href="https://github.com/t-ho/ngx-gravatar" class="button">View On Github</a>
 </div>

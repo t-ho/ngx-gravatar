@@ -76,7 +76,7 @@ describe('NgxGravatarService with DEFAULT_CONFIG', () => {
     TestBed.configureTestingModule({
       providers: [NgxGravatarService]
     });
-    gravatarService = TestBed.get(NgxGravatarService);
+    gravatarService = TestBed.inject(NgxGravatarService);
     spyOn(console, 'error');
   });
 
@@ -214,7 +214,7 @@ describe('NgxGravatarService with custom configuration', () => {
       providers: [NgxGravatarService]
     });
     spyOn(console, 'error');
-    return TestBed.get(NgxGravatarService);
+    return TestBed.inject(NgxGravatarService);
   }
 
   validCustomConfigs.forEach(config => {
