@@ -26,7 +26,6 @@ Visit [here](https://en.gravatar.com/) for more information about Gravatar.
 
 Live demo [here](https://tdev.app/ngx-gravatar/demo).
 
-Play with **ngx-gravatar** [here](https://stackblitz.com/edit/ngx-gravatar) on stackblitz.
 ### If you like `ngx-gravatar`, please give it a :star: on [github](https://github.com/t-ho/ngx-gravatar)
 
 ## Installation
