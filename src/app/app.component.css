@@ -1,7 +1,8 @@
 div {
-  margin-top: 32px;
-  text-align: center;
-  font-family: "Helvetica Neue", sans-serif;
+	margin-top: 20px;
+	text-align: center;
+  font-family: Roboto,"Helvetica Neue",sans-serif;
+  padding: 5px;
 }
 
 .badges {
@@ -10,6 +11,26 @@ div {
 }
 
 img {
-  margin-left: 4px;
-  margin-right: 4px;
+	margin-left: 4px;
+	margin-right: 4px;
+}
+
+input {
+  width: 320px;
+}
+
+hr {
+  margin: 40px 0;
+}
+
+.button {
+  text-decoration: none;
+  border: solid 1px #4CAF50;
+  padding: 10px 20px;
+  background-color: #66BB6A;
+  color: #fff;
+}
+
+.button:hover {
+  background-color: #4CAF50;
 }

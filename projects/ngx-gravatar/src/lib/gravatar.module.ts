@@ -9,7 +9,7 @@ import { NgxGravatarDirective } from './ngx-gravatar.directive';
   exports: [NgxGravatarDirective]
 })
 export class GravatarModule {
-  static forRoot(gravatarConfig: GravatarConfig): ModuleWithProviders {
+  static forRoot(gravatarConfig: GravatarConfig): ModuleWithProviders<GravatarModule> {
     return {
       ngModule: GravatarModule,
       providers: [
