@@ -1,3 +1,6 @@
+# v9.0.0
+* Upgrade to Angular 9
+
 # v8.1.0
 * BugFix: Electron issue [#9](https://github.com/t-ho/ngx-gravatar/issues/9)
 * Export NgxGravatarService

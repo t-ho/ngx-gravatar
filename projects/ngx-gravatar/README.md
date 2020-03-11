@@ -9,7 +9,7 @@
 
 # ngx-gravatar
 
-The gravatar directive for angular 5+.
+The gravatar directive for angular 4+.
 
 This directive supports two avatar sources:
 
