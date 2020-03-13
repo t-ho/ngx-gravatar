@@ -18,7 +18,7 @@ This directive supports two avatar sources:
 
 By default, the **custom image** has higher priority. If it is invalid, the **Gravatar** will be used. The priority can be changed by setting `preferGravatar` input or override the default configuration (see below).
 
-[![Angular Gravatar Directive](https://github.com/t-ho/ngx-gravatar/blob/assets/src/assets/demo.png?raw=true)](https://tdev.app/ngx-gravatar/demo)
+[![Angular Gravatar Directive](https://github.com/t-ho/ngx-gravatar/raw/assets/src/assets/demo.png)](https://tdev.app/ngx-gravatar/demo)
 
 Visit [here](https://en.gravatar.com/) for more information about Gravatar.
 
