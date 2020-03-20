@@ -96,25 +96,25 @@ describe('NgxGravatarDirective', () => {
   });
 
   it(
-    'Setting src="https://github.com/t-ho/ngx-gravatar/blob/master/src/assets/avatar.jpg?raw=true", ' +
-      'src should be "https://github.com/t-ho/ngx-gravatar/blob/master/src/assets/avatar.jpg?raw=true"',
+    'Setting src="https://github.com/t-ho/ngx-gravatar/raw/assets/src/assets/avatar.jpg", ' +
+      'src should be "https://github.com/t-ho/ngx-gravatar/raw/assets/src/assets/avatar.jpg"',
     () => {
-      component.src = 'https://github.com/t-ho/ngx-gravatar/blob/master/src/assets/avatar.jpg?raw=true';
+      component.src = 'https://github.com/t-ho/ngx-gravatar/raw/assets/src/assets/avatar.jpg';
       fixture.detectChanges();
-      expect(imgEl.getAttribute('src')).toBe('https://github.com/t-ho/ngx-gravatar/blob/master/src/assets/avatar.jpg?raw=true');
+      expect(imgEl.getAttribute('src')).toBe('https://github.com/t-ho/ngx-gravatar/raw/assets/src/assets/avatar.jpg');
     }
   );
 
   it('Setting email and src, the src should be the custom image', () => {
     component.email = 'toan.hmt@gmail.com';
-    component.src = 'https://github.com/t-ho/ngx-gravatar/blob/master/src/assets/avatar.jpg?raw=true';
+    component.src = 'https://github.com/t-ho/ngx-gravatar/raw/assets/src/assets/avatar.jpg';
     fixture.detectChanges();
-    expect(imgEl.getAttribute('src')).toBe('https://github.com/t-ho/ngx-gravatar/blob/master/src/assets/avatar.jpg?raw=true');
+    expect(imgEl.getAttribute('src')).toBe('https://github.com/t-ho/ngx-gravatar/raw/assets/src/assets/avatar.jpg');
   });
 
   it('Setting email, src and preferGravatar to true, the src should be gravatar image', () => {
     component.email = 'toan.hmt@gmail.com';
-    component.src = 'https://github.com/t-ho/ngx-gravatar/blob/master/src/assets/avatar.jpg?raw=true';
+    component.src = 'https://github.com/t-ho/ngx-gravatar/raw/assets/src/assets/avatar.jpg';
     component.preferGravatar = true;
     fixture.detectChanges();
     expect(imgEl.getAttribute('src')).toBe('https://www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=80&r=g&d=retro');

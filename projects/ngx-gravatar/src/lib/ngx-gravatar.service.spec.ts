@@ -8,12 +8,9 @@ import { DEFAULT_CONFIG } from './ngx-gravatar.constants';
 import { FALLBACK, RATING } from './ngx-gravatar.enums';
 
 const notStrings: any[] = [null, true, false, 2, undefined];
-const invalidFallbacks: any[] = ['', '2', 'retor', 'monsterId', 're tro', ' retro', null, true, false, 2]; // undefined
 const validFallbacks: string[] = ['blank', 'identicon', 'mm', 'mp', 'monsterid', 'retro', 'robohash', 'wavatar'];
-const invalidRatings: any[] = ['', 'a', 'G', 'pG', 'Pg', 'PG', 'p g', 'R', ' r', 'X', null, true, false, 2]; // undefined handled separately
 const validRatings: string[] = ['g', 'pg', 'r', 'x'];
 
-const invalidCustomConfigs: any[] = generateInvalidCustomConfig();
 const validCustomConfigs: any[] = generateValidCustomConfig();
 
 function generateValidCustomConfig(): any[] {
@@ -33,25 +30,6 @@ function generateValidCustomConfig(): any[] {
     configs.push({
       in: { rating },
       out: { rating: rating.toLowerCase() },
-      consoleErrorMessage: generateRatingErrorMessage(rating, DEFAULT_CONFIG.rating)
-    });
-  });
-  return configs;
-}
-
-function generateInvalidCustomConfig(): any[] {
-  const configs: any[] = [];
-  invalidFallbacks.forEach(fallback => {
-    configs.push({
-      in: { fallback },
-      out: { fallback: DEFAULT_CONFIG.fallback },
-      consoleErrorMessage: generateFallbackErrorMessage(fallback, DEFAULT_CONFIG.fallback)
-    });
-  });
-  invalidRatings.forEach(rating => {
-    configs.push({
-      in: { rating },
-      out: { rating: DEFAULT_CONFIG.rating },
       consoleErrorMessage: generateRatingErrorMessage(rating, DEFAULT_CONFIG.rating)
     });
   });
@@ -157,20 +135,6 @@ describe('NgxGravatarService with DEFAULT_CONFIG', () => {
     }
   );
 
-  invalidRatings.forEach(rating => {
-    const statment =
-      `#generateGravatarUrl('toan.hmt@gmail.com', null, 150, '${rating}') ` +
-      `should return url with default rating, fallback and PRINT error message`;
-    it(statment, () => {
-      expect(gravatarService.generateGravatarUrl('toan.hmt@gmail.com', null, 150, rating)).toEqual(
-        `https://www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=150` +
-          `&r=${gravatarService.getDefaultConfig().rating}` +
-          `&d=${gravatarService.getDefaultConfig().fallback}`
-      );
-      expect(console.error).toHaveBeenCalledWith(generateRatingErrorMessage(rating, gravatarService.getDefaultConfig().rating));
-    });
-  });
-
   validFallbacks.forEach(fallback => {
     const statment =
       `#generateGravatarUrl('toan.hmt@gmail.com', null, 50, 'pg', '${fallback}') ` +
@@ -193,18 +157,6 @@ describe('NgxGravatarService with DEFAULT_CONFIG', () => {
       expect(console.error).not.toHaveBeenCalledWith(generateFallbackErrorMessage(undefined, gravatarService.getDefaultConfig().fallback));
     }
   );
-
-  invalidFallbacks.forEach(fallback => {
-    const statment =
-      `#generateGravatarUrl('toan.hmt@gmail.com', null, 50, 'pg', '${fallback}') ` +
-      `should return url with default fallback and PRINT error message`;
-    it(statment, () => {
-      expect(gravatarService.generateGravatarUrl('toan.hmt@gmail.com', null, 50, 'pg', fallback)).toEqual(
-        `https://www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=50&r=pg` + `&d=${gravatarService.getDefaultConfig().fallback}`
-      );
-      expect(console.error).toHaveBeenCalledWith(generateFallbackErrorMessage(fallback, gravatarService.getDefaultConfig().fallback));
-    });
-  });
 });
 
 describe('NgxGravatarService with custom configuration', () => {
@@ -226,18 +178,6 @@ describe('NgxGravatarService with custom configuration', () => {
       const gravatarService = setup(config.in);
       expect(gravatarService.getDefaultConfig()).toEqual(jasmine.objectContaining(config.out));
       expect(console.error).not.toHaveBeenCalledWith(config.consoleErrorMessage);
-    });
-  });
-
-  invalidCustomConfigs.forEach(config => {
-    const stmt =
-      `With forRoot(${JSON.stringify(config.in)}), ` +
-      `#getDefaultConfig should return an object contains ${JSON.stringify(config.out)} ` +
-      `and print error message`;
-    it(stmt, async () => {
-      const gravatarService = await setup(config.in);
-      expect(gravatarService.getDefaultConfig()).toEqual(jasmine.objectContaining(config.out));
-      expect(console.error).toHaveBeenCalledWith(config.consoleErrorMessage);
     });
   });
 });

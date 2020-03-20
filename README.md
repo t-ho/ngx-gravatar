@@ -1,11 +1,11 @@
 [![npm version](https://img.shields.io/npm/v/ngx-gravatar)](https://www.npmjs.com/package/ngx-gravatar)
+[![GitHub stars](https://img.shields.io/github/stars/t-ho/ngx-gravatar?color=00bcd4)](https://github.com/t-ho/ngx-gravatar/stargazers)
 [![Build Status](https://travis-ci.org/t-ho/ngx-gravatar.svg?branch=master)](https://travis-ci.org/t-ho/ngx-gravatar)
 [![codecov](https://codecov.io/gh/t-ho/ngx-gravatar/branch/master/graph/badge.svg)](https://codecov.io/gh/t-ho/ngx-gravatar)
-[![npm](https://img.shields.io/npm/dt/ngx-gravatar.svg)](https://www.npmjs.com/package/ngx-gravatar)
-[![npm](https://img.shields.io/badge/dynamic/json.svg?label=downloads&url=https%3A%2F%2Fapi.npmjs.org%2Fdownloads%2Fpoint%2Flast-week%2Fngx-gravatar&query=%24.downloads&colorB=bightgreen&suffix=%2Fweek)](https://www.npmjs.com/package/ngx-gravatar)
+[![npm](https://img.shields.io/npm/dw/ngx-gravatar.svg)](https://www.npmjs.com/package/ngx-gravatar)
 [![npm bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/ngx-gravatar.svg)](https://bundlephobia.com/result?p=ngx-gravatar)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
-[![npm](https://img.shields.io/npm/l/ngx-gravatar.svg)](https://www.npmjs.com/package/ngx-gravatar)
+[![license](https://img.shields.io/npm/l/ngx-gravatar.svg)](https://github.com/t-ho/ngx-gravatar/blob/master/LICENSE)
 
 # ngx-gravatar
 
@@ -18,7 +18,7 @@ This directive supports two avatar sources:
 
 By default, the **custom image** has higher priority. If it is invalid, the **Gravatar** will be used. The priority can be changed by setting `preferGravatar` input or override the default configuration (see below).
 
-[![Angular Gravatar Directive](https://github.com/t-ho/ngx-gravatar/blob/assets/src/assets/demo.png?raw=true)](https://tdev.app/ngx-gravatar/demo)
+[![Angular Gravatar Directive](https://github.com/t-ho/ngx-gravatar/raw/assets/src/assets/demo.png)](https://tdev.app/ngx-gravatar/demo)
 
 Visit [here](https://en.gravatar.com/) for more information about Gravatar.
 
