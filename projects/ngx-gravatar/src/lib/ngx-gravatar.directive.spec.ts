@@ -83,16 +83,16 @@ describe('NgxGravatarDirective', () => {
     expect(imgEl.getAttribute('src')).toBe('https://www.gravatar.com/avatar/d41d8cd98f00b204e9800998ecf8427e?s=80&r=g&d=retro');
   });
 
-  it('Setting email="toan.hmt@gmail.com", src should be gravatar url', () => {
-    component.email = 'toan.hmt@gmail.com';
+  it('Setting email="t.ho@tdev.app", src should be gravatar url', () => {
+    component.email = 't.ho@tdev.app';
     fixture.detectChanges();
-    expect(imgEl.getAttribute('src')).toBe('https://www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=80&r=g&d=retro');
+    expect(imgEl.getAttribute('src')).toBe('https://www.gravatar.com/avatar/4f291481ca95cb4e78248df3f522aed3?s=80&r=g&d=retro');
   });
 
-  it('Setting md5Hash="0a2aaae0ac1310d1f8e8e68df45fe7b8", src should be gravatar url', () => {
-    component.md5Hash = '0a2aaae0ac1310d1f8e8e68df45fe7b8';
+  it('Setting md5Hash="4f291481ca95cb4e78248df3f522aed3", src should be gravatar url', () => {
+    component.md5Hash = '4f291481ca95cb4e78248df3f522aed3';
     fixture.detectChanges();
-    expect(imgEl.getAttribute('src')).toBe('https://www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=80&r=g&d=retro');
+    expect(imgEl.getAttribute('src')).toBe('https://www.gravatar.com/avatar/4f291481ca95cb4e78248df3f522aed3?s=80&r=g&d=retro');
   });
 
   it(
@@ -106,18 +106,18 @@ describe('NgxGravatarDirective', () => {
   );
 
   it('Setting email and src, the src should be the custom image', () => {
-    component.email = 'toan.hmt@gmail.com';
+    component.email = 't.ho@tdev.app';
     component.src = 'https://github.com/t-ho/ngx-gravatar/raw/assets/src/assets/avatar.jpg';
     fixture.detectChanges();
     expect(imgEl.getAttribute('src')).toBe('https://github.com/t-ho/ngx-gravatar/raw/assets/src/assets/avatar.jpg');
   });
 
   it('Setting email, src and preferGravatar to true, the src should be gravatar image', () => {
-    component.email = 'toan.hmt@gmail.com';
+    component.email = 't.ho@tdev.app';
     component.src = 'https://github.com/t-ho/ngx-gravatar/raw/assets/src/assets/avatar.jpg';
     component.preferGravatar = true;
     fixture.detectChanges();
-    expect(imgEl.getAttribute('src')).toBe('https://www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=80&r=g&d=retro');
+    expect(imgEl.getAttribute('src')).toBe('https://www.gravatar.com/avatar/4f291481ca95cb4e78248df3f522aed3?s=80&r=g&d=retro');
   });
 
   it('Setting size="50", gravatar width and height should be "50px"', () => {
@@ -128,25 +128,25 @@ describe('NgxGravatarDirective', () => {
   });
 
   it(
-    'Setting email="toan.hmt@gmail.com" and ratio="1.5", ' +
-      'the src should be "https://www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=60&r=g&d=retro"',
+    'Setting email="t.ho@tdev.app" and ratio="1.5", ' +
+      'the src should be "https://www.gravatar.com/avatar/4f291481ca95cb4e78248df3f522aed3?s=60&r=g&d=retro"',
     () => {
-      component.email = 'toan.hmt@gmail.com';
+      component.email = 't.ho@tdev.app';
       component.ratio = 1.5;
       fixture.detectChanges();
-      expect(imgEl.getAttribute('src')).toBe('https://www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=60&r=g&d=retro');
+      expect(imgEl.getAttribute('src')).toBe('https://www.gravatar.com/avatar/4f291481ca95cb4e78248df3f522aed3?s=60&r=g&d=retro');
     }
   );
 
   it(
-    'Setting email="toan.hmt@gmail.com", size="50" and ratio="3", ' +
-      'the src should be "https://www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=150&r=g&d=retro"',
+    'Setting email="t.ho@tdev.app", size="50" and ratio="3", ' +
+      'the src should be "https://www.gravatar.com/avatar/4f291481ca95cb4e78248df3f522aed3?s=150&r=g&d=retro"',
     () => {
-      component.email = 'toan.hmt@gmail.com';
+      component.email = 't.ho@tdev.app';
       component.size = 50;
       component.ratio = 3;
       fixture.detectChanges();
-      expect(imgEl.getAttribute('src')).toBe('https://www.gravatar.com/avatar/0a2aaae0ac1310d1f8e8e68df45fe7b8?s=150&r=g&d=retro');
+      expect(imgEl.getAttribute('src')).toBe('https://www.gravatar.com/avatar/4f291481ca95cb4e78248df3f522aed3?s=150&r=g&d=retro');
     }
   );
 
