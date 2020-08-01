@@ -1,5 +1,5 @@
 import { Inject, Injectable, InjectionToken, Optional } from '@angular/core';
-import { Md5 } from 'ts-md5/dist/md5';
+import { Md5 } from 'ts-md5';
 import { GravatarConfig } from './gravatar-config';
 import { GRAVATAR_CONFIG_TOKEN } from './gravatar-config.token';
 import { DEFAULT_CONFIG } from './ngx-gravatar.constants';
