@@ -34,8 +34,6 @@ jobs:
             ${{ runner.OS }}-node-
             ${{ runner.OS }}-
 
-      - name: Install codecov
-        run: npm install -g codecov
       - name: Install deps
         run: npm install
       - name: Linting
@@ -44,7 +42,7 @@ jobs:
         run: npx ng build ngx-gravatar --prod
       - name: Testing
         run: npm test
-      - name: Run codecov
-        run: codecov
+      - name: Upload codecov report
+        uses: codecov/codecov-action@v1
       - name: Production build
         run: npx ng build --prod
