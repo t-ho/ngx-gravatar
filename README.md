@@ -1,6 +1,6 @@
 [![npm version](https://img.shields.io/npm/v/ngx-gravatar)](https://www.npmjs.com/package/ngx-gravatar)
 [![GitHub stars](https://img.shields.io/github/stars/t-ho/ngx-gravatar?color=00bcd4)](https://github.com/t-ho/ngx-gravatar/stargazers)
-[![Build Status](https://travis-ci.org/t-ho/ngx-gravatar.svg?branch=master)](https://travis-ci.org/t-ho/ngx-gravatar)
+![CI Testing](https://github.com/t-ho/ngx-gravatar/workflows/CI%20Testing/badge.svg)
 [![codecov](https://codecov.io/gh/t-ho/ngx-gravatar/branch/master/graph/badge.svg)](https://codecov.io/gh/t-ho/ngx-gravatar)
 [![npm](https://img.shields.io/npm/dw/ngx-gravatar.svg)](https://www.npmjs.com/package/ngx-gravatar)
 [![npm bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/ngx-gravatar.svg)](https://bundlephobia.com/result?p=ngx-gravatar)
