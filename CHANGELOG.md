@@ -1,3 +1,6 @@
+# v9.1.0
+* Suppress the deep import warning message
+
 # v9.0.0 - 9.0.1
 * Upgrade to Angular 9
 
