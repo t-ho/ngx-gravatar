@@ -1,3 +1,6 @@
+# v10.0.0
+* Upgrade to Angular 10
+
 # v9.1.0
 * Suppress the deep import warning message
 
