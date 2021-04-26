@@ -1,3 +1,7 @@
+# v11.0.0
+
+- Upgrade to Angular 11
+
 # v10.0.0
 
 - Upgrade to Angular 10
