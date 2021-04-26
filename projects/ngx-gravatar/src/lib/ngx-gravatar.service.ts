@@ -5,12 +5,16 @@ import { GRAVATAR_CONFIG_TOKEN } from './gravatar-config.token';
 import { DEFAULT_CONFIG } from './ngx-gravatar.constants';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class NgxGravatarService {
   private defaultConfig: GravatarConfig;
 
-  constructor(@Optional() @Inject(GRAVATAR_CONFIG_TOKEN) private gravatarConfig: GravatarConfig) {
+  constructor(
+    @Optional()
+    @Inject(GRAVATAR_CONFIG_TOKEN)
+    private gravatarConfig: GravatarConfig
+  ) {
     this.defaultConfig = { ...DEFAULT_CONFIG };
 
     if (this.gravatarConfig) {
@@ -27,6 +31,7 @@ export class NgxGravatarService {
 
   /**
    * Generate gravatar url
+   *
    * @param email is a string. If email is not a string, email will be set to empty string "" by default
    * @param md5Hash is a string. If value is given it will take precedence over email.
    * @param size number
@@ -48,7 +53,9 @@ export class NgxGravatarService {
       try {
         email = email.trim().toLowerCase();
       } catch (e) {
-        console.error(`[ngx-gravatar] - Email (${email}) is not a string. Empty string is used as a default email.`);
+        console.error(
+          `[ngx-gravatar] - Email (${email}) is not a string. Empty string is used as a default email.`
+        );
         email = '';
       }
       emailHash = Md5.hashStr(email);

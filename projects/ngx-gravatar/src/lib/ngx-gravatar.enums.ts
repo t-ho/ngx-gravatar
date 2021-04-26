@@ -7,14 +7,14 @@ export enum FALLBACK {
   monsterid = 'monsterid',
   retro = 'retro',
   robohash = 'robohash',
-  wavatar = 'wavatar'
+  wavatar = 'wavatar',
 }
 
 export enum RATING {
   g = 'g',
   pg = 'pg',
   r = 'r',
-  x = 'x'
+  x = 'x',
 }
 
 export type FallbackType = keyof typeof FALLBACK;

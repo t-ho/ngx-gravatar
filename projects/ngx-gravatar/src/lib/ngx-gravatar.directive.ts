@@ -1,9 +1,17 @@
-import { Directive, ElementRef, Input, OnChanges, OnInit, Renderer2 } from '@angular/core';
+/* eslint-disable @angular-eslint/directive-selector */
+import {
+  Directive,
+  ElementRef,
+  Input,
+  OnChanges,
+  OnInit,
+  Renderer2,
+} from '@angular/core';
 import { NgxGravatarService } from './ngx-gravatar.service';
 import { GravatarConfig } from './gravatar-config';
 
 @Directive({
-  selector: '[ngx-gravatar], [ngxGravatar]'
+  selector: '[ngx-gravatar], [ngxGravatar]',
 })
 export class NgxGravatarDirective implements OnChanges, OnInit {
   @Input() src: string;
@@ -26,11 +34,15 @@ export class NgxGravatarDirective implements OnChanges, OnInit {
   requestedSize: number;
   isGravatarUsed: boolean;
 
-  constructor(private elementRef: ElementRef, private renderer: Renderer2, private gravatarService: NgxGravatarService) {
+  constructor(
+    private elementRef: ElementRef,
+    private renderer: Renderer2,
+    private gravatarService: NgxGravatarService
+  ) {
     this.initialized = false;
     this.defaultConfig = this.gravatarService.getDefaultConfig();
     // Listen for error when fetching custom src
-    this.renderer.listen(this.elementRef.nativeElement, 'error', event => {
+    this.renderer.listen(this.elementRef.nativeElement, 'error', (event) => {
       if (!this.isGravatarUsed) {
         this.initializeAvatar(true); // Force using gravatar
       }
@@ -54,11 +66,19 @@ export class NgxGravatarDirective implements OnChanges, OnInit {
    */
   private setDefaultValues(): void {
     this.size = this.computeSize();
-    this.ratio = this.ratio === undefined ? this.defaultConfig.ratio : this.ratio;
+    this.ratio =
+      this.ratio === undefined ? this.defaultConfig.ratio : this.ratio;
     this.requestedSize = this.size * this.ratio;
-    this.round = this.round === undefined ? this.defaultConfig.round : this.round;
-    this.cornerRadius = this.cornerRadius === undefined ? this.defaultConfig.cornerRadius : this.cornerRadius;
-    this.preferGravatar = this.preferGravatar === undefined ? this.defaultConfig.preferGravatar : this.preferGravatar;
+    this.round =
+      this.round === undefined ? this.defaultConfig.round : this.round;
+    this.cornerRadius =
+      this.cornerRadius === undefined
+        ? this.defaultConfig.cornerRadius
+        : this.cornerRadius;
+    this.preferGravatar =
+      this.preferGravatar === undefined
+        ? this.defaultConfig.preferGravatar
+        : this.preferGravatar;
   }
 
   /**
@@ -70,7 +90,13 @@ export class NgxGravatarDirective implements OnChanges, OnInit {
     this.setDefaultValues();
     let url = '';
     if (this.preferGravatar || forcedGravatar) {
-      url = this.gravatarService.generateGravatarUrl(this.email, this.md5Hash, this.requestedSize, this.rating, this.fallback);
+      url = this.gravatarService.generateGravatarUrl(
+        this.email,
+        this.md5Hash,
+        this.requestedSize,
+        this.rating,
+        this.fallback
+      );
       this.isGravatarUsed = true;
     } else {
       // this.preferGravatar == false
@@ -78,7 +104,13 @@ export class NgxGravatarDirective implements OnChanges, OnInit {
         url = this.src;
       } else {
         // fallback to gravatar
-        url = this.gravatarService.generateGravatarUrl(this.email, this.md5Hash, this.requestedSize, this.rating, this.fallback);
+        url = this.gravatarService.generateGravatarUrl(
+          this.email,
+          this.md5Hash,
+          this.requestedSize,
+          this.rating,
+          this.fallback
+        );
         this.isGravatarUsed = true;
       }
     }
@@ -88,6 +120,7 @@ export class NgxGravatarDirective implements OnChanges, OnInit {
 
   /**
    * Compute the size of the avatar
+   *
    * @return size
    */
   private computeSize(): number {
@@ -108,27 +141,40 @@ export class NgxGravatarDirective implements OnChanges, OnInit {
 
   /**
    * Compute style object
+   *
    * @return style object
    */
   private avatarStyle() {
     const style = {
       width: this.size + 'px',
       height: this.size + 'px',
-      borderRadius: this.round ? this.defaultConfig.borderRadius : this.cornerRadius + 'px',
-      borderStyle: this.defaultConfig.hasBorder || this.borderColor || this.borderWidth ? this.defaultConfig.borderStyle : 'none',
-      borderColor: this.borderColor ? this.borderColor : this.defaultConfig.borderColor,
-      borderWidth: this.borderWidth ? this.borderWidth + 'px' : this.defaultConfig.borderWidth + 'px',
-      backgroundColor: this.backgroundColor ? this.backgroundColor : this.defaultConfig.backgroundColor
+      borderRadius: this.round
+        ? this.defaultConfig.borderRadius
+        : this.cornerRadius + 'px',
+      borderStyle:
+        this.defaultConfig.hasBorder || this.borderColor || this.borderWidth
+          ? this.defaultConfig.borderStyle
+          : 'none',
+      borderColor: this.borderColor
+        ? this.borderColor
+        : this.defaultConfig.borderColor,
+      borderWidth: this.borderWidth
+        ? this.borderWidth + 'px'
+        : this.defaultConfig.borderWidth + 'px',
+      backgroundColor: this.backgroundColor
+        ? this.backgroundColor
+        : this.defaultConfig.backgroundColor,
     };
     return { ...style, ...this.style };
   }
 
   /**
    * Set style for the avatar
+   *
    * @param styles style object
    */
   private setStyle(styles: any) {
-    Object.keys(styles).forEach(key => {
+    Object.keys(styles).forEach((key) => {
       this.renderer.setStyle(this.elementRef.nativeElement, key, styles[key]);
     });
   }
