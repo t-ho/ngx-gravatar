@@ -6,18 +6,20 @@ import { NgxGravatarDirective } from './ngx-gravatar.directive';
 
 @NgModule({
   declarations: [NgxGravatarDirective],
-  exports: [NgxGravatarDirective]
+  exports: [NgxGravatarDirective],
 })
 export class GravatarModule {
-  static forRoot(gravatarConfig: GravatarConfig): ModuleWithProviders<GravatarModule> {
+  static forRoot(
+    gravatarConfig: GravatarConfig
+  ): ModuleWithProviders<GravatarModule> {
     return {
       ngModule: GravatarModule,
       providers: [
         {
           provide: GRAVATAR_CONFIG_TOKEN,
-          useValue: gravatarConfig
-        }
-      ]
+          useValue: gravatarConfig,
+        },
+      ],
     };
   }
 }

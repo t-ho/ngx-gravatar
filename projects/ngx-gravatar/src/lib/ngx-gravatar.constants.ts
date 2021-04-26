@@ -14,5 +14,5 @@ export const DEFAULT_CONFIG: GravatarConfig = {
   round: true,
   backgroundColor: 'transparent',
   rating: RATING.g,
-  ratio: 2
+  ratio: 2,
 };
