@@ -26,7 +26,7 @@ export class NgxGravatarDirective implements OnChanges, OnInit {
   @Input() borderWidth: number;
   @Input() style: any = {};
   @Input() preferGravatar: boolean;
-  @Input() backgroundColor: boolean;
+  @Input() backgroundColor: string;
   @Input() ratio: number;
 
   initialized: boolean;
