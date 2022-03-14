@@ -40,7 +40,8 @@ yarn add ngx-gravatar
 
 | Angular       | Installation command               |
 | ------------- | ---------------------------------- |
-| Angular 11    | `npm i --save ngx-gravatar`        |
+| Angular 13    | `npm i --save ngx-gravatar`        |
+| Angular 11    | `npm i --save ngx-gravatar@11.0.0` |
 | Angular 10    | `npm i --save ngx-gravatar@10.0.0` |
 | Angular 9     | `npm i --save ngx-gravatar@9.1.0`  |
 | Angular 8     | `npm i --save ngx-gravatar@8.1.0`  |
