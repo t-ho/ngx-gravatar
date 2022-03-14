@@ -1,3 +1,7 @@
+# v13.0.0
+
+- Upgrade to Angular 13
+
 # v11.0.0
 
 - Upgrade to Angular 11

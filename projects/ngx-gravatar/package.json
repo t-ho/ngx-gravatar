@@ -1,7 +1,7 @@
 {
   "name": "ngx-gravatar",
   "description": "A customizable Gravatar for Angular applications.",
-  "version": "11.0.0",
+  "version": "13.0.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/t-ho/ngx-gravatar.git"
