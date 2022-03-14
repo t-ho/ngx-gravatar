@@ -1,4 +1,3 @@
-/* eslint-disable prefer-arrow/prefer-arrow-functions */
 import { TestBed, inject } from '@angular/core/testing';
 import { GravatarConfig } from './gravatar-config';
 

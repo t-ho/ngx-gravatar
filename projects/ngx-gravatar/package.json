@@ -11,12 +11,12 @@
   "license": "MIT",
   "private": false,
   "peerDependencies": {
-    "@angular/core": ">=11.0.0",
-    "@angular/common": ">=11.0.0"
+    "@angular/core": ">=13.0.0",
+    "@angular/common": ">=13.0.0"
   },
   "dependencies": {
-    "ts-md5": "^1.2.7",
-    "tslib": "^2.0.0"
+    "ts-md5": "^1.2.11",
+    "tslib": "^2.3.0"
   },
   "keywords": [
     "ngx-gravatar",
