@@ -1,60 +1,8 @@
 <div>
   <h1>NGX-GRAVATAR</h1>
   <div class="badges">
-    <a href="https://www.npmjs.com/package/ngx-gravatar" target="_blank">
-      <img
-        alt="NPM Version"
-        src="https://img.shields.io/npm/v/ngx-gravatar"
-        height="18"
-      />
-    </a>
-    <a href="https://github.com/t-ho/ngx-gravatar/stargazers" target="_blank">
-      <img
-        alt="GitHub stars"
-        src="https://img.shields.io/github/stars/t-ho/ngx-gravatar?color=00bcd4"
-        height="18"
-      />
-    </a>
-    <a
-      href="https://github.com/t-ho/ngx-gravatar/actions/workflows/test.yml"
-      target="_blank"
-    >
-      <img
-        src="https://github.com/t-ho/ngx-gravatar/workflows/CI%20Testing/badge.svg"
-        alt="CI Testing"
-        height="18"
-      />
-    </a>
-    <a href="https://codecov.io/gh/t-ho/ngx-gravatar">
-      <img
-        src="https://codecov.io/gh/t-ho/ngx-gravatar/branch/master/graph/badge.svg"
-        alt="Code Coverage"
-        height="18"
-      />
-    </a>
-    <a href="https://www.npmjs.com/package/ngx-gravatar" target="_blank">
-      <img
-        src="https://img.shields.io/npm/dw/ngx-gravatar.svg"
-        alt="Downloads Per Week"
-        height="18"
-      />
-    </a>
-    <a href="https://bundlephobia.com/result?p=ngx-gravatar" target="_blank">
-      <img
-        alt="npm bundle size"
-        src="https://img.shields.io/bundlephobia/minzip/ngx-gravatar"
-        height="18"
-      />
-    </a>
-    <a
-      href="https://github.com/t-ho/ngx-gravatar/blob/master/LICENSE"
-      target="_blank"
-    >
-      <img
-        src="https://img.shields.io/npm/l/ngx-gravatar.svg"
-        alt="MIT License"
-        height="18"
-      />
+    <a *ngFor="let badge of badges" [href]="badge.href" target="_blank">
+      <img [src]="badge.src" [alt]="badge.alt" height="18" />
     </a>
   </div>
   Email: <input [(ngModel)]="email" placeholder="Type your email here" />
@@ -115,13 +63,12 @@
   </h4>
   <img ngxGravatar [email]="'no-gravatar@gravatar.com'" />
   <!-- Default fallback is 'retro' -->
-  <img ngxGravatar [email]="'no-gravatar@gravatar.com'" fallback="blank" />
-  <img ngxGravatar [email]="'no-gravatar@gravatar.com'" fallback="identicon" />
-  <img ngxGravatar [email]="'no-gravatar@gravatar.com'" fallback="mp" />
-  <img ngxGravatar [email]="'no-gravatar@gravatar.com'" fallback="monsterid" />
-  <img ngxGravatar [email]="'no-gravatar@gravatar.com'" fallback="retro" />
-  <img ngxGravatar [email]="'no-gravatar@gravatar.com'" fallback="robohash" />
-  <img ngxGravatar [email]="'no-gravatar@gravatar.com'" fallback="wavatar" />
+  <img
+    *ngFor="let fallback of fallbacks"
+    ngxGravatar
+    [email]="'no-gravatar@gravatar.com'"
+    [fallback]="fallback"
+  />
 </div>
 
 <div>
