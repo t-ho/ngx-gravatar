@@ -3,7 +3,6 @@ import { GravatarConfig } from './gravatar-config';
 
 import { GravatarModule } from './gravatar.module';
 import { NgxGravatarService } from './ngx-gravatar.service';
-import { not } from '@angular/compiler/src/output/output_ast';
 import { DEFAULT_CONFIG } from './ngx-gravatar.constants';
 import { FALLBACK, RATING } from './ngx-gravatar.enums';
 
@@ -34,7 +33,7 @@ function generateValidCustomConfig(): any[] {
       out: { fallback },
       consoleErrorMessage: generateFallbackErrorMessage(
         fallback,
-        DEFAULT_CONFIG.fallback
+        DEFAULT_CONFIG.fallback,
       ),
     });
   });
@@ -44,7 +43,7 @@ function generateValidCustomConfig(): any[] {
       out: { rating: rating.toLowerCase() },
       consoleErrorMessage: generateRatingErrorMessage(
         rating,
-        DEFAULT_CONFIG.rating
+        DEFAULT_CONFIG.rating,
       ),
     });
   });
@@ -83,7 +82,7 @@ describe('NgxGravatarService with DEFAULT_CONFIG', () => {
     [NgxGravatarService],
     (service: NgxGravatarService) => {
       expect(service).toBeTruthy();
-    }
+    },
   ));
 
   it(`#getDefaultConfig() should return DEFAULT_CONFIG object`, () => {
@@ -95,7 +94,7 @@ describe('NgxGravatarService with DEFAULT_CONFIG', () => {
       `https://www.gravatar.com/avatar/4f291481ca95cb4e78248df3f522aed3` +
         `?s=${gravatarService.getDefaultConfig().size}` +
         `&r=${gravatarService.getDefaultConfig().rating}` +
-        `&d=${gravatarService.getDefaultConfig().fallback}`
+        `&d=${gravatarService.getDefaultConfig().fallback}`,
     );
   });
 
@@ -103,13 +102,13 @@ describe('NgxGravatarService with DEFAULT_CONFIG', () => {
     expect(
       gravatarService.generateGravatarUrl(
         null,
-        '4f291481ca95cb4e78248df3f522aed3'
-      )
+        '4f291481ca95cb4e78248df3f522aed3',
+      ),
     ).toEqual(
       `https://www.gravatar.com/avatar/4f291481ca95cb4e78248df3f522aed3` +
         `?s=${gravatarService.getDefaultConfig().size}` +
         `&r=${gravatarService.getDefaultConfig().rating}` +
-        `&d=${gravatarService.getDefaultConfig().fallback}`
+        `&d=${gravatarService.getDefaultConfig().fallback}`,
     );
   });
 
@@ -119,10 +118,10 @@ describe('NgxGravatarService with DEFAULT_CONFIG', () => {
         `https://www.gravatar.com/avatar/d41d8cd98f00b204e9800998ecf8427e` +
           `?s=${gravatarService.getDefaultConfig().size}` +
           `&r=${gravatarService.getDefaultConfig().rating}` +
-          `&d=${gravatarService.getDefaultConfig().fallback}`
+          `&d=${gravatarService.getDefaultConfig().fallback}`,
       );
       expect(console.error).toHaveBeenCalledWith(
-        generateEmailErrorMessage(notString)
+        generateEmailErrorMessage(notString),
       );
     });
   });
@@ -132,16 +131,16 @@ describe('NgxGravatarService with DEFAULT_CONFIG', () => {
       `should return url with default rating, fallback and NOT PRINT error message`,
     () => {
       expect(
-        gravatarService.generateGravatarUrl('t.ho@tdev.app', null, 150)
+        gravatarService.generateGravatarUrl('t.ho@tdev.app', null, 150),
       ).toEqual(
         `https://www.gravatar.com/avatar/4f291481ca95cb4e78248df3f522aed3?s=150` +
           `&r=${gravatarService.getDefaultConfig().rating}` +
-          `&d=${gravatarService.getDefaultConfig().fallback}`
+          `&d=${gravatarService.getDefaultConfig().fallback}`,
       );
       expect(console.error).not.toHaveBeenCalledWith(
-        generateEmailErrorMessage('t.ho@tdev.app')
+        generateEmailErrorMessage('t.ho@tdev.app'),
       );
-    }
+    },
   );
 
   validRatings.forEach((rating) => {
@@ -150,17 +149,17 @@ describe('NgxGravatarService with DEFAULT_CONFIG', () => {
       `should return url with lowercase rating, default fallback and NOT PRINT error message`;
     it(stmt, () => {
       expect(
-        gravatarService.generateGravatarUrl('t.ho@tdev.app', null, 150, rating)
+        gravatarService.generateGravatarUrl('t.ho@tdev.app', null, 150, rating),
       ).toEqual(
         `https://www.gravatar.com/avatar/4f291481ca95cb4e78248df3f522aed3?s=150` +
           `&r=${rating.toLowerCase()}` +
-          `&d=${gravatarService.getDefaultConfig().fallback}`
+          `&d=${gravatarService.getDefaultConfig().fallback}`,
       );
       expect(console.error).not.toHaveBeenCalledWith(
         generateRatingErrorMessage(
           rating,
-          gravatarService.getDefaultConfig().rating
-        )
+          gravatarService.getDefaultConfig().rating,
+        ),
       );
     });
   });
@@ -174,20 +173,20 @@ describe('NgxGravatarService with DEFAULT_CONFIG', () => {
           't.ho@tdev.app',
           null,
           380,
-          undefined
-        )
+          undefined,
+        ),
       ).toEqual(
         `https://www.gravatar.com/avatar/4f291481ca95cb4e78248df3f522aed3?s=380` +
           `&r=${gravatarService.getDefaultConfig().rating}` +
-          `&d=${gravatarService.getDefaultConfig().fallback}`
+          `&d=${gravatarService.getDefaultConfig().fallback}`,
       );
       expect(console.error).not.toHaveBeenCalledWith(
         generateRatingErrorMessage(
           undefined,
-          gravatarService.getDefaultConfig().rating
-        )
+          gravatarService.getDefaultConfig().rating,
+        ),
       );
-    }
+    },
   );
 
   validFallbacks.forEach((fallback) => {
@@ -201,16 +200,16 @@ describe('NgxGravatarService with DEFAULT_CONFIG', () => {
           null,
           50,
           'pg',
-          fallback
-        )
+          fallback,
+        ),
       ).toEqual(
-        `https://www.gravatar.com/avatar/4f291481ca95cb4e78248df3f522aed3?s=50&r=pg&d=${fallback}`
+        `https://www.gravatar.com/avatar/4f291481ca95cb4e78248df3f522aed3?s=50&r=pg&d=${fallback}`,
       );
       expect(console.error).not.toHaveBeenCalledWith(
         generateFallbackErrorMessage(
           fallback,
-          gravatarService.getDefaultConfig().fallback
-        )
+          gravatarService.getDefaultConfig().fallback,
+        ),
       );
     });
   });
@@ -225,19 +224,19 @@ describe('NgxGravatarService with DEFAULT_CONFIG', () => {
           null,
           380,
           'pg',
-          undefined
-        )
+          undefined,
+        ),
       ).toEqual(
         `https://www.gravatar.com/avatar/4f291481ca95cb4e78248df3f522aed3?s=380&r=pg` +
-          `&d=${gravatarService.getDefaultConfig().fallback}`
+          `&d=${gravatarService.getDefaultConfig().fallback}`,
       );
       expect(console.error).not.toHaveBeenCalledWith(
         generateFallbackErrorMessage(
           undefined,
-          gravatarService.getDefaultConfig().fallback
-        )
+          gravatarService.getDefaultConfig().fallback,
+        ),
       );
-    }
+    },
   );
 });
 
@@ -255,16 +254,16 @@ describe('NgxGravatarService with custom configuration', () => {
     const stmt =
       `With forRoot(${JSON.stringify(config.in)}), ` +
       `#getDefaultConfig should return an object contains ${JSON.stringify(
-        config.out
+        config.out,
       )} ` +
       `and NOT print error message`;
     it(stmt, () => {
       const gravatarService = setup(config.in);
       expect(gravatarService.getDefaultConfig()).toEqual(
-        jasmine.objectContaining(config.out)
+        jasmine.objectContaining(config.out),
       );
       expect(console.error).not.toHaveBeenCalledWith(
-        config.consoleErrorMessage
+        config.consoleErrorMessage,
       );
     });
   });

@@ -1,20 +1,23 @@
 <div>
   <h1>NGX-GRAVATAR</h1>
   <div class="badges">
-    <a *ngFor="let badge of badges" [href]="badge.href" target="_blank">
-      <img [src]="badge.src" [alt]="badge.alt" height="18" />
-    </a>
+    @for (badge of badges; track badge) {
+      <a [href]="badge.href" target="_blank">
+        <img [src]="badge.src" [alt]="badge.alt" height="18" />
+      </a>
+    }
   </div>
   Email: <input [(ngModel)]="email" placeholder="Type your email here" />
   <h4>blank - identicon - mp - monsterid - retro - robohash - wavatar</h4>
-  <img
-    *ngFor="let f of fallbacks"
-    ngxGravatar
-    [email]="email"
-    [size]="50"
-    [fallback]="f"
-    borderColor="rgba(0, 0, 0, 0.2)"
-  />
+  @for (f of fallbacks; track f) {
+    <img
+      ngxGravatar
+      [email]="email"
+      [size]="50"
+      [fallback]="f"
+      borderColor="rgba(0, 0, 0, 0.2)"
+    />
+  }
 </div>
 
 <div>
@@ -63,12 +66,13 @@
   </h4>
   <img ngxGravatar [email]="'no-gravatar@gravatar.com'" />
   <!-- Default fallback is 'retro' -->
-  <img
-    *ngFor="let fallback of fallbacks"
-    ngxGravatar
-    [email]="'no-gravatar@gravatar.com'"
-    [fallback]="fallback"
-  />
+  @for (fallback of fallbacks; track fallback) {
+    <img
+      ngxGravatar
+      [email]="'no-gravatar@gravatar.com'"
+      [fallback]="fallback"
+    />
+  }
 </div>
 
 <div>
