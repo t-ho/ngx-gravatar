@@ -72,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "ngx-gravatar-app:build:production"
+              "buildTarget": "ngx-gravatar-app:build:production"
             },
             "development": {
-              "browserTarget": "ngx-gravatar-app:build:development"
+              "buildTarget": "ngx-gravatar-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ngx-gravatar-app:build"
+            "buildTarget": "ngx-gravatar-app:build"
           }
         },
         "test": {
