@@ -25,12 +25,11 @@ hr {
 
 .button {
   text-decoration: none;
-  border: solid 1px #4CAF50;
-  padding: 10px 20px;
-  background-color: #66BB6A;
+  padding: .5rem 1rem;
+  background-color: #2E7D32;
   color: #fff;
 }
 
 .button:hover {
-  background-color: #4CAF50;
+  background-color: #1B5E20;
 }

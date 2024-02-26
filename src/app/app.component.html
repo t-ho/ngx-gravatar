@@ -1,72 +1,23 @@
 <div>
   <h1>NGX-GRAVATAR</h1>
   <div class="badges">
-    <a href="https://www.npmjs.com/package/ngx-gravatar" target="_blank">
-      <img
-        alt="NPM Version"
-        src="https://img.shields.io/npm/v/ngx-gravatar"
-        height="18"
-      />
-    </a>
-    <a href="https://github.com/t-ho/ngx-gravatar/stargazers" target="_blank">
-      <img
-        alt="GitHub stars"
-        src="https://img.shields.io/github/stars/t-ho/ngx-gravatar?color=00bcd4"
-        height="18"
-      />
-    </a>
-    <a
-      href="https://github.com/t-ho/ngx-gravatar/actions/workflows/test.yml"
-      target="_blank"
-    >
-      <img
-        src="https://github.com/t-ho/ngx-gravatar/workflows/CI%20Testing/badge.svg"
-        alt="CI Testing"
-        height="18"
-      />
-    </a>
-    <a href="https://codecov.io/gh/t-ho/ngx-gravatar">
-      <img
-        src="https://codecov.io/gh/t-ho/ngx-gravatar/branch/master/graph/badge.svg"
-        alt="Code Coverage"
-        height="18"
-      />
-    </a>
-    <a href="https://www.npmjs.com/package/ngx-gravatar" target="_blank">
-      <img
-        src="https://img.shields.io/npm/dw/ngx-gravatar.svg"
-        alt="Downloads Per Week"
-        height="18"
-      />
-    </a>
-    <a href="https://bundlephobia.com/result?p=ngx-gravatar" target="_blank">
-      <img
-        alt="npm bundle size"
-        src="https://img.shields.io/bundlephobia/minzip/ngx-gravatar"
-        height="18"
-      />
-    </a>
-    <a
-      href="https://github.com/t-ho/ngx-gravatar/blob/master/LICENSE"
-      target="_blank"
-    >
-      <img
-        src="https://img.shields.io/npm/l/ngx-gravatar.svg"
-        alt="MIT License"
-        height="18"
-      />
-    </a>
+    @for (badge of badges; track badge) {
+      <a [href]="badge.href" target="_blank">
+        <img [src]="badge.src" [alt]="badge.alt" height="18" />
+      </a>
+    }
   </div>
   Email: <input [(ngModel)]="email" placeholder="Type your email here" />
   <h4>blank - identicon - mp - monsterid - retro - robohash - wavatar</h4>
-  <img
-    *ngFor="let f of fallbacks"
-    ngxGravatar
-    [email]="email"
-    size="50"
-    [fallback]="f"
-    borderColor="rgba(0, 0, 0, 0.2)"
-  />
+  @for (f of fallbacks; track f) {
+    <img
+      ngxGravatar
+      [email]="email"
+      [size]="50"
+      [fallback]="f"
+      borderColor="rgba(0, 0, 0, 0.2)"
+    />
+  }
 </div>
 
 <div>
@@ -79,9 +30,9 @@
   <img
     ngxGravatar
     [email]="'t.ho@tdev.app'"
-    size="150"
+    [size]="150"
     borderColor="#00ACC1"
-    borderWidth="2"
+    [borderWidth]="2"
   />
   <img
     ngxGravatar
@@ -93,18 +44,18 @@
 <div>
   <h2>Avatar from different sources (size - 80px)</h2>
   <h4>gravatar - custom source</h4>
-  <img ngxGravatar [email]="'t.ho@tdev.app'" size="80" />
+  <img ngxGravatar [email]="'t.ho@tdev.app'" [size]="80" />
   <img
     ngxGravatar
-    size="80"
+    [size]="80"
     src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="
   />
   <img
     ngxGravatar
-    size="80"
+    [size]="80"
     src="https://github.com/t-ho/ngx-gravatar/raw/assets/src/assets/avatar.jpg"
   />
-  <img ngxGravatar [md5Hash]="'4f291481ca95cb4e78248df3f522aed3'" size="80" />
+  <img ngxGravatar [md5Hash]="'4f291481ca95cb4e78248df3f522aed3'" [size]="80" />
 </div>
 
 <div>
@@ -115,13 +66,13 @@
   </h4>
   <img ngxGravatar [email]="'no-gravatar@gravatar.com'" />
   <!-- Default fallback is 'retro' -->
-  <img ngxGravatar [email]="'no-gravatar@gravatar.com'" fallback="blank" />
-  <img ngxGravatar [email]="'no-gravatar@gravatar.com'" fallback="identicon" />
-  <img ngxGravatar [email]="'no-gravatar@gravatar.com'" fallback="mp" />
-  <img ngxGravatar [email]="'no-gravatar@gravatar.com'" fallback="monsterid" />
-  <img ngxGravatar [email]="'no-gravatar@gravatar.com'" fallback="retro" />
-  <img ngxGravatar [email]="'no-gravatar@gravatar.com'" fallback="robohash" />
-  <img ngxGravatar [email]="'no-gravatar@gravatar.com'" fallback="wavatar" />
+  @for (fallback of fallbacks; track fallback) {
+    <img
+      ngxGravatar
+      [email]="'no-gravatar@gravatar.com'"
+      [fallback]="fallback"
+    />
+  }
 </div>
 
 <div>
@@ -169,11 +120,11 @@
 
 <div>
   <h2>Avatar with border width</h2>
-  <h4><code>borderWidth="3"</code> - <code>borderWidth="5"</code></h4>
-  <img ngxGravatar borderWidth="3" [email]="'t.ho@tdev.app'" />
+  <h4><code>[borderWidth]="3"</code> - <code>[borderWidth]="5"</code></h4>
+  <img ngxGravatar [borderWidth]="3" [email]="'t.ho@tdev.app'" />
   <img
     ngxGravatar
-    borderWidth="5"
+    [borderWidth]="5"
     borderColor="teal"
     [email]="'t.ho@tdev.app'"
   />
@@ -231,7 +182,7 @@
 </div>
 
 <div>
-  <a target="_blank" href="https://github.com/t-ho/ngx-gravatar" class="button"
-    >View On Github</a
-  >
+  <a target="_blank" href="https://github.com/t-ho/ngx-gravatar" class="button">
+    View On Github
+  </a>
 </div>
